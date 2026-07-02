@@ -1,2 +1,10 @@
 ---
+import Home from '../sections/Home.astro';
+import Layout from '../layouts/Layout.astro';
+import type { Language } from '../i18n/config';
+
+const lang: Language = 'it';
 ---
+<Layout lang={lang}>
+  <Home lang={lang} />
+</Layout>
