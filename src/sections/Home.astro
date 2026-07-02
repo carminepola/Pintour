@@ -1,9 +1,10 @@
 ---
-import Icon from '../components/Icon.astro';
 import { useTranslations } from '../i18n/translations';
-import { pathFor, SHUTTLE_BOOKING_URL } from '../i18n/config';
+import Icon from '../components/Icon.astro';
 import { serviceCards, destinations, whyItems } from '../i18n/data';
+import { SHUTTLE_BOOKING_URL } from '../i18n/config';
 import type { Language, PageKey } from '../i18n/config';
+import { pathFor } from '../i18n/config';
 
 interface Props { lang: Language; }
 const { lang } = Astro.props;
@@ -22,6 +23,23 @@ const serviceIcon: Record<PageKey, string> = {
   home: 'mapPin', tours: 'mapPin', shuttle: 'bus', rental: 'users', vehicles: 'car',
   about: 'award', contacts: 'mail', privacy: 'shield',
 };
+
+// Define helper function inline to avoid import issues
+const getPathFor = (page: PageKey): string => {
+  const slugs: Record<PageKey, Record<string, string>> = {
+    home: { it: '', en: '', fr: '', de: '', es: '' },
+    tours: { it: 'tour', en: 'tours', fr: 'circuits', de: 'touren', es: 'circuitos' },
+    about: { it: 'chi-siamo', en: 'about', fr: 'a-propos', de: 'ueber-uns', es: 'quienes-somos' },
+    shuttle: { it: 'shuttle-bus', en: 'shuttle-bus', fr: 'shuttle-bus', de: 'shuttle-bus', es: 'shuttle-bus' },
+    rental: { it: 'noleggio-bus', en: 'bus-rental', fr: 'location-bus', de: 'busvermietung', es: 'alquiler-de-bus' },
+    vehicles: { it: 'parco-mezzi', en: 'fleet', fr: 'flotte', de: 'flotte', es: 'flota' },
+    contacts: { it: 'contatti', en: 'contacts', fr: 'contacts', de: 'kontakte', es: 'contactos' },
+    privacy: { it: 'privacy', en: 'privacy', fr: 'confidentialite', de: 'datenschutz', es: 'privacidad' },
+  };
+  
+  const slug = slugs[page]?.[lang] ?? '';
+  return slug === '' ? `/${lang}/` : `/${lang}/${slug}/`;
+};
 ---
 <div>
   {/* HERO — statico, corporate, niente immagini */}
@@ -35,8 +53,8 @@ const serviceIcon: Record<PageKey, string> = {
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.05]">{t.tours.heroTitle}</h1>
         <p class="text-base md:text-lg text-white/70 mb-9 max-w-2xl leading-relaxed">{t.tours.heroDesc}</p>
         <div class="flex flex-col sm:flex-row gap-3">
-          <a href={pathFor(lang, 'tours')} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-colors text-sm md:text-base">{t.tours.bookCta}<Icon name="arrowRight" class="w-4 h-4" /></a>
-          <a href={pathFor(lang, 'rental')} class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/25 text-white font-bold rounded-md hover:bg-white/10 transition-colors text-sm md:text-base">{t.hero.slide2Cta2}</a>
+          <a href={getPathFor('tours')} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-colors text-sm md:text-base">{t.tours.bookCta}<Icon name="arrowRight" class="w-4 h-4" /></a>
+          <a href={getPathFor('rental')} class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/25 text-white font-bold rounded-md hover:bg-white/10 transition-colors text-sm md:text-base">{t.hero.slide2Cta2}</a>
         </div>
       </div>
     </div>
@@ -61,7 +79,7 @@ const serviceIcon: Record<PageKey, string> = {
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {serviceCards.map((card, i) => (
-          <a href={pathFor(lang, card.page)} data-reveal style={`transition-delay:${i * 80}ms`} class="card-hover bg-white rounded-lg border border-[#e5e7eb] p-6 group block">
+          <a href={getPathFor(card.page)} data-reveal style={`transition-delay:${i * 80}ms`} class="card-hover bg-white rounded-lg border border-[#e5e7eb] p-6 group block">
             <div class="w-12 h-12 rounded-md bg-[#0f4c81]/10 flex items-center justify-center mb-5">
               <Icon name={serviceIcon[card.page]} class="w-6 h-6 text-[#0f4c81]" />
             </div>
@@ -86,7 +104,7 @@ const serviceIcon: Record<PageKey, string> = {
           <h2 class="text-3xl md:text-4xl font-bold text-[#0f2540]">{t.tours.sectionTitle}</h2>
           <p class="mt-3 text-gray-600">{t.tours.sectionSubtitle}</p>
         </div>
-        <a href={pathFor(lang, 'tours')} class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#0f2540] hover:text-[#0f4c81] transition-colors whitespace-nowrap">{t.tours.viewAll}<Icon name="arrowRight" class="w-4 h-4" /></a>
+        <a href={getPathFor('tours')} class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#0f2540] hover:text-[#0f4c81] transition-colors whitespace-nowrap">{t.tours.viewAll}<Icon name="arrowRight" class="w-4 h-4" /></a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {featuredTours.map((d, i) => (
@@ -98,13 +116,13 @@ const serviceIcon: Record<PageKey, string> = {
                  </div>
             <div class="p-5 flex flex-col flex-1">
               <p class="text-sm text-gray-600 leading-relaxed flex-1">{t.tours.destinations[`${d.key}Desc` as keyof typeof t.tours.destinations]}</p>
-              <a href={`${pathFor(lang, 'tours')}#quote`} class="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#0f4c81] text-white text-sm font-bold rounded-md hover:bg-[#0a3a62] transition-colors">{t.tours.requestQuote}<Icon name="arrowRight" class="w-4 h-4" /></a>
+              <a href={`${getPathFor('tours')}#quote`} class="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#0f4c81] text-white text-sm font-bold rounded-md hover:bg-[#0a3a62] transition-colors">{t.tours.requestQuote}<Icon name="arrowRight" class="w-4 h-4" /></a>
             </div>
           </div>
         ))}
       </div>
       <div class="text-center mt-10 md:hidden" data-reveal>
-        <a href={pathFor(lang, 'tours')} class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border-2 border-[#0f2540] text-[#0f2540] font-bold rounded-md hover:bg-[#0f2540] hover:text-white transition-colors">{t.tours.viewAll}<Icon name="arrowRight" class="w-4 h-4" /></a>
+        <a href={getPathFor('tours')} class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border-2 border-[#0f2540] text-[#0f2540] font-bold rounded-md hover:bg-[#0f2540] hover:text-white transition-colors">{t.tours.viewAll}<Icon name="arrowRight" class="w-4 h-4" /></a>
       </div>
     </div>
   </section>
@@ -153,7 +171,7 @@ const serviceIcon: Record<PageKey, string> = {
         {t.reviews.items.map((r, i) => (
           <div data-reveal style={`transition-delay:${i * 80}ms`} class="bg-white rounded-lg p-6 border border-[#e5e7eb] flex flex-col">
             <div class="flex gap-1 mb-3 text-[#25867f]">{'★★★★★'}</div>
-            <p class="text-sm text-gray-700 leading-relaxed flex-1 italic">“{r.text}”</p>
+            <p class="text-sm text-gray-700 leading-relaxed flex-1 italic">"{r.text}"</p>
             <div class="mt-4 pt-4 border-t border-gray-100">
               <p class="font-bold text-[#0f2540] text-sm">{r.name}</p>
               <p class="text-xs text-gray-500">{r.role}</p>
@@ -169,7 +187,7 @@ const serviceIcon: Record<PageKey, string> = {
     <div class="max-w-4xl mx-auto px-4 py-20 md:py-28 text-center" data-reveal>
       <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">{t.cta.title}</h2>
       <p class="text-lg text-white/70 mb-8 max-w-2xl mx-auto">{t.cta.subtitle}</p>
-      <a href={`${pathFor(lang, 'tours')}#quote`} class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-colors text-base">{t.cta.button}<Icon name="arrowRight" class="w-5 h-5" /></a>
+      <a href={`${getPathFor('tours')}#quote`} class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-colors text-base">{t.cta.button}<Icon name="arrowRight" class="w-5 h-5" /></a>
     </div>
   </section>
 </div>

@@ -1,10 +1,9 @@
 ---
-import Home from '../sections/Home.astro';
 import Layout from '../layouts/Layout.astro';
-import type { Language } from '../i18n/config';
+import Home from '../sections/Home.astro';
 
-const lang: Language = 'it';
+// Serve the Home section as the root page when prefixDefaultLocale is false
 ---
-<Layout lang={lang}>
-  <Home lang={lang} />
+<Layout lang="it">
+  <Home lang="it" />
 </Layout>
