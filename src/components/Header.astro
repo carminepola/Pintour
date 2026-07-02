@@ -1,0 +1,80 @@
+---
+import Icon from './Icon.astro';
+import { company, navKeys } from '../i18n/data';
+import { useTranslations } from '../i18n/translations';
+import { languageNames, languageFlags, LANGUAGES, pathFor, LOGO_URL, navLabelKey } from '../i18n/config';
+import type { Language, PageKey } from '../i18n/config';
+
+interface Props {
+  lang: Language;
+  page: PageKey;
+}
+const { lang, page } = Astro.props;
+const t = useTranslations(lang);
+const navItems = navKeys.map((id) => ({ id, label: t.nav[navLabelKey[id]] }));
+---
+<div data-site-header class="sticky top-0 z-50">
+  {/* Top bar - contatti + lingua */}
+  <div class="bg-[#1a1064] text-white text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center gap-3">
+      <div class="flex items-center gap-4 sm:gap-6 min-w-0">
+        <a href={`tel:${company.phone2.replace(/\s/g, '')}`} class="flex items-center gap-2 hover:text-[#ec2a7a] transition-colors whitespace-nowrap">
+          <Icon name="phone" class="w-3.5 h-3.5 flex-shrink-0" /><span class="hidden sm:inline">{company.phone2}</span>
+        </a>
+        <a href={`mailto:${company.email}`} class="flex items-center gap-2 hover:text-[#ec2a7a] transition-colors min-w-0 truncate">
+          <Icon name="mail" class="w-3.5 h-3.5 flex-shrink-0" /><span class="truncate">{company.email}</span>
+        </a>
+      </div>
+      <div class="relative flex-shrink-0">
+        <button data-lang-toggle class="flex items-center gap-2 hover:text-[#ec2a7a] transition-colors whitespace-nowrap">
+          <Icon name="globe" class="w-3.5 h-3.5" />
+          <span>{languageFlags[lang]} <span class="hidden sm:inline">{languageNames[lang]}</span></span>
+          <Icon name="chevronDown" class="w-3 h-3 lang-chevron transition-transform" />
+        </button>
+        <div data-lang-menu class="lang-dropdown absolute right-0 top-full mt-1 bg-white text-[#1a1064] rounded-lg shadow-xl py-1 min-w-[160px] z-50">
+          {LANGUAGES.map((l) => (
+            <a href={pathFor(l, page)} class={`w-full px-4 py-2 text-left flex items-center gap-2 hover:bg-[#d9f3ff] transition-colors ${lang === l ? 'font-bold bg-[#d9f3ff]/50' : ''}`}>
+              <span>{languageFlags[l]}</span><span>{languageNames[l]}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Main header - logo + nav */}
+  <header id="site-header" class="transition-all duration-300 bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <a href={pathFor(lang, 'home')} class="flex-shrink-0">
+        <img src={LOGO_URL} alt="Pintour Logo" class="h-9 sm:h-11 md:h-12 w-auto" />
+      </a>
+
+      {/* Desktop navigation - una sola riga, visibile da lg */}
+      <nav class="hidden lg:flex items-center gap-1 justify-center flex-1">
+        {navItems.map((item) => (
+          <a href={pathFor(lang, item.id)} class={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap ${page === item.id ? 'bg-[#1a1064] text-white' : 'text-[#1a1064] hover:bg-[#d9f3ff]'}`}>{item.label}</a>
+        ))}
+      </nav>
+
+      {/* Mobile/tablet hamburger (< lg) - la lingua è già nella top bar */}
+      <div class="flex items-center gap-2 lg:hidden flex-shrink-0">
+        <button data-menu-toggle class="p-2 rounded-lg hover:bg-[#d9f3ff] transition-colors text-[#1a1064]" aria-label="Toggle menu">
+          <Icon name="menu" class="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+
+    {/* Mobile/tablet menu (< lg) */}
+    <div data-mobile-menu class="mobile-menu lg:hidden">
+      <nav class="px-4 pb-4 space-y-1 border-t border-[#e2e8f0]">
+        {navItems.map((item) => (
+          <a href={pathFor(lang, item.id)} class={`w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 block ${page === item.id ? 'bg-[#1a1064] text-white' : 'text-[#1a1064] hover:bg-[#d9f3ff]'}`}>{item.label}</a>
+        ))}
+        <div class="pt-3 border-t border-[#e2e8f0] flex flex-col gap-2 text-sm text-[#1a1064]">
+          <a href={`tel:${company.phone2.replace(/\s/g, '')}`} class="flex items-center gap-2 px-4 py-2 hover:text-[#ec2a7a]"><Icon name="phone" class="w-4 h-4" /> {company.phone2}</a>
+          <a href={`mailto:${company.email}`} class="flex items-center gap-2 px-4 py-2 hover:text-[#ec2a7a]"><Icon name="mail" class="w-4 h-4" /> {company.email}</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+</div>

@@ -1,0 +1,1012 @@
+import type { Language, PageKey } from './config';
+
+export interface TranslationKeys {
+  nav: {
+    home: string;
+    tours: string;
+    about: string;
+    shuttleBus: string;
+    busRental: string;
+    vehicles: string;
+    contacts: string;
+  };
+  hero: {
+    slide1Title: string;
+    slide1Subtitle: string;
+    slide1Cta: string;
+    slide2Title: string;
+    slide2Cta1: string;
+    slide2Cta2: string;
+  };
+  services: {
+    toursTitle: string;
+    toursDesc: string;
+    shuttleTitle: string;
+    shuttleDesc: string;
+    rentalTitle: string;
+    rentalDesc: string;
+    fleetTitle: string;
+    fleetDesc: string;
+    discoverMore: string;
+  };
+  stats: {
+    years: string;
+    yearsLabel: string;
+    vehicles: string;
+    vehiclesLabel: string;
+    seats: string;
+    seatsLabel: string;
+    stops: string;
+    stopsLabel: string;
+  };
+  video: {
+    title: string;
+    subtitle: string;
+    play: string;
+  };
+  tours: {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDesc: string;
+    bookCta: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    viewAll: string;
+    requestQuote: string;
+    from: string;
+    duration: { half: string; full: string; multi: string };
+    filters: { all: string; lazio: string; toscana: string; campania: string; europa: string };
+    destinations: {
+      roma: string; romaDesc: string;
+      firenze: string; firenzeDesc: string;
+      napoli: string; napoliDesc: string;
+      amalfi: string; amalfiDesc: string;
+      pompei: string; pompeiDesc: string;
+      sorrento: string; sorrentoDesc: string;
+      capri: string; capriDesc: string;
+      parigi: string; parigiDesc: string;
+    };
+    quoteTitle: string;
+    quoteSubtitle: string;
+    formName: string;
+    formEmail: string;
+    formPhone: string;
+    formDestination: string;
+    formDate: string;
+    formPassengers: string;
+    formMessage: string;
+    formSubmit: string;
+    formPrivacy: string;
+    successTitle: string;
+    successDesc: string;
+  };
+  whyUs: {
+    title: string;
+    subtitle: string;
+    experience: string; experienceDesc: string;
+    fleet: string; fleetDesc: string;
+    safety: string; safetyDesc: string;
+    drivers: string; driversDesc: string;
+  };
+  reviews: {
+    title: string;
+    subtitle: string;
+    items: { name: string; role: string; text: string }[];
+  };
+  cta: {
+    title: string;
+    subtitle: string;
+    button: string;
+  };
+  about: {
+    heroTitle: string;
+    breadcrumbHome: string;
+    breadcrumbAbout: string;
+    paragraph1: string;
+    paragraph2: string;
+    paragraph3: string;
+    mobilityCard: string;
+    mobilityCardDesc: string;
+    download: string;
+    feat1Title: string;
+    feat1Desc: string;
+    feat2Title: string;
+    feat2Desc: string;
+    feat3Title: string;
+    feat3Desc: string;
+    feat4Title: string;
+    feat4Desc: string;
+    sidebarTitle: string;
+  };
+  shuttle: {
+    heroTitle: string;
+    breadcrumbShuttle: string;
+    description: string;
+    dailyConnection: string;
+    dailyRuns: string;
+    routeTitle: string;
+    bookTicket: string;
+    routeStops: string[];
+    features: {
+      title: string;
+      comfort: string;
+      comfortDesc: string;
+      wifi: string;
+      wifiDesc: string;
+      ac: string;
+      acDesc: string;
+      luggage: string;
+      luggageDesc: string;
+    };
+    quickDeparture: string;
+    quickArrival: string;
+    successTitle: string;
+    successDesc: string;
+  };
+  rental: {
+    heroTitle: string;
+    breadcrumbRental: string;
+    description: string;
+    fleetTitle: string;
+    fleetSubtitle: string;
+    vehicles: {
+      bus54: string;
+      bus54Desc: string;
+      bus40: string;
+      bus40Desc: string;
+      bus30: string;
+      bus30Desc: string;
+      shuttle20: string;
+      shuttle20Desc: string;
+      shuttle8: string;
+      shuttle8Desc: string;
+      auto4: string;
+      auto4Desc: string;
+      luggage: string;
+      luggageDesc: string;
+    };
+    quoteTitle: string;
+    quoteSubtitle: string;
+    formName: string;
+    formEmail: string;
+    formPhone: string;
+    formDate: string;
+    formPassengers: string;
+    formMessage: string;
+    formSubmit: string;
+    formPrivacy: string;
+    successTitle: string;
+    successDesc: string;
+  };
+  vehiclesPage: {
+    heroTitle: string;
+    heroSubtitle: string;
+    breadcrumbVehicles: string;
+    description: string;
+    filterAll: string;
+    filterBus54: string;
+    filterBus40: string;
+    filterBus30: string;
+    filterShuttle20: string;
+    filterShuttle8: string;
+    filterAuto4: string;
+    filterLuggage: string;
+    maintenanceTitle: string;
+    maintenanceDesc: string;
+    safetyTitle: string;
+    safetyDesc: string;
+    quoteTitle: string;
+    quoteSubtitle: string;
+    formName: string;
+    formEmail: string;
+    formPhone: string;
+    formVehicle: string;
+    formVehiclePlaceholder: string;
+    formMessage: string;
+    formSubmit: string;
+    formPrivacy: string;
+    successTitle: string;
+    successDesc: string;
+  };
+  contacts: {
+    heroTitle: string;
+    breadcrumbContacts: string;
+    getInTouch: string;
+    getInTouchDesc: string;
+    whatsapp: string;
+    phone: string;
+    email: string;
+    legalHQ: string;
+    operationalHQ: string;
+    formTitle: string;
+    formName: string;
+    formEmail: string;
+    formSubject: string;
+    formMessage: string;
+    formPrivacy: string;
+    formSubmit: string;
+    vatNumber: string;
+    successTitle: string;
+    successDesc: string;
+    mapHint1: string;
+    mapHint2: string;
+  };
+  footer: {
+    companyInfo: string;
+    addresses: string;
+    phone: string;
+    email: string;
+    links: string;
+    language: string;
+    privacy: string;
+    copyright: string;
+  };
+  cookie: {
+    message: string;
+    accept: string;
+    decline: string;
+    learnMore: string;
+  };
+  common: {
+    readMore: string;
+    bookNow: string;
+    requestQuote: string;
+    scrollToTop: string;
+    captchaLabel: string;
+    captchaRefresh: string;
+    captchaError: string;
+    formError: string;
+    sending: string;
+  };
+}
+
+export const translations: Record<Language, TranslationKeys> = {
+  it: {
+    nav: { home: 'Home', tours: 'Tour', about: 'Chi Siamo', shuttleBus: 'Shuttle Bus', busRental: 'Noleggio Bus', vehicles: 'Parco Mezzi', contacts: 'Contatti' },
+    hero: {
+      slide1Title: 'AEROPORTO DI CAPODICHINO - AMALFI',
+      slide1Subtitle: 'COLLEGAMENTO GIORNALIERO - 6 CORSE GIORNALIERE',
+      slide1Cta: 'PRENOTA IL TUO BIGLIETTO',
+      slide2Title: 'IL TUO AUTOBUS PER OGNI OCCASIONE',
+      slide2Cta1: 'NOLEGGIO AUTOBUS',
+      slide2Cta2: 'RICHIEDI UN PREVENTIVO',
+    },
+    services: {
+      toursTitle: 'TOUR E ITINERARI',
+      toursDesc: 'Tour organizzati e su misura in autobus per gruppi, scuole e aziende in Italia ed Europa',
+      shuttleTitle: 'SHUTTLE BUS',
+      shuttleDesc: "Collegamento giornaliero dall'aeroporto di Capodichino alla Costiera Amalfitana",
+      rentalTitle: 'NOLEGGIO BUS',
+      rentalDesc: 'Noleggio autobus con conducente per gite, tour ed escursioni in Italia e in Europa',
+      fleetTitle: 'PARCO MEZZI',
+      fleetDesc: "Un'ampia gamma di veicoli da 1 a 55 posti per soddisfare ogni esigenza",
+      discoverMore: 'Scopri di più',
+    },
+    stats: {
+      years: '20+', yearsLabel: 'Anni di esperienza',
+      vehicles: '22', vehiclesLabel: 'Mezzi per ogni esigenza',
+      seats: '800+', seatsLabel: 'Posti totali',
+      stops: '6', stopsLabel: 'Fermate giornaliere Amalfi-Capodichino',
+    },
+    video: { title: 'Scopri la Pintour', subtitle: 'Guarda il nostro video e scopri i nostri servizi', play: 'Riproduci video' },
+    tours: {
+      heroTitle: 'TOUR IN AUTOBUS',
+      heroSubtitle: 'SCOPRI L\'ITALIA E L\'EUROPA CON NOI',
+      heroDesc: "Itinerari organizzati e su misura in bus GT con conducente. Dalle città d'arte ai borghi della Costiera, fino ai grandi tour europei: gruppi, scuole, aziende e parrocchie.",
+      bookCta: 'PRENOTA IL TUO TOUR',
+      sectionTitle: 'Tour in evidenza',
+      sectionSubtitle: 'Le mete più richieste per gruppi e comitive',
+      viewAll: 'Vedi tutti i tour',
+      requestQuote: 'Richiedi preventivo',
+      from: 'da',
+      duration: { half: 'Mezza giornata', full: 'Giornata intera', multi: 'Più giorni' },
+      filters: { all: 'Tutte', lazio: 'Lazio', toscana: 'Toscana', campania: 'Campania', europa: 'Europa' },
+      destinations: {
+        roma: 'Roma', romaDesc: 'Colosseo, Foro Romano, Fontana di Trevi e Vaticano. La Città Eterna in un giorno.',
+        firenze: 'Firenze', firenzeDesc: 'Duomo, Uffizi e Ponte Vecchio. Il cuore del Rinascimento.',
+        napoli: 'Napoli', napoliDesc: 'Centro storico, musei e golfo. La vera anima del Sud.',
+        amalfi: 'Costiera Amalfitana', amalfiDesc: 'Amalfi, Positano e Ravello. Patrimonio UNESCO da sogno.',
+        pompei: 'Pompei', pompeiDesc: "Gli scavi più famosi al mondo, un viaggio nell'antica Roma.",
+        sorrento: 'Sorrento', sorrentoDesc: 'Limoni, mare e panorami sulla Penisola Sorrentina.',
+        capri: 'Capri', capriDesc: 'Faraglioni, Anacapri e la Piazzetta. L\'isola nel blu.',
+        parigi: 'Parigi', parigiDesc: 'Tour europeo multi-giorno: Parigi e la Valle della Loira.',
+      },
+      quoteTitle: 'Organizziamo il tuo tour',
+      quoteSubtitle: 'Raccontaci la meta e il gruppo: ti prepariamo un itinerario su misura.',
+      formName: 'Nome e Cognome', formEmail: 'Email', formPhone: 'Telefono', formDestination: 'Destinazione',
+      formDate: 'Data', formPassengers: 'Numero passeggeri', formMessage: 'Messaggio', formSubmit: 'Richiedi preventivo',
+      formPrivacy: 'Accetto la privacy policy e autorizzo il trattamento dei dati personali',
+      successTitle: 'Grazie!', successDesc: 'La tua richiesta è stata inviata correttamente.',
+    },
+    whyUs: {
+      title: 'Perché scegliere Pintour',
+      subtitle: 'Oltre 20 anni al fianco di chi viaggia in gruppo',
+      experience: 'Esperienza', experienceDesc: 'Dal 2004 organizziamo tour per gruppi in Italia e in Europa.',
+      fleet: 'Flotta completa', fleetDesc: 'Mezzi da 8 a 55 posti Mercedes Benz e Setra per ogni gruppo.',
+      safety: 'Sicurezza', safetyDesc: 'Manutenzione certificata, tachigrafi e conducenti professionisti.',
+      drivers: 'Autisti esperti', driversDesc: 'Guidatori qualificati, cortesi e puntuali.',
+    },
+    reviews: {
+      title: 'Dicono di noi',
+      subtitle: 'La soddisfazione dei nostri clienti è la nostra migliore pubblicità',
+      items: [
+        { name: 'Maria R.', role: 'Scuola - Roma', text: 'Tour organizzato alla perfezione, autista puntuale e bus comodissimo. Ragazzi entusiasti!' },
+        { name: 'Luca B.', role: 'Azienda - Firenze', text: 'Servizio impeccabile per la nostra gita aziendale. Consigliatissimo per i gruppi.' },
+        { name: 'Sophie L.', role: 'Gruppo - Costiera', text: 'Giornata meravigliosa sulla Costiera Amalfitana. Pintour ha pensato a tutto.' },
+      ],
+    },
+    cta: { title: 'Pronti a partire?', subtitle: 'Richiedi ora un preventivo gratuito per il tuo tour in autobus.', button: 'Richiedi preventivo' },
+    about: {
+      heroTitle: 'CHI SIAMO', breadcrumbHome: 'Home', breadcrumbAbout: 'Chi Siamo',
+      paragraph1: "La PINTOUR opera nel mezzo della Costiera Amalfitana e della Penisola Sorrentina, vanta oggi di un autoparco composto da diverse tipologie di veicoli, tra cui autobus, minibus, monovolumi e autovetture di recente fabbricazione, tutti appartenenti a marchi leader nel settore (Mercedes Benz e Setra) e dotati del massimo dei comfort, aria climatizzata, navigatore satellitare,  toilette e frigo bar.",
+      paragraph2: "L'AZIENDA OFFRE UN'AMPIA POSSIBILITÀ DI SCELTA PER SODDISFARE OGNI ESIGENZA DA 1 A 55 POSTI.",
+      paragraph3: "L'esperienza ventennale fa sì che la nostra azienda sia oggi molto apprezzata nel settore e possa vantare di una notevole e continua presenza sui principali circuiti turistici Italiani ed Europei.",
+      mobilityCard: 'Carta della Mobilità',
+      mobilityCardDesc: 'Scarica la Carta della Mobilità per conoscere i diritti e i doveri dei passeggeri.',
+      download: 'Scarica',
+      feat1Title: 'Mercedes Benz & Setra', feat1Desc: 'Marchi leader nel settore',
+      feat2Title: 'Massimo Comfort', feat2Desc: 'Climatizzazione, GPS, TV, DVD, toilette, frigo bar',
+      feat3Title: 'Da 1 a 55 Posti', feat3Desc: 'Ampia scelta per ogni esigenza',
+      feat4Title: 'Oltre 20 Anni', feat4Desc: 'Esperienza sui circuiti italiani ed europei',
+      sidebarTitle: 'Pintour S.C.A.R.L.',
+    },
+    shuttle: {
+      heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
+      description: "Servizio di collegamento giornaliero dall'Aeroporto di Napoli Capodichino alla Costiera Amalfitana. Il modo più comodo e conveniente per raggiungere le meraviglie della Costiera Amalfitana direttamente dall'aeroporto.",
+      dailyConnection: 'Collegamento Giornaliero', dailyRuns: '6 corse giornaliere',
+      routeTitle: 'Percorso e Fermate', bookTicket: 'PRENOTA IL TUO BIGLIETTO',
+      routeStops: ['Napoli (Aeroporto)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
+      features: {
+        title: 'Servizi a Bordo', comfort: 'Comfort', comfortDesc: 'Sedili reclinabili e ampi spazi per un viaggio confortevole',
+        wifi: 'Wi-Fi Gratuito', wifiDesc: 'Connessione internet gratuita durante tutto il viaggio',
+        ac: 'Climatizzazione', acDesc: 'Aria climatizzata per il massimo comfort in ogni stagione',
+        luggage: 'Spazio Bagagli', luggageDesc: 'Ampio spazio per bagagli e valigie',
+      },
+      quickDeparture: 'Partenza', quickArrival: 'Arrivo',
+      successTitle: 'Grazie!', successDesc: 'La tua richiesta è stata inviata correttamente.',
+    },
+    rental: {
+      heroTitle: 'NOLEGGIO BUS', breadcrumbRental: 'Noleggio Bus',
+      description: "La PINTOUR si occupa di noleggio bus con conducente per gite ed escursioni giornaliere, tour in Italia ed Europa, turismo ricettivo e turismo d'affari. Siamo a disposizione per convegni, spettacoli, trasferimenti da e per centri-città, aeroporti, scali marittimi e ferroviari.",
+      fleetTitle: 'La Nostra Flotta', fleetSubtitle: 'Scegli il veicolo più adatto alle tue esigenze',
+      vehicles: {
+        bus54: 'Bus 54 Posti', bus54Desc: '6 veicoli disponibili - Ideale per grandi gruppi e tour',
+        bus40: 'Bus 40 Posti', bus40Desc: '6 veicoli disponibili - Perfetto per gruppi medi',
+        bus30: 'Bus 30 Posti', bus30Desc: '7 veicoli disponibili - Versatile per ogni occasione',
+        shuttle20: 'Shuttle Bus 20 Posti', shuttle20Desc: 'Per piccoli gruppi e trasferimenti',
+        shuttle8: 'Shuttle Bus 8 Posti', shuttle8Desc: '2 veicoli disponibili - Per gruppetti e famiglie',
+        auto4: 'Auto 4 Posti', auto4Desc: '1 veicolo disponibile - Trasferimenti VIP e executive',
+        luggage: 'Servizio Bagaglio', luggageDesc: '2 veicoli disponibili - Per il trasporto bagagli',
+      },
+      quoteTitle: 'Richiedi un Preventivo', quoteSubtitle: 'Compila il modulo e ti risponderemo al più presto',
+      formName: 'Nome e Cognome', formEmail: 'Email', formPhone: 'Telefono', formDate: 'Data del servizio',
+      formPassengers: 'Numero passeggeri', formMessage: 'Messaggio', formSubmit: 'Invia Richiesta',
+      formPrivacy: 'Accetto la privacy policy e autorizzo il trattamento dei dati personali',
+      successTitle: 'Grazie!', successDesc: 'La tua richiesta è stata inviata correttamente.',
+    },
+    vehiclesPage: {
+      heroTitle: 'PARCO MEZZI', heroSubtitle: 'DOVE VUOI TU, QUANDO VUOI TU, COME VUOI TU.',
+      breadcrumbVehicles: 'Parco Mezzi',
+      description: 'Tutti i nostri veicoli sono sottoposti a regolare manutenzione e controlli periodici per garantire la massima sicurezza. I nostri autobus sono dotati di limitatori di velocità e tachigrafi digitali per il rispetto delle normative sul trasporto.',
+      filterAll: 'Tutti', filterBus54: 'Bus 54', filterBus40: 'Bus 40', filterBus30: 'Bus 30',
+      filterShuttle20: 'Navetta 20', filterShuttle8: 'Navetta 8', filterAuto4: 'Auto 4', filterLuggage: 'Servizio bagaglio',
+      maintenanceTitle: 'Manutenzione Certificata', maintenanceDesc: 'Tutti i veicoli sono sottoposti a controlli periodici e manutenzione certificata per garantire la massima sicurezza e affidabilità.',
+      safetyTitle: 'Sicurezza al Top', safetyDesc: 'Limitatori di velocità, tachigrafi digitali e tutte le certificazioni richieste dalle normative vigenti.',
+      quoteTitle: 'Richiedi un Preventivo', quoteSubtitle: 'Compila il modulo per ricevere un preventivo personalizzato',
+      formName: 'Nome e Cognome', formEmail: 'Email', formPhone: 'Telefono', formVehicle: 'Veicolo di interesse',
+      formVehiclePlaceholder: '--', formMessage: 'Messaggio', formSubmit: 'Invia Richiesta',
+      formPrivacy: 'Accetto la privacy policy e autorizzo il trattamento dei dati personali',
+      successTitle: 'Grazie!', successDesc: 'La tua richiesta è stata inviata correttamente.',
+    },
+    contacts: {
+      heroTitle: 'CONTATTI', breadcrumbContacts: 'Contatti',
+      getInTouch: 'Mettersi in Contatto', getInTouchDesc: 'Siamo a tua disposizione per qualsiasi informazione o richiesta. Contattaci!',
+      whatsapp: 'WhatsApp', phone: 'Telefono', email: 'Email', legalHQ: 'Sede Legale', operationalHQ: 'Sede Operativa',
+      formTitle: 'Inviaci un Messaggio', formName: 'Nome e Cognome', formEmail: 'Email', formSubject: 'Oggetto',
+      formMessage: 'Messaggio', formPrivacy: 'Accetto la privacy policy e autorizzo il trattamento dei dati personali',
+      formSubmit: 'Invia Messaggio', vatNumber: 'P.IVA',
+      successTitle: 'Messaggio inviato!', successDesc: 'Ti risponderemo il prima possibile.',
+      mapHint1: 'Pompei (Na), Via Mariconda 39', mapHint2: 'Pimonte (Na), Via Castellammare 18',
+    },
+    footer: {
+      companyInfo: 'Pintour S.C.A.R.L.', addresses: 'Sedi', phone: 'Telefono', email: 'Email', links: 'Link Utili',
+      language: 'Lingua', privacy: 'Privacy Policy', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
+    },
+    cookie: { message: 'Utilizziamo i cookie per migliorare la tua esperienza di navigazione. Continuando a navigare sul sito, accetti la nostra politica sui cookie.', accept: 'Accetta', decline: 'Rifiuta', learnMore: 'Scopri di più' },
+    common: { readMore: 'Leggi di più', bookNow: 'Prenota Ora', requestQuote: 'Richiedi Preventivo', scrollToTop: 'Torna su', captchaLabel: 'Verifica anti-spam: quanto fa', captchaRefresh: 'Cambia domanda', captchaError: 'Verifica anti-spam non corretta', formError: 'Si è verificato un errore, riprova', sending: 'Invio in corso…' },
+  },
+  en: {
+    nav: { home: 'Home', tours: 'Tours', about: 'About Us', shuttleBus: 'Shuttle Bus', busRental: 'Bus Rental', vehicles: 'Our Fleet', contacts: 'Contacts' },
+    hero: {
+      slide1Title: 'CAPODICHINO AIRPORT - AMALFI',
+      slide1Subtitle: 'DAILY CONNECTION - 6 DAILY RUNS',
+      slide1Cta: 'BOOK YOUR TICKET',
+      slide2Title: 'YOUR BUS FOR EVERY OCCASION',
+      slide2Cta1: 'BUS RENTAL',
+      slide2Cta2: 'REQUEST A QUOTE',
+    },
+    services: {
+      toursTitle: 'TOURS & ITINERARIES',
+      toursDesc: 'Organized and tailor-made bus tours for groups, schools and companies in Italy and Europe',
+      shuttleTitle: 'SHUTTLE BUS', shuttleDesc: 'Daily connection from Capodichino Airport to the Amalfi Coast',
+      rentalTitle: 'BUS RENTAL', rentalDesc: 'Bus rental with driver for trips, tours and excursions in Italy and Europe',
+      fleetTitle: 'OUR FLEET', fleetDesc: 'A wide range of vehicles from 1 to 55 seats to meet every need',
+      discoverMore: 'Discover more',
+    },
+    stats: {
+      years: '20+', yearsLabel: 'Years of experience', vehicles: '22', vehiclesLabel: 'Vehicles for every need',
+      seats: '800+', seatsLabel: 'Total seats', stops: '6', stopsLabel: 'Daily stops Amalfi-Capodichino',
+    },
+    video: { title: 'Discover Pintour', subtitle: 'Watch our video and discover our services', play: 'Play video' },
+    tours: {
+      heroTitle: 'BUS TOURS',
+      heroSubtitle: 'DISCOVER ITALY AND EUROPE WITH US',
+      heroDesc: 'Organized and tailor-made itineraries on GT buses with driver. From art cities to coastal villages, up to major European tours: groups, schools, companies and parishes.',
+      bookCta: 'BOOK YOUR TOUR',
+      sectionTitle: 'Featured tours',
+      sectionSubtitle: 'The most popular destinations for groups',
+      viewAll: 'View all tours',
+      requestQuote: 'Request a quote',
+      from: 'from',
+      duration: { half: 'Half day', full: 'Full day', multi: 'Multi-day' },
+      filters: { all: 'All', lazio: 'Lazio', toscana: 'Tuscany', campania: 'Campania', europa: 'Europe' },
+      destinations: {
+        roma: 'Rome', romaDesc: 'Colosseum, Roman Forum, Trevi Fountain and the Vatican. The Eternal City in a day.',
+        firenze: 'Florence', firenzeDesc: 'Duomo, Uffizi and Ponte Vecchio. The heart of the Renaissance.',
+        napoli: 'Naples', napoliDesc: 'Historic center, museums and the gulf. The true soul of the South.',
+        amalfi: 'Amalfi Coast', amalfiDesc: 'Amalfi, Positano and Ravello. A dreamy UNESCO heritage.',
+        pompei: 'Pompeii', pompeiDesc: 'The most famous excavations in the world, a journey into ancient Rome.',
+        sorrento: 'Sorrento', sorrentoDesc: 'Lemons, sea and panoramas on the Sorrento Peninsula.',
+        capri: 'Capri', capriDesc: 'Faraglioni, Anacapri and the Piazzetta. The island in the blue.',
+        parigi: 'Paris', parigiDesc: 'Multi-day European tour: Paris and the Loire Valley.',
+      },
+      quoteTitle: "We'll organize your tour",
+      quoteSubtitle: 'Tell us the destination and the group: we will craft a tailor-made itinerary.',
+      formName: 'Full Name', formEmail: 'Email', formPhone: 'Phone', formDestination: 'Destination',
+      formDate: 'Date', formPassengers: 'Number of passengers', formMessage: 'Message', formSubmit: 'Request a quote',
+      formPrivacy: 'I accept the privacy policy and authorize the processing of personal data',
+      successTitle: 'Thank you!', successDesc: 'Your request has been sent successfully.',
+    },
+    whyUs: {
+      title: 'Why choose Pintour',
+      subtitle: 'Over 20 years at the side of those who travel in groups',
+      experience: 'Experience', experienceDesc: 'Since 2004 we have organized group tours in Italy and Europe.',
+      fleet: 'Complete fleet', fleetDesc: 'Vehicles from 8 to 55 seats, Mercedes Benz and Setra for any group.',
+      safety: 'Safety', safetyDesc: 'Certified maintenance, tachographs and professional drivers.',
+      drivers: 'Expert drivers', driversDesc: 'Qualified, courteous and punctual drivers.',
+    },
+    reviews: {
+      title: 'What they say about us',
+      subtitle: 'Our customers\' satisfaction is our best advertising',
+      items: [
+        { name: 'Maria R.', role: 'School - Rome', text: 'Perfectly organized tour, punctual driver and very comfortable bus. The kids loved it!' },
+        { name: 'Luca B.', role: 'Company - Florence', text: 'Flawless service for our company trip. Highly recommended for groups.' },
+        { name: 'Sophie L.', role: 'Group - Amalfi Coast', text: 'A wonderful day on the Amalfi Coast. Pintour took care of everything.' },
+      ],
+    },
+    cta: { title: 'Ready to go?', subtitle: 'Request a free quote for your bus tour now.', button: 'Request a quote' },
+    about: {
+      heroTitle: 'ABOUT US', breadcrumbHome: 'Home', breadcrumbAbout: 'About Us',
+      paragraph1: 'PINTOUR operates in the heart of the Amalfi Coast and the Sorrento Peninsula, boasting a fleet composed of different types of vehicles, including buses, minibuses, minivans and recently manufactured cars, all belonging to leading brands in the sector (Mercedes Benz and Setra) and equipped with maximum comfort, air conditioning, satellite navigator,  toilet and mini bar.',
+      paragraph2: 'THE COMPANY OFFERS A WIDE CHOICE TO SATISFY EVERY NEED FROM 1 TO 55 SEATS.',
+      paragraph3: 'Twenty years of experience means our company is highly appreciated in the sector and can boast a significant and continuous presence on the main Italian and European tourist circuits.',
+      mobilityCard: 'Mobility Charter', mobilityCardDesc: 'Download the Mobility Charter to learn about passenger rights and duties.',
+      download: 'Download',
+      feat1Title: 'Mercedes Benz & Setra', feat1Desc: 'Top brands in the sector',
+      feat2Title: 'Maximum Comfort', feat2Desc: 'AC, GPS, TV, DVD, toilet, minibar',
+      feat3Title: '1 to 55 Seats', feat3Desc: 'Wide choice for every need',
+      feat4Title: '20+ Years', feat4Desc: 'Experience on Italian & European circuits',
+      sidebarTitle: 'Pintour S.C.A.R.L.',
+    },
+    shuttle: {
+      heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
+      description: 'Daily connection service from Naples Capodichino Airport to the Amalfi Coast. The most comfortable and convenient way to reach the wonders of the Amalfi Coast directly from the airport.',
+      dailyConnection: 'Daily Connection', dailyRuns: '6 daily runs', routeTitle: 'Route and Stops', bookTicket: 'BOOK YOUR TICKET',
+      routeStops: ['Naples (Airport)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
+      features: {
+        title: 'Onboard Services', comfort: 'Comfort', comfortDesc: 'Reclining seats and ample space for a comfortable journey',
+        wifi: 'Free Wi-Fi', wifiDesc: 'Free internet connection throughout the journey',
+        ac: 'Air Conditioning', acDesc: 'Air conditioning for maximum comfort in every season',
+        luggage: 'Luggage Space', luggageDesc: 'Ample space for luggage and suitcases',
+      },
+      quickDeparture: 'Departure', quickArrival: 'Arrival',
+      successTitle: 'Thank you!', successDesc: 'Your request has been sent successfully.',
+    },
+    rental: {
+      heroTitle: 'BUS RENTAL', breadcrumbRental: 'Bus Rental',
+      description: 'PINTOUR deals with bus rental with driver for daily trips and excursions, tours in Italy and Europe, receptive tourism and business tourism. We are available for conferences, shows, transfers to and from city centers, airports, maritime and railway stations.',
+      fleetTitle: 'Our Fleet', fleetSubtitle: 'Choose the most suitable vehicle for your needs',
+      vehicles: {
+        bus54: '54-Seat Bus', bus54Desc: '6 vehicles available - Ideal for large groups and tours',
+        bus40: '40-Seat Bus', bus40Desc: '6 vehicles available - Perfect for medium groups',
+        bus30: '30-Seat Bus', bus30Desc: '7 vehicles available - Versatile for every occasion',
+        shuttle20: '20-Seat Shuttle Bus', shuttle20Desc: 'For small groups and transfers',
+        shuttle8: '8-Seat Shuttle Bus', shuttle8Desc: '2 vehicles available - For small groups and families',
+        auto4: '4-Seat Car', auto4Desc: '1 vehicle available - VIP and executive transfers',
+        luggage: 'Luggage Service', luggageDesc: '2 vehicles available - For luggage transport',
+      },
+      quoteTitle: 'Request a Quote', quoteSubtitle: 'Fill out the form and we will reply as soon as possible',
+      formName: 'Full Name', formEmail: 'Email', formPhone: 'Phone', formDate: 'Service date',
+      formPassengers: 'Number of passengers', formMessage: 'Message', formSubmit: 'Send Request',
+      formPrivacy: 'I accept the privacy policy and authorize the processing of personal data',
+      successTitle: 'Thank you!', successDesc: 'Your request has been sent successfully.',
+    },
+    vehiclesPage: {
+      heroTitle: 'OUR FLEET', heroSubtitle: 'WHEREVER YOU WANT, WHENEVER YOU WANT, HOWEVER YOU WANT.',
+      breadcrumbVehicles: 'Our Fleet',
+      description: 'All our vehicles undergo regular maintenance and periodic checks to ensure maximum safety. Our buses are equipped with speed limiters and digital tachographs to comply with transport regulations.',
+      filterAll: 'All', filterBus54: 'Bus 54', filterBus40: 'Bus 40', filterBus30: 'Bus 30',
+      filterShuttle20: 'Shuttle 20', filterShuttle8: 'Shuttle 8', filterAuto4: 'Car 4', filterLuggage: 'Luggage service',
+      maintenanceTitle: 'Certified Maintenance', maintenanceDesc: 'All vehicles undergo periodic checks and certified maintenance to ensure maximum safety and reliability.',
+      safetyTitle: 'Top Safety', safetyDesc: 'Speed limiters, digital tachographs and all certifications required by current regulations.',
+      quoteTitle: 'Request a Quote', quoteSubtitle: 'Fill out the form to receive a personalized quote',
+      formName: 'Full Name', formEmail: 'Email', formPhone: 'Phone', formVehicle: 'Vehicle of interest',
+      formVehiclePlaceholder: '--', formMessage: 'Message', formSubmit: 'Send Request',
+      formPrivacy: 'I accept the privacy policy and authorize the processing of personal data',
+      successTitle: 'Thank you!', successDesc: 'Your request has been sent successfully.',
+    },
+    contacts: {
+      heroTitle: 'CONTACTS', breadcrumbContacts: 'Contacts',
+      getInTouch: 'Get in Touch', getInTouchDesc: 'We are available for any information or request. Contact us!',
+      whatsapp: 'WhatsApp', phone: 'Phone', email: 'Email', legalHQ: 'Legal Headquarters', operationalHQ: 'Operational Headquarters',
+      formTitle: 'Send Us a Message', formName: 'Full Name', formEmail: 'Email', formSubject: 'Subject',
+      formMessage: 'Message', formPrivacy: 'I accept the privacy policy and authorize the processing of personal data',
+      formSubmit: 'Send Message', vatNumber: 'VAT Number',
+      successTitle: 'Message sent!', successDesc: 'We will get back to you as soon as possible.',
+      mapHint1: 'Pompei (Na), Via Mariconda 39', mapHint2: 'Pimonte (Na), Via Castellammare 18',
+    },
+    footer: {
+      companyInfo: 'Pintour S.C.A.R.L.', addresses: 'Addresses', phone: 'Phone', email: 'Email', links: 'Useful Links',
+      language: 'Language', privacy: 'Privacy Policy', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
+    },
+    cookie: { message: 'We use cookies to improve your browsing experience. By continuing to browse the site, you accept our cookie policy.', accept: 'Accept', decline: 'Decline', learnMore: 'Learn more' },
+    common: { readMore: 'Read more', bookNow: 'Book Now', requestQuote: 'Request Quote', scrollToTop: 'Back to top', captchaLabel: 'Anti-spam check: what is', captchaRefresh: 'New question', captchaError: 'Anti-spam check is incorrect', formError: 'An error occurred, please try again', sending: 'Sending…' },
+  },
+  fr: {
+    nav: { home: 'Accueil', tours: 'Circuits', about: 'À Propos', shuttleBus: 'Shuttle Bus', busRental: 'Location Bus', vehicles: 'Notre Flotte', contacts: 'Contacts' },
+    hero: {
+      slide1Title: 'AÉROPORT DE CAPODICHINO - AMALFI',
+      slide1Subtitle: 'CONNEXION QUOTIDIENNE - 6 DÉPARTS PAR JOUR',
+      slide1Cta: 'RÉSERVEZ VOTRE BILLET',
+      slide2Title: 'VOTRE BUS POUR CHAQUE OCCASION',
+      slide2Cta1: 'LOCATION BUS',
+      slide2Cta2: 'DEMANDEZ UN DEVIS',
+    },
+    services: {
+      toursTitle: 'CIRCUITS & ITINÉRAIRES',
+      toursDesc: 'Circuits organisés et sur mesure en autocar pour groupes, écoles et entreprises en Italie et en Europe',
+      shuttleTitle: 'SHUTTLE BUS', shuttleDesc: "Connexion quotidienne de l'aéroport de Capodichino à la Côte Amalfitaine",
+      rentalTitle: 'LOCATION BUS', rentalDesc: 'Location de bus avec chauffeur pour des excursions et des visites en Italie et en Europe',
+      fleetTitle: 'NOTRE FLOTTE', fleetDesc: 'Un large choix de véhicules de 1 à 55 places pour répondre à tous les besoins',
+      discoverMore: 'En savoir plus',
+    },
+    stats: {
+      years: '20+', yearsLabel: "Années d'expérience", vehicles: '22', vehiclesLabel: 'Véhicules pour chaque besoin',
+      seats: '800+', seatsLabel: 'Places totales', stops: '6', stopsLabel: 'Arrêts quotidiens Amalfi-Capodichino',
+    },
+    video: { title: 'Découvrez Pintour', subtitle: 'Regardez notre vidéo et découvrez nos services', play: 'Lire la vidéo' },
+    tours: {
+      heroTitle: 'CIRCUITS EN AUTOBUS',
+      heroSubtitle: 'DÉCOUVREZ L\'ITALIE ET L\'EUROPE AVEC NOUS',
+      heroDesc: "Itinéraires organisés et sur mesure en autocars GT avec chauffeur. Des cités d'art aux villages de la côte, jusqu'aux grands circuits européens : groupes, écoles, entreprises et paroisses.",
+      bookCta: 'RÉSERVEZ VOTRE CIRCUIT',
+      sectionTitle: 'Circuits en vedette',
+      sectionSubtitle: 'Les destinations les plus demandées pour les groupes',
+      viewAll: 'Voir tous les circuits',
+      requestQuote: 'Demander un devis',
+      from: 'à partir de',
+      duration: { half: 'Demi-journée', full: 'Journée complète', multi: 'Plusieurs jours' },
+      filters: { all: 'Toutes', lazio: 'Latium', toscana: 'Toscane', campania: 'Campanie', europa: 'Europe' },
+      destinations: {
+        roma: 'Rome', romaDesc: 'Colisée, Forum Romain, Trevi et le Vatican. La Ville Éternelle en une journée.',
+        firenze: 'Florence', firenzeDesc: 'Dôme, Offices et Ponte Vecchio. Le cœur de la Renaissance.',
+        napoli: 'Naples', napoliDesc: 'Centre historique, musées et golfe. La véritable âme du Sud.',
+        amalfi: 'Côte Amalfitaine', amalfiDesc: 'Amalfi, Positano et Ravello. Un patrimoine UNESCO de rêve.',
+        pompei: 'Pompéi', pompeiDesc: 'Les fouilles les plus célèbres du monde, un voyage dans la Rome antique.',
+        sorrento: 'Sorrente', sorrentoDesc: 'Citrons, mer et panoramas sur la Péninsule Sorrentine.',
+        capri: 'Capri', capriDesc: 'Faraglioni, Anacapri et la Piazzetta. L\'île dans le bleu.',
+        parigi: 'Paris', parigiDesc: 'Circuit européen de plusieurs jours : Paris et la Vallée de la Loire.',
+      },
+      quoteTitle: 'Nous organisons votre circuit',
+      quoteSubtitle: 'Dites-nous la destination et le groupe : nous créerons un itinéraire sur mesure.',
+      formName: 'Nom et Prénom', formEmail: 'Email', formPhone: 'Téléphone', formDestination: 'Destination',
+      formDate: 'Date', formPassengers: 'Nombre de passagers', formMessage: 'Message', formSubmit: 'Demander un devis',
+      formPrivacy: "J'accepte la politique de confidentialité et autorise le traitement des données personnelles",
+      successTitle: 'Merci !', successDesc: 'Votre demande a été envoyée avec succès.',
+    },
+    whyUs: {
+      title: 'Pourquoi choisir Pintour',
+      subtitle: "Plus de 20 ans aux côtés de ceux qui voyagent en groupe",
+      experience: 'Expérience', experienceDesc: 'Depuis 2004, nous organisons des circuits de groupe en Italie et en Europe.',
+      fleet: 'Flotte complète', fleetDesc: 'Véhicules de 8 à 55 places, Mercedes Benz et Setra pour tout groupe.',
+      safety: 'Sécurité', safetyDesc: 'Entretien certifié, tachygraphes et chauffeurs professionnels.',
+      drivers: 'Chauffeurs experts', driversDesc: 'Chauffeurs qualifiés, courtois et ponctuels.',
+    },
+    reviews: {
+      title: 'Ce qu\'ils disent de nous',
+      subtitle: 'La satisfaction de nos clients est notre meilleure publicité',
+      items: [
+        { name: 'Maria R.', role: 'École - Rome', text: 'Circuit parfaitement organisé, chauffeur ponctuel et bus très confortable. Les élèves ont adoré !' },
+        { name: 'Luca B.', role: 'Entreprise - Florence', text: 'Service impeccable pour notre voyage d\'entreprise. Hautement recommandé pour les groupes.' },
+        { name: 'Sophie L.', role: 'Groupe - Côte Amalfitaine', text: 'Une journée merveilleuse sur la Côte Amalfitaine. Pintour a tout organisé.' },
+      ],
+    },
+    cta: { title: 'Prêts à partir ?', subtitle: 'Demandez dès maintenant un devis gratuit pour votre circuit en autocar.', button: 'Demander un devis' },
+    about: {
+      heroTitle: 'À PROPOS', breadcrumbHome: 'Accueil', breadcrumbAbout: 'À Propos',
+      paragraph1: "PINTOUR opère au cœur de la Côte Amalfitaine et de la Péninsule Sorrentine, et possède aujourd'hui un parc automobile composé de différents types de véhicules, notamment des autobus, des minibus, des monospaces et des voitures de fabrication récente, tous appartenant à des marques leaders du secteur (Mercedes Benz et Setra) et équipés du maximum de confort, climatisation, navigateur satellite,  toilettes et minibar.",
+      paragraph2: "L'ENTREPRISE OFFRE UN LARGE CHOIX POUR SATISFAIRE CHAQUE BESOIN DE 1 À 55 PLACES.",
+      paragraph3: "Vingt ans d'expérience font que notre entreprise est aujourd'hui très appréciée dans le secteur et peut se vanter d'une présence importante et continue sur les principaux circuits touristiques italiens et européens.",
+      mobilityCard: 'Charte de Mobilité', mobilityCardDesc: 'Téléchargez la Charte de Mobilité pour connaître les droits et devoirs des passagers.',
+      download: 'Télécharger',
+      feat1Title: 'Mercedes Benz & Setra', feat1Desc: 'Marques leaders du secteur',
+      feat2Title: 'Confort Maximum', feat2Desc: 'Climatisation, GPS, TV, DVD, toilettes, minibar',
+      feat3Title: '1 à 55 Places', feat3Desc: 'Large choix pour chaque besoin',
+      feat4Title: '20+ Années', feat4Desc: "Expérience sur les circuits italiens et européens",
+      sidebarTitle: 'Pintour S.C.A.R.L.',
+    },
+    shuttle: {
+      heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
+      description: "Service de connexion quotidienne de l'Aéroport de Naples Capodichino à la Côte Amalfitaine. Le moyen le plus confortable et le plus pratique d'atteindre les merveilles de la Côte Amalfitaine directement depuis l'aéroport.",
+      dailyConnection: 'Connexion Quotidienne', dailyRuns: '6 départs par jour', routeTitle: 'Itinéraire et Arrêts', bookTicket: 'RÉSERVEZ VOTRE BILLET',
+      routeStops: ['Naples (Aéroport)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
+      features: {
+        title: 'Services à Bord', comfort: 'Confort', comfortDesc: 'Sièges inclinables et espaces spacieux pour un voyage confortable',
+        wifi: 'Wi-Fi Gratuit', wifiDesc: 'Connexion internet gratuite pendant tout le voyage',
+        ac: 'Climatisation', acDesc: 'Climatisation pour un confort maximum en toute saison',
+        luggage: 'Espace Bagages', luggageDesc: 'Espace suffisant pour les bagages et valises',
+      },
+      quickDeparture: 'Départ', quickArrival: 'Arrivée',
+      successTitle: 'Merci !', successDesc: 'Votre demande a été envoyée avec succès.',
+    },
+    rental: {
+      heroTitle: 'LOCATION BUS', breadcrumbRental: 'Location Bus',
+      description: "PINTOUR s'occupe de la location de bus avec chauffeur pour des excursions quotidiennes, des visites en Italie et en Europe, le tourisme réceptif et le tourisme d'affaires. Nous sommes disponibles pour les congrès, les spectacles, les transferts vers et depuis les centres-villes, les aéroports, les gares maritimes et ferroviaires.",
+      fleetTitle: 'Notre Flotte', fleetSubtitle: 'Choisissez le véhicule le plus adapté à vos besoins',
+      vehicles: {
+        bus54: 'Bus 54 Places', bus54Desc: '6 véhicules disponibles - Idéal pour les grands groupes et les visites',
+        bus40: 'Bus 40 Places', bus40Desc: '6 véhicules disponibles - Parfait pour les groupes moyens',
+        bus30: 'Bus 30 Places', bus30Desc: '7 véhicules disponibles - Polyvalent pour chaque occasion',
+        shuttle20: 'Shuttle Bus 20 Places', shuttle20Desc: 'Pour les petits groupes et les transferts',
+        shuttle8: 'Shuttle Bus 8 Places', shuttle8Desc: '2 véhicules disponibles - Pour les petits groupes et les familles',
+        auto4: 'Voiture 4 Places', auto4Desc: '1 véhicule disponible - Transferts VIP et exécutifs',
+        luggage: 'Service Bagagerie', luggageDesc: '2 véhicules disponibles - Pour le transport de bagages',
+      },
+      quoteTitle: 'Demandez un Devis', quoteSubtitle: 'Remplissez le formulaire et nous vous répondrons dans les plus brefs délais',
+      formName: 'Nom et Prénom', formEmail: 'Email', formPhone: 'Téléphone', formDate: 'Date du service',
+      formPassengers: 'Nombre de passagers', formMessage: 'Message', formSubmit: 'Envoyer la Demande',
+      formPrivacy: "J'accepte la politique de confidentialité et autorise le traitement des données personnelles",
+      successTitle: 'Merci !', successDesc: 'Votre demande a été envoyée avec succès.',
+    },
+    vehiclesPage: {
+      heroTitle: 'NOTRE FLOTTE', heroSubtitle: 'OÙ VOUS VOULEZ, QUAND VOUS VOULEZ, COMME VOUS VOULEZ.',
+      breadcrumbVehicles: 'Notre Flotte',
+      description: "Tous nos véhicules font l'objet d'un entretien régulier et de contrôles périodiques pour garantir une sécurité maximale. Nos bus sont équipés de limiteurs de vitesse et de tachygraphes numériques pour le respect des réglementations de transport.",
+      filterAll: 'Tous', filterBus54: 'Bus 54', filterBus40: 'Bus 40', filterBus30: 'Bus 30',
+      filterShuttle20: 'Navette 20', filterShuttle8: 'Navette 8', filterAuto4: 'Voiture 4', filterLuggage: 'Service bagagerie',
+      maintenanceTitle: 'Entretien Certifié', maintenanceDesc: "Tous les véhicules font l'objet de contrôles périodiques et d'un entretien certifié pour garantir une sécurité et une fiabilité maximales.",
+      safetyTitle: 'Sécurité au Top', safetyDesc: 'Limiteurs de vitesse, tachygraphes numériques et toutes les certifications requises par la réglementation en vigueur.',
+      quoteTitle: 'Demandez un Devis', quoteSubtitle: 'Remplissez le formulaire pour recevoir un devis personnalisé',
+      formName: 'Nom et Prénom', formEmail: 'Email', formPhone: 'Téléphone', formVehicle: "Véhicole d'intérêt",
+      formVehiclePlaceholder: '--', formMessage: 'Message', formSubmit: 'Envoyer la Demande',
+      formPrivacy: "J'accepte la politique de confidentialité et autorise le traitement des données personnelles",
+      successTitle: 'Merci !', successDesc: 'Votre demande a été envoyée avec succès.',
+    },
+    contacts: {
+      heroTitle: 'CONTACTS', breadcrumbContacts: 'Contacts',
+      getInTouch: 'Nous Contacter', getInTouchDesc: 'Nous sommes à votre disposition pour toute information ou demande. Contactez-nous!',
+      whatsapp: 'WhatsApp', phone: 'Téléphone', email: 'Email', legalHQ: 'Siège Social', operationalHQ: 'Siège Opérationnel',
+      formTitle: 'Envoyez-nous un Message', formName: 'Nom et Prénom', formEmail: 'Email', formSubject: 'Objet',
+      formMessage: 'Message', formPrivacy: "J'accepte la politique de confidentialité et autorise le traitement des données personnelles",
+      formSubmit: 'Envoyer le Message', vatNumber: 'N° TVA',
+      successTitle: 'Message envoyé !', successDesc: 'Nous vous répondrons dans les plus brefs délais.',
+      mapHint1: 'Pompei (Na), Via Mariconda 39', mapHint2: 'Pimonte (Na), Via Castellammare 18',
+    },
+    footer: {
+      companyInfo: 'Pintour S.C.A.R.L.', addresses: 'Adresses', phone: 'Téléphone', email: 'Email', links: 'Liens Utiles',
+      language: 'Langue', privacy: 'Politique de Confidentialité', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
+    },
+    cookie: { message: 'Nous utilisons des cookies pour améliorer votre expérience de navigation. En continuant à naviguer sur le site, vous acceptez notre politique en matière de cookies.', accept: 'Accepter', decline: 'Refuser', learnMore: 'En savoir plus' },
+    common: { readMore: 'Lire la suite', bookNow: 'Réserver', requestQuote: 'Demander un Devis', scrollToTop: 'Retour en haut', captchaLabel: 'Vérification anti-spam : combien font', captchaRefresh: 'Nouvelle question', captchaError: 'Vérification anti-spam incorrecte', formError: "Une erreur s'est produite, réessayez", sending: 'Envoi en cours…' },
+  },
+  de: {
+    nav: { home: 'Startseite', tours: 'Touren', about: 'Über Uns', shuttleBus: 'Shuttle Bus', busRental: 'Busvermietung', vehicles: 'Unsere Flotte', contacts: 'Kontakte' },
+    hero: {
+      slide1Title: 'FLUGHAFEN CAPODICHINO - AMALFI',
+      slide1Subtitle: 'TÄGLICHE VERBINDUNG - 6 TÄGLICHE FAHRTEN',
+      slide1Cta: 'TICKET BUCHEN',
+      slide2Title: 'IHR BUS FÜR JEDEN ANLASS',
+      slide2Cta1: 'BUSVERMIETUNG',
+      slide2Cta2: 'ANGEBOT ANFRAGEN',
+    },
+    services: {
+      toursTitle: 'TOUREN & REISEROUTEN',
+      toursDesc: 'Organisierte und maßgeschneiderte Busreisen für Gruppen, Schulen und Unternehmen in Italien und Europa',
+      shuttleTitle: 'SHUTTLE BUS', shuttleDesc: 'Tägliche Verbindung vom Flughafen Capodichino zur Amalfiküste',
+      rentalTitle: 'BUSVERMIETUNG', rentalDesc: 'Busvermietung mit Fahrer für Ausflüge und Touren in Italien und Europa',
+      fleetTitle: 'UNSERE FLOTTE', fleetDesc: 'Eine breite Palette von Fahrzeugen mit 1 bis 55 Plätzen für jeden Bedarf',
+      discoverMore: 'Mehr entdecken',
+    },
+    stats: {
+      years: '20+', yearsLabel: 'Jahre Erfahrung', vehicles: '22', vehiclesLabel: 'Fahrzeuge für jeden Bedarf',
+      seats: '800+', seatsLabel: 'Gesamtsitzplätze', stops: '6', stopsLabel: 'Tägliche Haltestellen Amalfi-Capodichino',
+    },
+    video: { title: 'Entdecken Sie Pintour', subtitle: 'Sehen Sie sich unser Video an und entdecken Sie unsere Dienstleistungen', play: 'Video abspielen' },
+    tours: {
+      heroTitle: 'BUSREISEN',
+      heroSubtitle: 'ENTDECKEN SIE ITALIEN UND EUROPA MIT UNS',
+      heroDesc: 'Organisierte und maßgeschneiderte Reiserouten in GT-Bussen mit Fahrer. Von Kunststädten bis zu Küstendörfern, bis hin zu großen Europatouren: Gruppen, Schulen, Unternehmen und Pfarreien.',
+      bookCta: 'BUCHEN SIE IHRE TOUR',
+      sectionTitle: 'Top-Touren',
+      sectionSubtitle: 'Die beliebtesten Ziele für Gruppen',
+      viewAll: 'Alle Touren ansehen',
+      requestQuote: 'Angebot anfragen',
+      from: 'ab',
+      duration: { half: 'Halbtags', full: 'Ganztags', multi: 'Mehrtägig' },
+      filters: { all: 'Alle', lazio: 'Latium', toscana: 'Toskana', campania: 'Kampanien', europa: 'Europa' },
+      destinations: {
+        roma: 'Rom', romaDesc: 'Kolosseum, Forum Romanum, Trevi-Brunnen und Vatikan. Die Ewige Stadt an einem Tag.',
+        firenze: 'Florenz', firenzeDesc: 'Dom, Uffizien und Ponte Vecchio. Das Herz der Renaissance.',
+        napoli: 'Neapel', napoliDesc: 'Historisches Zentrum, Museen und Golf. Die wahre Seele des Südens.',
+        amalfi: 'Amalfiküste', amalfiDesc: 'Amalfi, Positano und Ravello. Ein traumhaftes UNESCO-Erbe.',
+        pompei: 'Pompeji', pompeiDesc: 'Die berühmtesten Ausgrabungen der Welt, eine Reise ins alte Rom.',
+        sorrento: 'Sorrent', sorrentoDesc: 'Zitronen, Meer und Panoramen auf der Halbinsel Sorrent.',
+        capri: 'Capri', capriDesc: 'Faraglioni, Anacapri und die Piazzetta. Die Insel im Blauen.',
+        parigi: 'Paris', parigiDesc: 'Mehrtägige Europatour: Paris und das Loiretal.',
+      },
+      quoteTitle: 'Wir organisieren Ihre Tour',
+      quoteSubtitle: 'Nennen Sie uns Ziel und Gruppe: Wir erstellen eine maßgeschneiderte Route.',
+      formName: 'Vor- und Nachname', formEmail: 'Email', formPhone: 'Telefon', formDestination: 'Reiseziel',
+      formDate: 'Datum', formPassengers: 'Anzahl der Passagiere', formMessage: 'Nachricht', formSubmit: 'Angebot anfragen',
+      formPrivacy: 'Ich akzeptiere die Datenschutzrichtlinie und autorisiere die Verarbeitung personenbezogener Daten',
+      successTitle: 'Vielen Dank!', successDesc: 'Ihre Anfrage wurde erfolgreich gesendet.',
+    },
+    whyUs: {
+      title: 'Warum Pintour wählen',
+      subtitle: 'Über 20 Jahre an der Seite derer, die in Gruppen reisen',
+      experience: 'Erfahrung', experienceDesc: 'Seit 2004 organisieren wir Gruppentouren in Italien und Europa.',
+      fleet: 'Komplette Flotte', fleetDesc: 'Fahrzeuge von 8 bis 55 Plätzen, Mercedes Benz und Setra für jede Gruppe.',
+      safety: 'Sicherheit', safetyDesc: 'Zertifizierte Wartung, Fahrtenschreiber und professionelle Fahrer.',
+      drivers: 'Erfahrene Fahrer', driversDesc: 'Qualifizierte, höfliche und pünktliche Fahrer.',
+    },
+    reviews: {
+      title: 'Was man über uns sagt',
+      subtitle: 'Die Zufriedenheit unserer Kunden ist unsere beste Werbung',
+      items: [
+        { name: 'Maria R.', role: 'Schule - Rom', text: 'Perfekt organisierte Tour, pünktlicher Fahrer und sehr komfortabler Bus. Die Kinder waren begeistert!' },
+        { name: 'Luca B.', role: 'Unternehmen - Florenz', text: 'Einwandfreier Service für unsere Firmenreise. Sehr empfehlenswert für Gruppen.' },
+        { name: 'Sophie L.', role: 'Gruppe - Amalfiküste', text: 'Ein wunderbarer Tag an der Amalfiküste. Pintour hat an alles gedacht.' },
+      ],
+    },
+    cta: { title: 'Bereit aufzubrechen?', subtitle: 'Fordern Sie jetzt ein kostenloses Angebot für Ihre Busreise an.', button: 'Angebot anfragen' },
+    about: {
+      heroTitle: 'ÜBER UNS', breadcrumbHome: 'Startseite', breadcrumbAbout: 'Über Uns',
+      paragraph1: 'PINTOUR ist im Herzen der Amalfiküste und der Halbinsel Sorrent tätig und verfügt heute über einen Fuhrpark aus verschiedenen Fahrzeugtypen, darunter Busse, Minibusse, Minivans und neu gebaute Autos, die alle zu den führenden Marken des Sektors (Mercedes Benz und Setra) gehören und mit maximalem Komfort, Klimaanlage, Satellitennavigator,  Toilette und Minibar ausgestattet sind.',
+      paragraph2: 'DAS UNTERNEHMEN BIETET EINE GROSSE AUSWAHL, UM JEDES BEDÜRFNIS VON 1 BIS 55 PLÄTZEN ZU BEFRIEDIGEN.',
+      paragraph3: 'Zwanzig Jahre Erfahrung sorgen dafür, dass unser Unternehmen heute in der Branche sehr geschätzt wird und eine beträchtliche und kontinuierliche Präsenz auf den wichtigsten italienischen und europäischen Touristikrouten vorweisen kann.',
+      mobilityCard: 'Mobilitätscharta', mobilityCardDesc: 'Laden Sie die Mobilitätscharta herunter, um die Rechte und Pflichten der Passagiere kennenzulernen.',
+      download: 'Herunterladen',
+      feat1Title: 'Mercedes Benz & Setra', feat1Desc: 'Führende Marken des Sektors',
+      feat2Title: 'Maximaler Komfort', feat2Desc: 'Klimaanlage, GPS, TV, DVD, Toilette, Minibar',
+      feat3Title: '1 bis 55 Plätze', feat3Desc: 'Große Auswahl für jeden Bedarf',
+      feat4Title: '20+ Jahre', feat4Desc: 'Erfahrung auf italienischen und europäischen Routen',
+      sidebarTitle: 'Pintour S.C.A.R.L.',
+    },
+    shuttle: {
+      heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
+      description: 'Täglicher Verbindungsservice vom Flughafen Neapel Capodichino zur Amalfiküste. Die bequemste und einfachste Art, die Wunder der Amalfiküste direkt vom Flughafen zu erreichen.',
+      dailyConnection: 'Tägliche Verbindung', dailyRuns: '6 tägliche Fahrten', routeTitle: 'Route und Haltestellen', bookTicket: 'TICKET BUCHEN',
+      routeStops: ['Neapel (Flughafen)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
+      features: {
+        title: 'Bordservices', comfort: 'Komfort', comfortDesc: 'Verstellbare Sitze und großzügige Räume für eine komfortable Reise',
+        wifi: 'Kostenloses Wi-Fi', wifiDesc: 'Kostenlose Internetverbindung während der gesamten Reise',
+        ac: 'Klimaanlage', acDesc: 'Klimaanlage für maximalen Komfort in jeder Jahreszeit',
+        luggage: 'Gepäckraum', luggageDesc: 'Großzügiger Raum für Gepäck und Koffer',
+      },
+      quickDeparture: 'Abfahrt', quickArrival: 'Ankunft',
+      successTitle: 'Vielen Dank!', successDesc: 'Ihre Anfrage wurde erfolgreich gesendet.',
+    },
+    rental: {
+      heroTitle: 'BUSVERMIETUNG', breadcrumbRental: 'Busvermietung',
+      description: 'PINTOUR betreibt Busvermietung mit Fahrer für Tagesausflüge, Touren in Italien und Europa, Tourismus und Geschäftsreisen. Wir stehen für Konferenzen, Shows, Transfers zu und von Stadtzentren, Flughäfen, See- und Bahnhöfen zur Verfügung.',
+      fleetTitle: 'Unsere Flotte', fleetSubtitle: 'Wählen Sie das passendste Fahrzeug für Ihre Bedürfnisse',
+      vehicles: {
+        bus54: 'Bus 54 Plätze', bus54Desc: '6 Fahrzeuge verfügbar - Ideal für große Gruppen und Touren',
+        bus40: 'Bus 40 Plätze', bus40Desc: '6 Fahrzeuge verfügbar - Perfekt für mittlere Gruppen',
+        bus30: 'Bus 30 Plätze', bus30Desc: '7 Fahrzeuge verfügbar - Vielseitig für jeden Anlass',
+        shuttle20: 'Shuttle Bus 20 Plätze', shuttle20Desc: 'Für kleine Gruppen und Transfers',
+        shuttle8: 'Shuttle Bus 8 Plätze', shuttle8Desc: '2 Fahrzeuge verfügbar - Für kleine Gruppen und Familien',
+        auto4: 'Auto 4 Plätze', auto4Desc: '1 Fahrzeug verfügbar - VIP- und Executive-Transfers',
+        luggage: 'Gepäckservice', luggageDesc: '2 Fahrzeuge verfügbar - Für Gepäcktransport',
+      },
+      quoteTitle: 'Angebot Anfragen', quoteSubtitle: 'Füllen Sie das Formular aus und wir antworten Ihnen so schnell wie möglich',
+      formName: 'Vor- und Nachname', formEmail: 'Email', formPhone: 'Telefon', formDate: 'Servicedatum',
+      formPassengers: 'Anzahl der Passagiere', formMessage: 'Nachricht', formSubmit: 'Anfrage Senden',
+      formPrivacy: 'Ich akzeptiere die Datenschutzrichtlinie und autorisiere die Verarbeitung personenbezogener Daten',
+      successTitle: 'Vielen Dank!', successDesc: 'Ihre Anfrage wurde erfolgreich gesendet.',
+    },
+    vehiclesPage: {
+      heroTitle: 'UNSERE FLOTTE', heroSubtitle: 'WO SIE WOLLEN, WANN SIE WOLLEN, WIE SIE WOLLEN.',
+      breadcrumbVehicles: 'Unsere Flotte',
+      description: 'Alle unsere Fahrzeuge werden regelmäßig gewartet und kontrolliert, um maximale Sicherheit zu gewährleisten. Unsere Busse sind mit Geschwindigkeitsbegrenzern und digitalen Fahrtenschreibern ausgestattet, um die Transportvorschriften einzuhalten.',
+      filterAll: 'Alle', filterBus54: 'Bus 54', filterBus40: 'Bus 40', filterBus30: 'Bus 30',
+      filterShuttle20: 'Shuttle 20', filterShuttle8: 'Shuttle 8', filterAuto4: 'Auto 4', filterLuggage: 'Gepäckservice',
+      maintenanceTitle: 'Zertifizierte Wartung', maintenanceDesc: 'Alle Fahrzeuge werden regelmäßig geprüft und zertifiziert gewartet, um maximale Sicherheit und Zuverlässigkeit zu gewährleisten.',
+      safetyTitle: 'Top Sicherheit', safetyDesc: 'Geschwindigkeitsbegrenzer, digitale Fahrtenschreiber und alle erforderlichen Zertifizierungen.',
+      quoteTitle: 'Angebot Anfragen', quoteSubtitle: 'Füllen Sie das Formular aus, um ein personalisiertes Angebot zu erhalten',
+      formName: 'Vor- und Nachname', formEmail: 'Email', formPhone: 'Telefon', formVehicle: 'Interessantes Fahrzeug',
+      formVehiclePlaceholder: '--', formMessage: 'Nachricht', formSubmit: 'Anfrage Senden',
+      formPrivacy: 'Ich akzeptiere die Datenschutzrichtlinie und autorisiere die Verarbeitung personenbezogener Daten',
+      successTitle: 'Vielen Dank!', successDesc: 'Ihre Anfrage wurde erfolgreich gesendet.',
+    },
+    contacts: {
+      heroTitle: 'KONTAKTE', breadcrumbContacts: 'Kontakte',
+      getInTouch: 'Kontaktieren Sie Uns', getInTouchDesc: 'Wir stehen Ihnen für jede Information oder Anfrage zur Verfügung. Kontaktieren Sie uns!',
+      whatsapp: 'WhatsApp', phone: 'Telefon', email: 'Email', legalHQ: 'Firmensitz', operationalHQ: 'Betriebssitz',
+      formTitle: 'Senden Sie Uns eine Nachricht', formName: 'Vor- und Nachname', formEmail: 'Email', formSubject: 'Betreff',
+      formMessage: 'Nachricht', formPrivacy: 'Ich akzeptiere die Datenschutzrichtlinie und autorisiere die Verarbeitung personenbezogener Daten',
+      formSubmit: 'Nachricht Senden', vatNumber: 'USt-IdNr.',
+      successTitle: 'Nachricht gesendet!', successDesc: 'Wir werden uns so schnell wie möglich bei Ihnen melden.',
+      mapHint1: 'Pompei (Na), Via Mariconda 39', mapHint2: 'Pimonte (Na), Via Castellammare 18',
+    },
+    footer: {
+      companyInfo: 'Pintour S.C.A.R.L.', addresses: 'Adressen', phone: 'Telefon', email: 'Email', links: 'Nützliche Links',
+      language: 'Sprache', privacy: 'Datenschutz', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
+    },
+    cookie: { message: 'Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern. Durch die weitere Nutzung der Website akzeptieren Sie unsere Cookie-Richtlinie.', accept: 'Akzeptieren', decline: 'Ablehnen', learnMore: 'Mehr erfahren' },
+    common: { readMore: 'Weiterlesen', bookNow: 'Jetzt Buchen', requestQuote: 'Angebot Anfragen', scrollToTop: 'Nach oben', captchaLabel: 'Anti-Spam-Prüfung: Wie viel ist', captchaRefresh: 'Neue Frage', captchaError: 'Anti-Spam-Prüfung ist falsch', formError: 'Ein Fehler ist aufgetreten, bitte erneut versuchen', sending: 'Wird gesendet…' },
+  },
+  es: {
+    nav: { home: 'Inicio', tours: 'Circuitos', about: 'Quiénes Somos', shuttleBus: 'Shuttle Bus', busRental: 'Alquiler de Bus', vehicles: 'Nuestra Flota', contacts: 'Contactos' },
+    hero: {
+      slide1Title: 'AEROPUERTO DE CAPODICHINO - AMALFI',
+      slide1Subtitle: 'CONEXIÓN DIARIA - 6 SALIDAS DIARIAS',
+      slide1Cta: 'RESERVA TU BILLETE',
+      slide2Title: 'TU AUTOBÚS PARA CADA OCASIÓN',
+      slide2Cta1: 'ALQUILER DE BUS',
+      slide2Cta2: 'SOLICITAR PRESUPUESTO',
+    },
+    services: {
+      toursTitle: 'CIRCUITOS & ITINERARIOS',
+      toursDesc: 'Circuitos organizados y a medida en autobús para grupos, colegios y empresas en Italia y Europa',
+      shuttleTitle: 'SHUTTLE BUS', shuttleDesc: 'Conexión diaria del aeropuerto de Capodichino a la Costa Amalfitana',
+      rentalTitle: 'ALQUILER DE BUS', rentalDesc: 'Alquiler de autobús con conductor para excursiones y tours en Italia y Europa',
+      fleetTitle: 'NUESTRA FLOTA', fleetDesc: 'Una amplia gama de vehículos de 1 a 55 plazas para satisfacer cada necesidad',
+      discoverMore: 'Descubre más',
+    },
+    stats: {
+      years: '20+', yearsLabel: 'Años de experiencia', vehicles: '22', vehiclesLabel: 'Vehículos para cada necesidad',
+      seats: '800+', seatsLabel: 'Plazas totales', stops: '6', stopsLabel: 'Paradas diarias Amalfi-Capodichino',
+    },
+    video: { title: 'Descubre Pintour', subtitle: 'Mira nuestro vídeo y descubre nuestros servicios', play: 'Reproducir vídeo' },
+    tours: {
+      heroTitle: 'CIRCUITOS EN AUTOBÚS',
+      heroSubtitle: 'DESCUBRE ITALIA Y EUROPA CON NOSOTROS',
+      heroDesc: 'Itinerarios organizados y a medida en autocares GT con conductor. Desde las ciudades de arte hasta los pueblos de la costa, hasta los grandes circuitos europeos: grupos, colegios, empresas y parroquias.',
+      bookCta: 'RESERVA TU CIRCUITO',
+      sectionTitle: 'Circuitos destacados',
+      sectionSubtitle: 'Los destinos más solicitados para grupos',
+      viewAll: 'Ver todos los circuitos',
+      requestQuote: 'Solicitar presupuesto',
+      from: 'desde',
+      duration: { half: 'Medio día', full: 'Día completo', multi: 'Varios días' },
+      filters: { all: 'Todos', lazio: 'Lacio', toscana: 'Toscana', campania: 'Campania', europa: 'Europa' },
+      destinations: {
+        roma: 'Roma', romaDesc: 'Coliseo, Foro Romano, Fontana di Trevi y el Vaticano. La Ciudad Eterna en un día.',
+        firenze: 'Florencia', firenzeDesc: 'Duomo, Uffizi y Ponte Vecchio. El corazón del Renacimiento.',
+        napoli: 'Nápoles', napoliDesc: 'Centro histórico, museos y golfo. El verdadero alma del Sur.',
+        amalfi: 'Costa Amalfitana', amalfiDesc: 'Amalfi, Positano y Ravello. Un patrimonio UNESCO de ensueño.',
+        pompei: 'Pompeya', pompeiDesc: 'Las excavaciones más famosas del mundo, un viaje a la Roma antigua.',
+        sorrento: 'Sorrento', sorrentoDesc: 'Limones, mar y panoramas en la Península Sorrentina.',
+        capri: 'Capri', capriDesc: 'Farallones, Anacapri y la Piazzetta. La isla en el azul.',
+        parigi: 'París', parigiDesc: 'Circuito europeo de varios días: París y el Valle del Loira.',
+      },
+      quoteTitle: 'Organizamos tu circuito',
+      quoteSubtitle: 'Cuéntanos el destino y el grupo: te preparamos un itinerario a medida.',
+      formName: 'Nombre y Apellido', formEmail: 'Email', formPhone: 'Teléfono', formDestination: 'Destino',
+      formDate: 'Fecha', formPassengers: 'Número de pasajeros', formMessage: 'Mensaje', formSubmit: 'Solicitar presupuesto',
+      formPrivacy: 'Acepto la política de privacidad y autorizo el tratamiento de los datos personales',
+      successTitle: '¡Gracias!', successDesc: 'Tu solicitud se ha enviado correctamente.',
+    },
+    whyUs: {
+      title: 'Por qué elegir Pintour',
+      subtitle: 'Más de 20 años junto a quienes viajan en grupo',
+      experience: 'Experiencia', experienceDesc: 'Desde 2004 organizamos circuitos de grupo en Italia y Europa.',
+      fleet: 'Flota completa', fleetDesc: 'Vehículos de 8 a 55 plazas, Mercedes Benz y Setra para cualquier grupo.',
+      safety: 'Seguridad', safetyDesc: 'Mantenimiento certificado, tacógrafos y conductores profesionales.',
+      drivers: 'Conductores expertos', driversDesc: 'Conductores cualificados, corteses y puntuales.',
+    },
+    reviews: {
+      title: 'Lo que dicen de nosotros',
+      subtitle: 'La satisfacción de nuestros clientes es nuestra mejor publicidad',
+      items: [
+        { name: 'Maria R.', role: 'Colegio - Roma', text: 'Circuito perfectamente organizado, conductor puntual y autobús muy cómodo. ¡Los chicos encantados!' },
+        { name: 'Luca B.', role: 'Empresa - Florencia', text: 'Servicio impecable para nuestro viaje de empresa. Muy recomendable para grupos.' },
+        { name: 'Sophie L.', role: 'Grupo - Costa Amalfitana', text: 'Un día maravilloso en la Costa Amalfitana. Pintour se encargó de todo.' },
+      ],
+    },
+    cta: { title: '¿Listos para salir?', subtitle: 'Solicita ahora un presupuesto gratuito para tu circuito en autobús.', button: 'Solicitar presupuesto' },
+    about: {
+      heroTitle: 'QUIÉNES SOMOS', breadcrumbHome: 'Inicio', breadcrumbAbout: 'Quiénes Somos',
+      paragraph1: 'PINTOUR opera en el corazón de la Costa Amalfitana y la Península Sorrentina, y cuenta hoy con un parque de vehículos compuesto por diferentes tipos, incluyendo autobuses, minibuses, monovolúmenes y automóviles de reciente fabricación, todos pertenecientes a marcas líderes del sector (Mercedes Benz y Setra) y equipados con el máximo confort, aire acondicionado, navegador satelital,  baño y minibar.',
+      paragraph2: 'LA EMPRESA OFRECE UNA AMPLIA POSIBILIDAD DE ELECCIÓN PARA SATISFACER CADA NECESIDAD DE 1 A 55 PLAZAS.',
+      paragraph3: 'La experiencia veinteañal hace que nuestra empresa sea hoy muy apreciada en el sector y pueda presumir de una notable y continua presencia en los principales circuitos turísticos italianos y europeos.',
+      mobilityCard: 'Carta de Movilidad', mobilityCardDesc: 'Descarga la Carta de Movilidad para conocer los derechos y deberes de los pasajeros.',
+      download: 'Descargar',
+      feat1Title: 'Mercedes Benz & Setra', feat1Desc: 'Marcas líderes del sector',
+      feat2Title: 'Máximo Confort', feat2Desc: 'Aire acondicionado, GPS, TV, DVD, baño, minibar',
+      feat3Title: '1 a 55 Plazas', feat3Desc: 'Amplia elección para cada necesidad',
+      feat4Title: 'Más de 20 Años', feat4Desc: 'Experiencia en circuitos italianos y europeos',
+      sidebarTitle: 'Pintour S.C.A.R.L.',
+    },
+    shuttle: {
+      heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
+      description: 'Servicio de conexión diaria del Aeropuerto de Nápoles Capodichino a la Costa Amalfitana. La forma más cómoda y conveniente de llegar a las maravillas de la Costa Amalfitana directamente desde el aeropuerto.',
+      dailyConnection: 'Conexión Diaria', dailyRuns: '6 salidas diarias', routeTitle: 'Ruta y Paradas', bookTicket: 'RESERVA TU BILLETE',
+      routeStops: ['Nápoles (Aeropuerto)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
+      features: {
+        title: 'Servicios a Bordo', comfort: 'Confort', comfortDesc: 'Asientos reclinables y espacios amplios para un viaje cómodo',
+        wifi: 'Wi-Fi Gratuito', wifiDesc: 'Conexión a internet gratuita durante todo el viaje',
+        ac: 'Aire Acondicionado', acDesc: 'Aire acondicionado para máximo confort en cada estación',
+        luggage: 'Espacio de Equipaje', luggageDesc: 'Amplio espacio para equipaje y maletas',
+      },
+      quickDeparture: 'Salida', quickArrival: 'Llegada',
+      successTitle: '¡Gracias!', successDesc: 'Tu solicitud se ha enviado correctamente.',
+    },
+    rental: {
+      heroTitle: 'ALQUILER DE BUS', breadcrumbRental: 'Alquiler de Bus',
+      description: 'PINTOUR se dedica al alquiler de autobuses con conductor para excursiones diarias, tours por Italia y Europa, turismo receptivo y turismo de negocios. Estamos disponibles para congresos, espectáculos, traslados desde y hacia centros urbanos, aeropuertos, estaciones marítimas y ferroviarias.',
+      fleetTitle: 'Nuestra Flota', fleetSubtitle: 'Elige el vehículo más adecuado para tus necesidades',
+      vehicles: {
+        bus54: 'Autobús 54 Plazas', bus54Desc: '6 vehículos disponibles - Ideal para grupos grandes y tours',
+        bus40: 'Autobús 40 Plazas', bus40Desc: '6 vehículos disponibles - Perfecto para grupos medianos',
+        bus30: 'Autobús 30 Plazas', bus30Desc: '7 vehículos disponibles - Versátil para cada ocasión',
+        shuttle20: 'Shuttle Bus 20 Plazas', shuttle20Desc: 'Para grupos pequeños y traslados',
+        shuttle8: 'Shuttle Bus 8 Plazas', shuttle8Desc: '2 vehículos disponibles - Para grupos pequeños y familias',
+        auto4: 'Auto 4 Plazas', auto4Desc: '1 vehículo disponible - Traslados VIP y ejecutivos',
+        luggage: 'Servicio de Equipaje', luggageDesc: '2 vehículos disponibles - Para transporte de equipaje',
+      },
+      quoteTitle: 'Solicitar Presupuesto', quoteSubtitle: 'Completa el formulario y te responderemos lo antes posible',
+      formName: 'Nombre y Apellidos', formEmail: 'Email', formPhone: 'Teléfono', formDate: 'Fecha del servicio',
+      formPassengers: 'Número de pasajeros', formMessage: 'Mensaje', formSubmit: 'Enviar Solicitud',
+      formPrivacy: 'Acepto la política de privacidad y autorizo el tratamiento de datos personales',
+      successTitle: '¡Gracias!', successDesc: 'Tu solicitud se ha enviado correctamente.',
+    },
+    vehiclesPage: {
+      heroTitle: 'NUESTRA FLOTA', heroSubtitle: 'DONDE QUIERAS, CUANDO QUIERAS, COMO QUIERAS.',
+      breadcrumbVehicles: 'Nuestra Flota',
+      description: 'Todos nuestros vehículos se someten a un mantenimiento regular y controles periódicos para garantizar la máxima seguridad. Nuestros autobuses están equipados con limitadores de velocidad y tacógrafos digitales para cumplir con las normativas de transporte.',
+      filterAll: 'Todos', filterBus54: 'Bus 54', filterBus40: 'Bus 40', filterBus30: 'Bus 30',
+      filterShuttle20: 'Lanzadera 20', filterShuttle8: 'Lanzadera 8', filterAuto4: 'Auto 4', filterLuggage: 'Servicio equipaje',
+      maintenanceTitle: 'Mantenimiento Certificado', maintenanceDesc: 'Todos los vehículos se someten a controles periódicos y mantenimiento certificado para garantizar la máxima seguridad y fiabilidad.',
+      safetyTitle: 'Seguridad al Máximo', safetyDesc: 'Limitadores de velocidad, tacógrafos digitales y todas las certificaciones requeridas por la normativa vigente.',
+      quoteTitle: 'Solicitar Presupuesto', quoteSubtitle: 'Completa el formulario para recibir un presupuesto personalizado',
+      formName: 'Nombre y Apellidos', formEmail: 'Email', formPhone: 'Teléfono', formVehicle: 'Vehículo de interés',
+      formVehiclePlaceholder: '--', formMessage: 'Mensaje', formSubmit: 'Enviar Solicitud',
+      formPrivacy: 'Acepto la política de privacidad y autorizo el tratamiento de datos personales',
+      successTitle: '¡Gracias!', successDesc: 'Tu solicitud se ha enviado correctamente.',
+    },
+    contacts: {
+      heroTitle: 'CONTACTOS', breadcrumbContacts: 'Contactos',
+      getInTouch: 'Ponte en Contacto', getInTouchDesc: 'Estamos a tu disposición para cualquier información o solicitud. ¡Contáctanos!',
+      whatsapp: 'WhatsApp', phone: 'Teléfono', email: 'Email', legalHQ: 'Sede Legal', operationalHQ: 'Sede Operativa',
+      formTitle: 'Envíanos un Mensaje', formName: 'Nombre y Apellidos', formEmail: 'Email', formSubject: 'Asunto',
+      formMessage: 'Mensaje', formPrivacy: 'Acepto la política de privacidad y autorizo el tratamiento de datos personales',
+      formSubmit: 'Enviar Mensaje', vatNumber: 'N.º CIF',
+      successTitle: '¡Mensaje enviado!', successDesc: 'Te responderemos lo antes posible.',
+      mapHint1: 'Pompei (Na), Via Mariconda 39', mapHint2: 'Pimonte (Na), Via Castellammare 18',
+    },
+    footer: {
+      companyInfo: 'Pintour S.C.A.R.L.', addresses: 'Direcciones', phone: 'Teléfono', email: 'Email', links: 'Enlaces Útiles',
+      language: 'Idioma', privacy: 'Política de Privacidad', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
+    },
+    cookie: { message: 'Utilizamos cookies para mejorar su experiencia de navegación. Al continuar navegando por el sitio, acepta nuestra política de cookies.', accept: 'Aceptar', decline: 'Rechazar', learnMore: 'Saber más' },
+    common: { readMore: 'Leer más', bookNow: 'Reservar Ahora', requestQuote: 'Solicitar Presupuesto', scrollToTop: 'Volver arriba', captchaLabel: 'Comprobación anti-spam: ¿cuánto es', captchaRefresh: 'Nueva pregunta', captchaError: 'Comprobación anti-spam incorrecta', formError: 'Se ha producido un error, inténtalo de nuevo', sending: 'Enviando…' },
+  },
+};
+
+export function useTranslations(lang: Language): TranslationKeys {
+  return translations[lang] ?? translations.it;
+}
+
+export type { PageKey };

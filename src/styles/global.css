@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #1a1064;
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --color-pintour-navy: #1a1064;
+  --color-pintour-pink: #ec2a7a;
+  --color-pintour-teal: #25867f;
+  --color-pintour-light-blue: #d9f3ff;
+  --color-pintour-dark-blue: #24227a;
+  --color-border: #e2e8f0;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1064;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #ffffff;
+    color: #1a1064;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #1a1064; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #24227a; }
+
+/* Hero gradient overlays */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(26, 16, 100, 0.85) 0%, rgba(36, 34, 122, 0.7) 50%, rgba(236, 42, 122, 0.3) 100%);
+}
+.hero-gradient-dark {
+  background: linear-gradient(135deg, rgba(26, 16, 100, 0.92) 0%, rgba(36, 34, 122, 0.85) 100%);
+}
+
+/* Card hover */
+.card-hover { transition: all 0.3s ease; }
+.card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(26, 16, 100, 0.15); }
+
+/* Route stop connector */
+.route-connector { position: relative; }
+.route-connector::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: -8px;
+  width: 2px;
+  background: linear-gradient(to bottom, #ec2a7a, #25867f);
+}
+.route-connector:last-child::before { display: none; }
+
+/* Pink underline */
+.pink-underline { position: relative; display: inline-block; }
+.pink-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #ec2a7a;
+  border-radius: 2px;
+}
+
+/* Privacy / legal content typography */
+.privacy-content { font-size: 0.95rem; line-height: 1.8; color: #374151; }
+.privacy-content > p { margin-bottom: 1rem; }
+.privacy-content > h2 {
+  font-size: 1.4rem; font-weight: 800; color: #1a1064;
+  margin-top: 2.25rem; margin-bottom: 0.85rem;
+}
+.privacy-content > h3 {
+  font-size: 1.1rem; font-weight: 700; color: #24227a;
+  margin-top: 1.5rem; margin-bottom: 0.6rem;
+}
+.privacy-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+.privacy-content ul li { margin-bottom: 0.4rem; }
+.privacy-content a { color: #ec2a7a; }
+.privacy-content strong { color: #1a1064; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes countUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+.animate-count-up { animation: countUp 0.5s ease-out forwards; }
+
+/* Video play button pulse */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.play-pulse { position: relative; }
+.play-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid #ec2a7a;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+/* Mobile menu transition */
+.mobile-menu { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; }
+.mobile-menu.open { max-height: 560px; opacity: 1; }
+
+/* Hero slide visibility */
+.hero-slide { transition: opacity 0.7s ease, transform 0.7s ease; }
+.hero-slide.is-hidden { opacity: 0; transform: translateY(2rem); position: absolute; pointer-events: none; }
+.hero-slide.is-active { opacity: 1; transform: translateY(0); position: relative; }
+
+/* Language dropdown */
+.lang-dropdown { display: none; }
+.lang-dropdown.open { display: block; }

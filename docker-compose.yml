@@ -1,0 +1,28 @@
+# Pintour Bus - stack di produzione (sito statico + microservizio form-to-mail)
+# Uso:
+#   1) cp .env.example .env   (e compila SMTP/CAPTCHA_SECRET)
+#   2) docker compose up -d --build
+# Il sito è servito da nginx (porta WEB_PORT), che proxya /api/ al servizio Node.
+
+services:
+  web:
+    build: .
+    image: ${WEB_IMAGE:-pintourbus-web}
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  api:
+    build: ./server
+    image: ${API_IMAGE:-pintourbus-api}
+    environment:
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      MAIL_TO: ${MAIL_TO:-${SMTP_USER}}
+      MAIL_FROM: ${MAIL_FROM:-${SMTP_USER}}
+      CAPTCHA_SECRET: ${CAPTCHA_SECRET}
+    restart: unless-stopped

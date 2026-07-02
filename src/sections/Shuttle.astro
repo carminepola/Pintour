@@ -1,0 +1,88 @@
+---
+import Icon from '../components/Icon.astro';
+import { useTranslations } from '../i18n/translations';
+import { HERO_IMG, SHUTTLE_BOOKING_URL } from '../i18n/config';
+import type { Language } from '../i18n/config';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const features = [
+  { icon: 'check', color: '#1a1064', title: t.shuttle.features.comfort, desc: t.shuttle.features.comfortDesc },
+  { icon: 'wifi', color: '#ec2a7a', title: t.shuttle.features.wifi, desc: t.shuttle.features.wifiDesc },
+  { icon: 'snowflake', color: '#25867f', title: t.shuttle.features.ac, desc: t.shuttle.features.acDesc },
+  { icon: 'luggage', color: '#24227a', title: t.shuttle.features.luggage, desc: t.shuttle.features.luggageDesc },
+];
+---
+<div>
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={HERO_IMG} alt="Shuttle Bus" class="w-full h-full object-cover" />
+      <div class="hero-gradient-dark absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 text-white/70 text-sm mb-6">
+          <span>{t.nav.home}</span><Icon name="chevronRight" class="w-4 h-4" /><span class="text-white font-medium">{t.shuttle.breadcrumbShuttle}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">{t.shuttle.heroTitle}</h1>
+        <p class="text-lg text-white/80 mb-8 max-w-xl">{t.shuttle.description}</p>
+        <a href={SHUTTLE_BOOKING_URL} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-[#ec2a7a] text-white font-bold rounded-full hover:bg-[#d4236a] transition-all hover:scale-105">{t.shuttle.bookTicket}<Icon name="arrowRight" class="w-5 h-5" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-[#ec2a7a] rounded-xl flex items-center justify-center"><Icon name="clock" class="w-6 h-6 text-white" /></div>
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-[#1a1064]">{t.shuttle.dailyConnection}</h2>
+              <p class="text-[#ec2a7a] font-semibold">{t.shuttle.dailyRuns}</p>
+            </div>
+          </div>
+          <p class="text-gray-700 leading-relaxed mb-8">{t.shuttle.description}</p>
+          <div class="mb-8">
+            <h3 class="text-xl font-bold text-[#1a1064] mb-6 pink-underline">{t.shuttle.routeTitle}</h3>
+            <div class="space-y-0">
+              {t.shuttle.routeStops.map((stop, index) => (
+                <div class="route-connector flex items-center gap-4 pb-4">
+                  <div class="w-8 h-8 rounded-full bg-[#ec2a7a] flex items-center justify-center flex-shrink-0 z-10">
+                    {index === 0 ? <Icon name="bus" class="w-4 h-4 text-white" /> : <Icon name="mapPin" class="w-4 h-4 text-white" />}
+                  </div>
+                  <div>
+                    <p class="font-semibold text-[#1a1064]">{stop}</p>
+                    {index === 0 && <p class="text-xs text-gray-500">{t.shuttle.quickDeparture}</p>}
+                    {index === t.shuttle.routeStops.length - 1 && <p class="text-xs text-gray-500">{t.shuttle.quickArrival}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-[#d9f3ff]/30 rounded-2xl p-6 md:p-8">
+            <h3 class="text-xl font-bold text-[#1a1064] mb-6">{t.shuttle.features.title}</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {features.map((f) => (
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={`background-color:${f.color}`}><Icon name={f.icon} class="w-5 h-5 text-white" /></div>
+                  <div><h4 class="font-bold text-[#1a1064] text-sm">{f.title}</h4><p class="text-xs text-gray-600">{f.desc}</p></div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="bg-gradient-to-br from-[#1a1064] to-[#24227a] rounded-2xl p-6 md:p-8 text-white">
+            <h3 class="text-xl font-bold mb-3">{t.shuttle.bookTicket}</h3>
+            <p class="text-white/80 text-sm mb-6">{t.shuttle.description}</p>
+            <a href={SHUTTLE_BOOKING_URL} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-[#ec2a7a] text-white font-bold rounded-full hover:bg-[#d4236a] transition-all hover:scale-105 text-sm">{t.shuttle.bookTicket}<Icon name="arrowRight" class="w-4 h-4" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

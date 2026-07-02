@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations } from '../i18n/translations';
+import type { Language } from '../i18n/config';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<div data-cookie-banner class="hidden fixed bottom-0 left-0 right-0 z-[100] p-4">
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl border border-[#e2e8f0] p-4 md:p-6">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <div class="flex items-start gap-3 flex-1">
+        <Icon name="cookie" class="w-6 h-6 text-[#ec2a7a] flex-shrink-0 mt-0.5" />
+        <p class="text-sm text-[#1a1064] leading-relaxed">
+          {t.cookie.message} <a href="#privacy" class="text-[#ec2a7a] underline hover:no-underline">{t.cookie.learnMore}</a>
+        </p>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button data-cookie-decline class="px-4 py-2 text-sm font-medium text-[#1a1064] border border-[#e2e8f0] rounded-full hover:bg-[#f1f5f9] transition-colors">{t.cookie.decline}</button>
+        <button data-cookie-accept class="px-4 py-2 text-sm font-medium text-white bg-[#1a1064] rounded-full hover:bg-[#24227a] transition-colors">{t.cookie.accept}</button>
+      </div>
+    </div>
+  </div>
+</div>

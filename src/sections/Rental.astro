@@ -1,0 +1,96 @@
+---
+import Icon from '../components/Icon.astro';
+import { useTranslations } from '../i18n/translations';
+import { HERO_IMG } from '../i18n/config';
+import { vehicles as fleet } from '../i18n/data';
+import type { Language } from '../i18n/config';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<div>
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={HERO_IMG} alt="Bus Rental" class="w-full h-full object-cover" />
+      <div class="hero-gradient-dark absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 text-white/70 text-sm mb-6">
+          <span>{t.nav.home}</span><Icon name="chevronRight" class="w-4 h-4" /><span class="text-white font-medium">{t.rental.breadcrumbRental}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">{t.rental.heroTitle}</h1>
+        <p class="text-lg text-white/80 max-w-xl">{t.rental.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#1a1064] mb-4 pink-underline inline-block">{t.rental.heroTitle}</h2>
+        <p class="text-gray-700 leading-relaxed mt-6">{t.rental.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-[#d9f3ff]/20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#1a1064] mb-2">{t.rental.fleetTitle}</h2>
+        <p class="text-gray-600">{t.rental.fleetSubtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {fleet.map((item) => (
+          <div class="card-hover bg-white rounded-2xl shadow-lg border border-[#e2e8f0] overflow-hidden">
+            <div class="relative h-44 overflow-hidden">
+              <img src={item.image} alt={t.rental.vehicles[item.key]} class="w-full h-full object-cover" />
+              <div class="absolute top-3 right-3">
+                <span class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-bold" style={`color:${item.color}`}>{item.count ? `${item.count}x` : ''}</span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style={`background-color:${item.color}`}><Icon name={item.icon} class="w-4 h-4 text-white" /></div>
+                <h3 class="font-bold text-[#1a1064] text-sm">{t.rental.vehicles[item.key]}</h3>
+              </div>
+              <p class="text-xs text-gray-600 leading-relaxed">{t.rental.vehicles[`${item.key}Desc` as keyof typeof t.rental.vehicles]}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#1a1064] mb-2">{t.rental.quoteTitle}</h2>
+        <p class="text-gray-600">{t.rental.quoteSubtitle}</p>
+      </div>
+      <div data-form-success class="hidden text-center py-12 bg-[#d9f3ff]/30 rounded-2xl">
+        <Icon name="checkCircle" class="w-16 h-16 text-[#25867f] mx-auto mb-4" />
+        <h3 class="text-xl font-bold text-[#1a1064] mb-2">{t.rental.successTitle}</h3>
+        <p class="text-gray-600">{t.rental.successDesc}</p>
+      </div>
+      <form data-demo-form class="space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.rental.formName}</label><input type="text" required class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+          <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.rental.formEmail}</label><input type="email" required class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.rental.formPhone}</label><input type="tel" class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+          <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.rental.formDate}</label><input type="date" class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+          <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.rental.formPassengers}</label><input type="number" class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+        </div>
+        <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.rental.formMessage}</label><textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm resize-none"></textarea></div>
+        <div class="flex items-start gap-3">
+          <input type="checkbox" required class="mt-1 w-4 h-4 rounded border-[#e2e8f0] text-[#1a1064] focus:ring-[#1a1064]" />
+          <label class="text-xs text-gray-600 leading-relaxed">{t.rental.formPrivacy}</label>
+        </div>
+        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#ec2a7a] text-white font-bold rounded-full hover:bg-[#d4236a] transition-all hover:scale-105 text-sm"><Icon name="send" class="w-4 h-4" />{t.rental.formSubmit}</button>
+      </form>
+    </div>
+  </section>
+</div>

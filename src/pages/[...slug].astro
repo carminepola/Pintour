@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Home from '../sections/Home.astro';
+import Tours from '../sections/Tours.astro';
+import About from '../sections/About.astro';
+import Shuttle from '../sections/Shuttle.astro';
+import Rental from '../sections/Rental.astro';
+import Vehicles from '../sections/Vehicles.astro';
+import Contacts from '../sections/Contacts.astro';
+import Privacy from '../sections/Privacy.astro';
+import { LANGUAGES, PAGES, slugs, resolveRoute } from '../i18n/config';
+import type { PageKey } from '../i18n/config';
+
+export function getStaticPaths() {
+  const paths: { params: { slug: string | undefined }; props: { lang: 'it' | 'en' | 'fr' | 'de' | 'es'; page: PageKey } }[] = [];
+  for (const lang of LANGUAGES) {
+    for (const page of PAGES) {
+      const slug = page === 'home' ? lang : `${lang}/${slugs[page][lang]}`;
+      paths.push({ params: { slug }, props: { lang, page } });
+    }
+  }
+  return paths;
+}
+
+const { lang, page } = Astro.props as { lang: 'it' | 'en' | 'fr' | 'de' | 'es'; page: PageKey };
+
+// Defensive: validate the route resolves correctly.
+const slugParam = typeof Astro.params.slug === 'string' ? Astro.params.slug.split('/') : [];
+const resolved = resolveRoute(slugParam);
+if (!resolved) {
+  return Astro.redirect(`/${lang}/`);
+}
+
+const sections: Record<PageKey, any> = {
+  home: Home,
+  tours: Tours,
+  about: About,
+  shuttle: Shuttle,
+  rental: Rental,
+  vehicles: Vehicles,
+  contacts: Contacts,
+  privacy: Privacy,
+};
+const Section = sections[page];
+---
+<Layout lang={lang} page={page}>
+  <Section lang={lang} />
+</Layout>

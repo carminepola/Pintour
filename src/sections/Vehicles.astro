@@ -1,0 +1,123 @@
+---
+import Icon from '../components/Icon.astro';
+import { useTranslations } from '../i18n/translations';
+import { HERO_IMG } from '../i18n/config';
+import { vehicles as fleet } from '../i18n/data';
+import type { VehicleKey } from '../i18n/data';
+import type { Language } from '../i18n/config';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const filters: { id: VehicleKey | 'all'; labelKey: keyof typeof t.vehiclesPage }[] = [
+  { id: 'all', labelKey: 'filterAll' },
+  { id: 'bus54', labelKey: 'filterBus54' },
+  { id: 'bus40', labelKey: 'filterBus40' },
+  { id: 'bus30', labelKey: 'filterBus30' },
+  { id: 'shuttle20', labelKey: 'filterShuttle20' },
+  { id: 'shuttle8', labelKey: 'filterShuttle8' },
+  { id: 'auto4', labelKey: 'filterAuto4' },
+  { id: 'luggage', labelKey: 'filterLuggage' },
+];
+const nameKeyMap: Record<VehicleKey, keyof typeof t.vehiclesPage> = {
+  bus54: 'filterBus54', bus40: 'filterBus40', bus30: 'filterBus30',
+  shuttle20: 'filterShuttle20', shuttle8: 'filterShuttle8', auto4: 'filterAuto4', luggage: 'filterLuggage',
+};
+---
+<div>
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={HERO_IMG} alt="Vehicles" class="w-full h-full object-cover" />
+      <div class="hero-gradient-dark absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 text-white/70 text-sm mb-6">
+          <span>{t.nav.home}</span><Icon name="chevronRight" class="w-4 h-4" /><span class="text-white font-medium">{t.vehiclesPage.breadcrumbVehicles}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">{t.vehiclesPage.heroTitle}</h1>
+        <p class="text-lg text-white/80 max-w-xl">{t.vehiclesPage.heroSubtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <p class="text-gray-700 leading-relaxed text-base md:text-lg mb-8">{t.vehiclesPage.description}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div class="flex items-start gap-4 bg-[#d9f3ff]/30 rounded-2xl p-6">
+          <div class="w-12 h-12 bg-[#25867f] rounded-xl flex items-center justify-center flex-shrink-0"><Icon name="wrench" class="w-6 h-6 text-white" /></div>
+          <div><h3 class="font-bold text-[#1a1064] mb-2">{t.vehiclesPage.maintenanceTitle}</h3><p class="text-sm text-gray-600 leading-relaxed">{t.vehiclesPage.maintenanceDesc}</p></div>
+        </div>
+        <div class="flex items-start gap-4 bg-[#d9f3ff]/30 rounded-2xl p-6">
+          <div class="w-12 h-12 bg-[#1a1064] rounded-xl flex items-center justify-center flex-shrink-0"><Icon name="shield" class="w-6 h-6 text-white" /></div>
+          <div><h3 class="font-bold text-[#1a1064] mb-2">{t.vehiclesPage.safetyTitle}</h3><p class="text-sm text-gray-600 leading-relaxed">{t.vehiclesPage.safetyDesc}</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-[#d9f3ff]/20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-wrap gap-2 mb-10 justify-center">
+        {filters.map((f, i) => (
+          <button data-filter={f.id} class={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${i === 0 ? 'bg-[#1a1064] text-white shadow-lg' : 'bg-white text-[#1a1064] border border-[#e2e8f0] hover:border-[#1a1064] hover:shadow-md'}`}>{t.vehiclesPage[f.labelKey]}</button>
+        ))}
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {fleet.map((vehicle) => (
+          <div data-vehicle-card data-category={vehicle.key} class="card-hover bg-white rounded-2xl shadow-lg border border-[#e2e8f0] overflow-hidden group">
+            <div class="relative h-52 overflow-hidden">
+              <img src={vehicle.image} alt={t.vehiclesPage[nameKeyMap[vehicle.key]]} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            </div>
+            <div class="p-4">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style={`background-color:${vehicle.color}`}><Icon name={vehicle.icon} class="w-4 h-4 text-white" /></div>
+                <h3 class="font-bold text-[#1a1064] text-sm">{t.vehiclesPage[nameKeyMap[vehicle.key]]}</h3>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#1a1064] mb-2">{t.vehiclesPage.quoteTitle}</h2>
+        <p class="text-gray-600">{t.vehiclesPage.quoteSubtitle}</p>
+      </div>
+      <div data-form-success class="hidden text-center py-12 bg-[#d9f3ff]/30 rounded-2xl">
+        <Icon name="checkCircle" class="w-16 h-16 text-[#25867f] mx-auto mb-4" />
+        <h3 class="text-xl font-bold text-[#1a1064] mb-2">{t.vehiclesPage.successTitle}</h3>
+        <p class="text-gray-600">{t.vehiclesPage.successDesc}</p>
+      </div>
+      <form data-demo-form class="space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.vehiclesPage.formName}</label><input type="text" required class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+          <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.vehiclesPage.formEmail}</label><input type="email" required class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.vehiclesPage.formPhone}</label><input type="tel" class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+          <div>
+            <label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.vehiclesPage.formVehicle}</label>
+            <select class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm bg-white">
+              <option value="">{t.vehiclesPage.formVehiclePlaceholder}</option>
+              {filters.filter((f) => f.id !== 'all').map((f) => <option value={t.vehiclesPage[f.labelKey]}>{t.vehiclesPage[f.labelKey]}</option>)}
+            </select>
+          </div>
+        </div>
+        <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.vehiclesPage.formMessage}</label><textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm resize-none"></textarea></div>
+        <div class="flex items-start gap-3">
+          <input type="checkbox" required class="mt-1 w-4 h-4 rounded border-[#e2e8f0] text-[#1a1064] focus:ring-[#1a1064]" />
+          <label class="text-xs text-gray-600 leading-relaxed">{t.vehiclesPage.formPrivacy}</label>
+        </div>
+        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#ec2a7a] text-white font-bold rounded-full hover:bg-[#d4236a] transition-all hover:scale-105 text-sm"><Icon name="send" class="w-4 h-4" />{t.vehiclesPage.formSubmit}</button>
+      </form>
+    </div>
+  </section>
+</div>

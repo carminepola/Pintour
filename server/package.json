@@ -1,0 +1,14 @@
+{
+  "name": "pintourbus-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Microservizio form-to-mail self-hosted per pintourbus.com",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.14"
+  }
+}

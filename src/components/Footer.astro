@@ -1,0 +1,80 @@
+---
+import Icon from './Icon.astro';
+import { company, navKeys } from '../i18n/data';
+import { useTranslations } from '../i18n/translations';
+import { languageNames, languageFlags, LANGUAGES, pathFor, LOGO_URL, navLabelKey, MOBILITY_CHARTER_URL } from '../i18n/config';
+import type { Language, PageKey } from '../i18n/config';
+
+interface Props {
+  lang: Language;
+  page: PageKey;
+}
+const { lang, page } = Astro.props;
+const t = useTranslations(lang);
+const navItems = navKeys.map((id) => ({ id, label: t.nav[navLabelKey[id]] }));
+---
+<footer class="bg-[#1a1064] text-white">
+  <div class="max-w-7xl mx-auto px-4 py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div>
+        <img src={LOGO_URL} alt="Pintour Logo" class="h-10 w-auto mb-4 brightness-0 invert" />
+        <p class="text-sm text-white/70 leading-relaxed mb-4">{t.footer.companyInfo}</p>
+        <p class="text-xs text-white/50">{t.contacts.vatNumber}: {company.vat}</p>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-lg mb-4 text-[#ec2a7a]">{t.footer.addresses}</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-2">
+            <Icon name="mapPin" class="w-4 h-4 mt-1 text-[#25867f] flex-shrink-0" />
+            <div>
+              <p class="text-sm font-medium">{t.contacts.legalHQ}</p>
+              <p class="text-xs text-white/70">{company.legalHQ.street}, {company.legalHQ.city}</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <Icon name="mapPin" class="w-4 h-4 mt-1 text-[#25867f] flex-shrink-0" />
+            <div>
+              <p class="text-sm font-medium">{t.contacts.operationalHQ}</p>
+              <p class="text-xs text-white/70">{company.operationalHQ.street}, {company.operationalHQ.city}</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <a href={`tel:${company.phone1.replace(/\s/g, '')}`} class="flex items-center gap-2 text-sm hover:text-[#ec2a7a] transition-colors"><Icon name="phone" class="w-4 h-4 text-[#25867f]" /> {company.phone1}</a>
+          <a href={`tel:${company.phone2.replace(/\s/g, '')}`} class="flex items-center gap-2 text-sm hover:text-[#ec2a7a] transition-colors"><Icon name="phone" class="w-4 h-4 text-[#25867f]" /> {company.phone2}</a>
+          <a href={`mailto:${company.email}`} class="flex items-center gap-2 text-sm hover:text-[#ec2a7a] transition-colors"><Icon name="mail" class="w-4 h-4 text-[#25867f]" /> {company.email}</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-lg mb-4 text-[#ec2a7a]">{t.footer.links}</h3>
+        <nav class="space-y-2">
+          {navItems.map((item) => (
+            <a href={pathFor(lang, item.id)} class={`block text-sm transition-colors ${page === item.id ? 'text-[#ec2a7a]' : 'text-white/80 hover:text-[#ec2a7a]'}`}>{item.label}</a>
+          ))}
+          <a href={pathFor(lang, 'privacy')} class="block text-sm text-white/80 hover:text-[#ec2a7a] transition-colors">{t.footer.privacy}</a>
+          <a href={MOBILITY_CHARTER_URL} download class="block text-sm text-white/80 hover:text-[#ec2a7a] transition-colors">{t.about.mobilityCard}</a>
+        </nav>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-lg mb-4 text-[#ec2a7a]">{t.footer.language}</h3>
+        <div class="space-y-2">
+          {LANGUAGES.map((l) => (
+            <a href={pathFor(l, page)} class={`flex items-center gap-2 text-sm w-full px-3 py-2 rounded-lg transition-all ${lang === l ? 'bg-white/20 text-white font-semibold' : 'text-white/70 hover:bg-white/10 hover:text-white'}`}>
+              <span>{languageFlags[l]}</span><span>{languageNames[l]}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <p class="text-xs text-white/50">© 2026 Pintour S.C.A.R.L. P.IVA 06565461214</p>
+      <p class="text-xs text-white/50">© 2026 Carmine Pola</p>
+    </div>
+  </div>
+</footer>

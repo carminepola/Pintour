@@ -1,0 +1,285 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import Icon from '../components/Icon.astro';
+import { useTranslations } from '../i18n/translations';
+import { getSeo } from '../i18n/seo';
+import { LANGUAGES, htmlLang, urlFor, SITE_URL, LOGO_URL, HERO_IMG, FAVICON_URL } from '../i18n/config';
+import { company } from '../i18n/data';
+import type { Language, PageKey } from '../i18n/config';
+
+interface Props {
+  lang: Language;
+  page: PageKey;
+}
+const { lang, page } = Astro.props;
+const t = useTranslations(lang);
+const seo = getSeo(page, lang);
+const canonical = urlFor(lang, page);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_URL}/#organization`,
+      name: company.name,
+      legalName: company.name,
+      url: SITE_URL,
+      logo: LOGO_URL,
+      image: HERO_IMG,
+      description: seo.description,
+      telephone: [company.phone1, company.phone2],
+      email: company.email,
+      vatID: company.vat,
+      address: [
+        { '@type': 'PostalAddress', streetAddress: company.legalHQ.street, addressLocality: 'Pimonte', addressRegion: 'Napoli', postalCode: '80050', addressCountry: 'IT' },
+        { '@type': 'PostalAddress', streetAddress: company.operationalHQ.street, addressLocality: 'Pompei', addressRegion: 'Napoli', postalCode: '80045', addressCountry: 'IT' },
+      ],
+      geo: { '@type': 'GeoCoordinates', latitude: 40.7436, longitude: 14.4891 },
+      areaServed: [
+        { '@type': 'Place', name: 'Costiera Amalfitana' },
+        { '@type': 'Place', name: 'Penisola Sorrentina' },
+        { '@type': 'Place', name: 'Napoli' },
+      ],
+      foundingDate: '2004',
+    },
+    {
+      '@type': 'BusService',
+      '@id': `${SITE_URL}/#shuttlebus`,
+      name: 'Pintour Shuttle Bus',
+      provider: { '@id': `${SITE_URL}/#organization` },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'Pintour Bus',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      inLanguage: LANGUAGES,
+    },
+  ],
+};
+---
+<!doctype html>
+<html lang={htmlLang[lang]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={FAVICON_URL} />
+    {LANGUAGES.map((l) => <link rel="alternate" hreflang={htmlLang[l]} href={urlFor(l, page)} />)}
+    <link rel="alternate" hreflang="x-default" href={urlFor('it', page)} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={`${lang}_${lang.toUpperCase()}`} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:image" content={HERO_IMG} />
+    <meta property="og:site_name" content="Pintour Bus" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={HERO_IMG} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white antialiased">
+    <Header lang={lang} page={page} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer lang={lang} page={page} />
+    <CookieConsent lang={lang} />
+
+    <button data-scroll-top class="hidden fixed bottom-6 right-6 z-50 w-12 h-12 bg-[#1a1064] text-white rounded-full shadow-lg hover:bg-[#24227a] transition-all hover:scale-110 items-center justify-center" aria-label={t.common.scrollToTop}>
+      <Icon name="arrowUp" class="w-5 h-5" />
+    </button>
+
+    <script type="application/json" id="pintour-i18n" set:html={JSON.stringify({
+      captchaLabel: t.common.captchaLabel,
+      captchaRefresh: t.common.captchaRefresh,
+      captchaError: t.common.captchaError,
+      formError: t.common.formError,
+      sending: t.common.sending,
+    })} is:inline></script>
+
+    <script is:inline>
+      (function () {
+        var I = {};
+        try { I = JSON.parse(document.getElementById('pintour-i18n').textContent || '{}'); } catch (e) {}
+        function $(s, c) { return (c || document).querySelector(s); }
+        function $all(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+        // Mobile menu
+        const menuToggle = document.querySelector('[data-menu-toggle]');
+        const mobileMenu = document.querySelector('[data-mobile-menu]');
+        if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener('click', function () {
+            mobileMenu.classList.toggle('open');
+          });
+        }
+        // Language dropdowns
+        document.querySelectorAll('[data-lang-toggle]').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const menu = btn.parentElement.querySelector('[data-lang-menu]');
+            const chevron = btn.querySelector('.lang-chevron');
+            document.querySelectorAll('[data-lang-menu]').forEach(function (m) {
+              if (m !== menu) m.classList.remove('open');
+            });
+            if (menu) menu.classList.toggle('open');
+            if (chevron) chevron.style.transform = menu && menu.classList.contains('open') ? 'rotate(180deg)' : '';
+          });
+        });
+        document.addEventListener('click', function () {
+          document.querySelectorAll('[data-lang-menu]').forEach(function (m) { m.classList.remove('open'); });
+          document.querySelectorAll('.lang-chevron').forEach(function (c) { c.style.transform = ''; });
+        });
+
+        // Header scroll shadow
+        const header = document.getElementById('site-header');
+        function onScroll() {
+          if (!header) return;
+          if (window.scrollY > 50) {
+            header.classList.add('backdrop-blur-md', 'shadow-lg');
+            header.style.backgroundColor = 'rgba(255,255,255,0.95)';
+          } else {
+            header.classList.remove('backdrop-blur-md', 'shadow-lg');
+            header.style.backgroundColor = '';
+          }
+          const st = document.querySelector('[data-scroll-top]');
+          if (st) {
+            if (window.scrollY > 500) { st.classList.remove('hidden'); st.classList.add('flex'); }
+            else { st.classList.add('hidden'); st.classList.remove('flex'); }
+          }
+        }
+        window.addEventListener('scroll', onScroll); onScroll();
+        const stBtn = document.querySelector('[data-scroll-top]');
+        if (stBtn) stBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        // Cookie consent
+        const banner = document.querySelector('[data-cookie-banner]');
+        if (banner) {
+          const consent = localStorage.getItem('pintour-cookie-consent');
+          if (!consent) setTimeout(function () { banner.classList.remove('hidden'); banner.classList.add('animate-fade-in-up'); }, 1500);
+          const accept = document.querySelector('[data-cookie-accept]');
+          const decline = document.querySelector('[data-cookie-decline]');
+          if (accept) accept.addEventListener('click', function () { localStorage.setItem('pintour-cookie-consent', 'accepted'); banner.classList.add('hidden'); });
+          if (decline) decline.addEventListener('click', function () { localStorage.setItem('pintour-cookie-consent', 'declined'); banner.classList.add('hidden'); });
+        }
+
+        // Hero slider
+        const heroSlides = document.querySelectorAll('[data-hero-slide]');
+        if (heroSlides.length > 1) {
+          const dots = document.querySelectorAll('[data-hero-dot]');
+          let current = 0;
+          function showSlide(i) {
+            heroSlides[current].classList.remove('is-active'); heroSlides[current].classList.add('is-hidden');
+            current = (i + heroSlides.length) % heroSlides.length;
+            heroSlides[current].classList.remove('is-hidden'); heroSlides[current].classList.add('is-active');
+            dots.forEach(function (d, idx) {
+              if (idx === current) { d.classList.add('bg-[#ec2a7a]', 'w-8'); d.classList.remove('bg-white/50'); }
+              else { d.classList.remove('bg-[#ec2a7a]', 'w-8'); d.classList.add('bg-white/50'); }
+            });
+          }
+          let timer = setInterval(function () { showSlide(current + 1); }, 6000);
+          dots.forEach(function (dot, i) {
+            dot.addEventListener('click', function () {
+              showSlide(i);
+              clearInterval(timer);
+              timer = setInterval(function () { showSlide(current + 1); }, 6000);
+            });
+          });
+        }
+
+        // Vehicle filter (vehicles page)
+        const filterBtns = document.querySelectorAll('[data-filter]');
+        if (filterBtns.length) {
+          filterBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              const cat = btn.getAttribute('data-filter');
+              filterBtns.forEach(function (b) {
+                b.classList.remove('bg-[#1a1064]', 'text-white', 'shadow-lg');
+                b.classList.add('bg-white', 'text-[#1a1064]', 'border', 'border-[#e2e8f0]');
+              });
+              btn.classList.add('bg-[#1a1064]', 'text-white', 'shadow-lg');
+              btn.classList.remove('bg-white', 'text-[#1a1064]', 'border', 'border-[#e2e8f0]');
+              document.querySelectorAll('[data-vehicle-card]').forEach(function (card) {
+                if (cat === 'all' || card.getAttribute('data-category') === cat) card.style.display = '';
+                else card.style.display = 'none';
+              });
+            });
+          });
+        }
+
+        // ----- Captcha (math challenge firmato lato server) -----
+        function loadCaptcha(widget) {
+          var textEl = $('[data-captcha-text]', widget);
+          var idEl = $('[data-captcha-id]', widget);
+          var errEl = $('[data-captcha-err]', widget);
+          if (errEl) errEl.classList.add('hidden');
+          fetch('/api/captcha').then(function (r) { return r.json(); }).then(function (d) {
+            if (d && d.id && d.q && textEl) textEl.innerHTML = (I.captchaLabel || '') + ' <strong>' + d.q + '</strong> =';
+            if (idEl) idEl.value = d.id;
+          }).catch(function () {});
+        }
+        $all('[data-captcha]').forEach(function (widget) {
+          loadCaptcha(widget);
+          var refresh = $('[data-captcha-refresh]', widget);
+          if (refresh) { refresh.title = I.captchaRefresh || ''; refresh.addEventListener('click', function () { loadCaptcha(widget); }); }
+        });
+
+        // ----- Invio form reale (POST -> /api/<endpoint>) -----
+        $all('form[data-form]').forEach(function (form) {
+          var endpoint = form.getAttribute('data-form');
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var data = {};
+            $all('input, select, textarea', form).forEach(function (el) {
+              if (!el.name) return;
+              data[el.name] = el.value;
+            });
+            var submitBtn = form.querySelector('[type="submit"]');
+            var originalText = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = I.sending || '…'; }
+            var captchaErr = form.querySelector('[data-captcha-err]');
+            var formErr = form.querySelector('[data-form-error]');
+            if (captchaErr) captchaErr.classList.add('hidden');
+            if (formErr) formErr.classList.add('hidden');
+            fetch('/api/' + endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data),
+            }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.ok, code: j && j.error }; }); })
+              .then(function (res) {
+                if (res.ok) {
+                  var success = form.parentElement.querySelector('[data-form-success]');
+                  if (success) { success.classList.remove('hidden'); form.classList.add('hidden'); }
+                } else if (res.code === 'captcha') {
+                  if (captchaErr) { captchaErr.textContent = I.captchaError || ''; captchaErr.classList.remove('hidden'); }
+                } else {
+                  if (formErr) { formErr.textContent = I.formError || ''; formErr.classList.remove('hidden'); }
+                }
+              })
+              .catch(function () { if (formErr) { formErr.textContent = I.formError || ''; formErr.classList.remove('hidden'); } })
+              .finally(function () {
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalText; }
+                var capWidget = form.querySelector('[data-captcha]');
+                if (capWidget) loadCaptcha(capWidget);
+              });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

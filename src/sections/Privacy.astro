@@ -1,0 +1,45 @@
+---
+import Icon from '../components/Icon.astro';
+import { useTranslations } from '../i18n/translations';
+import { HERO_IMG } from '../i18n/config';
+import { privacyContent } from '../i18n/privacy';
+import type { Language } from '../i18n/config';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const blocks = privacyContent[lang];
+---
+<div>
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={HERO_IMG} alt="Privacy" class="w-full h-full object-cover" />
+      <div class="hero-gradient-dark absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 text-white/70 text-sm mb-6">
+          <span>{t.nav.home}</span><Icon name="chevronRight" class="w-4 h-4" /><span class="text-white font-medium">{t.footer.privacy}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">{t.footer.privacy}</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 privacy-content">
+      {blocks.map((b) => (
+        <>
+          {b.h2 && <h2>{b.h2}</h2>}
+          {b.h3 && <h3>{b.h3}</h3>}
+          {b.p && b.p.map((para) => <p set:html={para} />)}
+          {b.ul && (
+            <ul>
+              {b.ul.map((li) => <li set:html={li} />)}
+            </ul>
+          )}
+        </>
+      ))}
+    </div>
+  </section>
+</div>

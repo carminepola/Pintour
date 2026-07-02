@@ -1,0 +1,78 @@
+---
+import Icon from '../components/Icon.astro';
+import { useTranslations } from '../i18n/translations';
+import { HERO_IMG, MOBILITY_CHARTER_URL } from '../i18n/config';
+import { company } from '../i18n/data';
+import type { Language } from '../i18n/config';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const features = [
+  { icon: 'shield', color: '#1a1064', title: t.about.feat1Title, desc: t.about.feat1Desc },
+  { icon: 'award', color: '#ec2a7a', title: t.about.feat2Title, desc: t.about.feat2Desc },
+  { icon: 'users', color: '#25867f', title: t.about.feat3Title, desc: t.about.feat3Desc },
+  { icon: 'shield', color: '#24227a', title: t.about.feat4Title, desc: t.about.feat4Desc },
+];
+---
+<div>
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={HERO_IMG} alt="Amalfi Coast" class="w-full h-full object-cover" />
+      <div class="hero-gradient-dark absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 text-white/70 text-sm mb-6">
+          <span>{t.about.breadcrumbHome}</span><Icon name="chevronRight" class="w-4 h-4" /><span class="text-white font-medium">{t.about.breadcrumbAbout}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">{t.about.heroTitle}</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-8">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-[#1a1064] mb-6 pink-underline">Pintour S.C.A.R.L.</h2>
+            <p class="text-gray-700 leading-relaxed text-base md:text-lg">{t.about.paragraph1}</p>
+          </div>
+          <div class="bg-gradient-to-r from-[#1a1064] to-[#24227a] rounded-2xl p-8 text-white">
+            <p class="text-lg md:text-xl font-bold text-center">{t.about.paragraph2}</p>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-base md:text-lg">{t.about.paragraph3}</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+            {features.map((f) => (
+              <div class="flex items-start gap-3 p-4 bg-[#d9f3ff]/30 rounded-xl">
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={`background-color:${f.color}`}><Icon name={f.icon} class="w-5 h-5 text-white" /></div>
+                <div><h4 class="font-bold text-[#1a1064] text-sm">{f.title}</h4><p class="text-xs text-gray-600">{f.desc}</p></div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="bg-[#1a1064] rounded-2xl p-6 text-white">
+            <h3 class="text-lg font-bold mb-3">{t.about.mobilityCard}</h3>
+            <p class="text-sm text-white/80 mb-4 leading-relaxed">{t.about.mobilityCardDesc}</p>
+            <a href={MOBILITY_CHARTER_URL} download class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#ec2a7a] text-white font-semibold rounded-full hover:bg-[#d4236a] transition-colors text-sm"><Icon name="download" class="w-4 h-4" />{t.about.download}</a>
+          </div>
+          <div class="bg-[#d9f3ff]/30 rounded-2xl p-6 border border-[#d9f3ff]">
+            <h3 class="text-lg font-bold text-[#1a1064] mb-4">{t.about.sidebarTitle}</h3>
+            <div class="space-y-3 text-sm">
+              <div><p class="font-semibold text-[#1a1064]">{t.contacts.legalHQ}</p><p class="text-gray-600">{company.legalHQ.street}, {company.legalHQ.city}</p></div>
+              <div><p class="font-semibold text-[#1a1064]">{t.contacts.operationalHQ}</p><p class="text-gray-600">{company.operationalHQ.street}, {company.operationalHQ.city}</p></div>
+              <div class="pt-2 border-t border-[#d9f3ff]">
+                <a href={`tel:${company.phone1.replace(/\s/g,'')}`} class="block text-[#ec2a7a] font-medium hover:underline">{company.phone1}</a>
+                <a href={`tel:${company.phone2.replace(/\s/g,'')}`} class="block text-[#ec2a7a] font-medium hover:underline">{company.phone2}</a>
+                <a href={`mailto:${company.emailInfo}`} class="block text-[#25867f] font-medium hover:underline">{company.emailInfo}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
