@@ -2,7 +2,6 @@
 import Icon from '../components/Icon.astro';
 import Captcha from '../components/Captcha.astro';
 import { useTranslations } from '../i18n/translations';
-import { HERO_IMG } from '../i18n/config';
 import { company } from '../i18n/data';
 import type { Language } from '../i18n/config';
 
@@ -11,13 +10,9 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 <div>
-  <section class="relative py-24 md:py-32 overflow-hidden">
-    <div class="absolute inset-0">
-      <img src={HERO_IMG} alt="Contacts" class="w-full h-full object-cover" />
-      <div class="hero-gradient-dark absolute inset-0"></div>
-    </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4">
-      <div class="max-w-2xl">
+  <section data-reveal class="corp-hero">
+    <div class="max-w-7xl mx-auto px-4 py-20 md:py-28">
+      <div class="max-w-3xl">
         <div class="flex items-center gap-2 text-white/70 text-sm mb-6">
           <span>{t.nav.home}</span><Icon name="chevronRight" class="w-4 h-4" /><span class="text-white font-medium">{t.contacts.breadcrumbContacts}</span>
         </div>
@@ -26,66 +21,66 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  <section class="py-16 md:py-24 bg-white">
+  <section data-reveal class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
         <div class="lg:col-span-2 space-y-6">
           <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-[#1a1064] mb-3 pink-underline inline-block">{t.contacts.getInTouch}</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-[#0f2540] mb-3 accent-underline inline-block">{t.contacts.getInTouch}</h2>
             <p class="text-gray-600 mt-4 leading-relaxed">{t.contacts.getInTouchDesc}</p>
           </div>
           <div class="space-y-4">
-            <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-[#25867f]/5 rounded-xl hover:bg-[#25867f]/10 transition-colors group">
-              <div class="w-12 h-12 bg-[#25867f] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"><Icon name="messageCircle" class="w-6 h-6 text-white" /></div>
-              <div><p class="font-bold text-[#1a1064] text-sm">{t.contacts.whatsapp}</p><p class="text-[#25867f] font-semibold">+39 335 691 02 11</p></div>
+            <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-[#25D366]/5 rounded-xl hover:bg-[#25D366]/10 transition-colors group">
+              <div class="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform"><Icon name="messageCircle" class="w-6 h-6 text-white" /></div>
+              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.whatsapp}</p><p class="text-[#25D366] font-semibold">+39 335 691 02 11</p></div>
             </a>
-            <a href={`tel:${company.phone1.replace(/\s/g,'')}`} class="flex items-center gap-4 p-4 bg-[#ec2a7a]/5 rounded-xl hover:bg-[#ec2a7a]/10 transition-colors group">
-              <div class="w-12 h-12 bg-[#ec2a7a] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"><Icon name="phone" class="w-6 h-6 text-white" /></div>
-              <div><p class="font-bold text-[#1a1064] text-sm">{t.contacts.phone}</p><p class="text-[#ec2a7a] font-semibold">+39 081 879 26 45</p></div>
+            <a href={`tel:${company.phone1.replace(/\s/g,'')}`} class="flex items-center gap-4 p-4 bg-[#0f4c81]/5 rounded-xl hover:bg-[#0f4c81]/10 transition-colors group">
+              <div class="w-12 h-12 bg-[#0f4c81] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform"><Icon name="phone" class="w-6 h-6 text-white" /></div>
+              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.phone}</p><p class="text-[#0f4c81] font-semibold">+39 081 879 26 45</p></div>
             </a>
-            <a href={`mailto:${company.emailInfo}`} class="flex items-center gap-4 p-4 bg-[#1a1064]/5 rounded-xl hover:bg-[#1a1064]/10 transition-colors group">
-              <div class="w-12 h-12 bg-[#1a1064] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"><Icon name="mail" class="w-6 h-6 text-white" /></div>
-              <div><p class="font-bold text-[#1a1064] text-sm">{t.contacts.email}</p><p class="text-[#1a1064] font-semibold">{company.emailInfo}</p></div>
+            <a href={`mailto:${company.emailInfo}`} class="flex items-center gap-4 p-4 bg-[#0f2540]/5 rounded-xl hover:bg-[#0f2540]/10 transition-colors group">
+              <div class="w-12 h-12 bg-[#0f2540] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform"><Icon name="mail" class="w-6 h-6 text-white" /></div>
+              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.email}</p><p class="text-[#0f2540] font-semibold">{company.emailInfo}</p></div>
             </a>
           </div>
           <div class="space-y-4">
-            <div class="flex items-start gap-3 p-4 bg-[#d9f3ff]/30 rounded-xl">
-              <div class="w-10 h-10 bg-[#1a1064] rounded-lg flex items-center justify-center flex-shrink-0"><Icon name="mapPin" class="w-5 h-5 text-white" /></div>
-              <div><p class="font-bold text-[#1a1064] text-sm">{t.contacts.legalHQ}</p><p class="text-sm text-gray-600">Pimonte (Na) – Italia</p><p class="text-sm text-gray-600">{company.legalHQ.street}</p></div>
+            <div class="flex items-start gap-3 p-4 bg-[#eef3f8]/30 rounded-xl">
+              <div class="w-10 h-10 bg-[#0f2540] rounded-lg flex items-center justify-center flex-shrink-0"><Icon name="mapPin" class="w-5 h-5 text-white" /></div>
+              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.legalHQ}</p><p class="text-sm text-gray-600">Pimonte (Na) – Italia</p><p class="text-sm text-gray-600">{company.legalHQ.street}</p></div>
             </div>
-            <div class="flex items-start gap-3 p-4 bg-[#d9f3ff]/30 rounded-xl">
-              <div class="w-10 h-10 bg-[#ec2a7a] rounded-lg flex items-center justify-center flex-shrink-0"><Icon name="mapPin" class="w-5 h-5 text-white" /></div>
-              <div><p class="font-bold text-[#1a1064] text-sm">{t.contacts.operationalHQ}</p><p class="text-sm text-gray-600">Pompei (Na) – Italia</p><p class="text-sm text-gray-600">{company.operationalHQ.street}</p></div>
+            <div class="flex items-start gap-3 p-4 bg-[#eef3f8]/30 rounded-xl">
+              <div class="w-10 h-10 bg-[#0f4c81] rounded-lg flex items-center justify-center flex-shrink-0"><Icon name="mapPin" class="w-5 h-5 text-white" /></div>
+              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.operationalHQ}</p><p class="text-sm text-gray-600">Pompei (Na) – Italia</p><p class="text-sm text-gray-600">{company.operationalHQ.street}</p></div>
             </div>
           </div>
-          <div class="p-4 bg-[#1a1064] rounded-xl text-white">
+          <div class="p-4 bg-[#0f2540] rounded-xl text-white">
             <p class="text-sm"><span class="font-bold">{t.contacts.vatNumber}:</span> {company.vat}</p>
           </div>
         </div>
 
         <div class="lg:col-span-3">
-          <div class="bg-[#d9f3ff]/20 rounded-2xl p-6 md:p-8 border border-[#d9f3ff]">
-            <h3 class="text-xl font-bold text-[#1a1064] mb-6">{t.contacts.formTitle}</h3>
+          <div class="bg-[#eef3f8]/20 rounded-lg p-6 md:p-8 border border-[#eef3f8]">
+            <h3 class="text-xl font-bold text-[#0f2540] mb-6">{t.contacts.formTitle}</h3>
             <div data-form-success class="hidden text-center py-12">
-              <Icon name="checkCircle" class="w-16 h-16 text-[#25867f] mx-auto mb-4" />
-              <h3 class="text-xl font-bold text-[#1a1064] mb-2">{t.contacts.successTitle}</h3>
+              <Icon name="checkCircle" class="w-16 h-16 text-[#0f4c81] mx-auto mb-4" />
+              <h3 class="text-xl font-bold text-[#0f2540] mb-2">{t.contacts.successTitle}</h3>
               <p class="text-gray-600">{t.contacts.successDesc}</p>
             </div>
             <form data-form="contact" class="space-y-5">
               <div class="hidden" aria-hidden="true"><label>Lascia vuoto questo campo<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.contacts.formName}</label><input name="name" type="text" required class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] bg-white focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
-                <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.contacts.formEmail}</label><input name="email" type="email" required class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] bg-white focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
+                <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.contacts.formName}</label><input name="name" type="text" required class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
+                <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.contacts.formEmail}</label><input name="email" type="email" required class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
               </div>
-              <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.contacts.formSubject}</label><input name="subject" type="text" class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] bg-white focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm" /></div>
-              <div><label class="block text-sm font-medium text-[#1a1064] mb-1.5">{t.contacts.formMessage}</label><textarea name="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] bg-white focus:border-[#1a1064] focus:ring-2 focus:ring-[#1a1064]/20 outline-none transition-all text-sm resize-none"></textarea></div>
+              <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.contacts.formSubject}</label><input name="subject" type="text" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
+              <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.contacts.formMessage}</label><textarea name="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm resize-none"></textarea></div>
               <Captcha />
               <p data-form-error class="hidden text-sm text-red-600"></p>
               <div class="flex items-start gap-3">
-                <input type="checkbox" required class="mt-1 w-4 h-4 rounded border-[#e2e8f0] text-[#1a1064] focus:ring-[#1a1064]" />
+                <input type="checkbox" required class="mt-1 w-4 h-4 rounded border-[#e5e7eb] text-[#0f2540] focus:ring-[#0f2540]" />
                 <label class="text-xs text-gray-600 leading-relaxed">{t.contacts.formPrivacy}</label>
               </div>
-              <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#ec2a7a] text-white font-bold rounded-full hover:bg-[#d4236a] transition-all hover:scale-105 text-sm"><Icon name="send" class="w-4 h-4" />{t.contacts.formSubmit}</button>
+              <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-all text-sm"><Icon name="send" class="w-4 h-4" />{t.contacts.formSubmit}</button>
             </form>
           </div>
         </div>
@@ -93,10 +88,10 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  <section class="bg-[#d9f3ff]/20">
+  <section data-reveal class="bg-[#eef3f8]/20">
     <div class="max-w-7xl mx-auto px-4 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#e2e8f0]">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg border border-[#e5e7eb]">
           <iframe
             title={t.contacts.operationalHQ}
             class="w-full h-64 md:h-72 border-0"
@@ -104,15 +99,15 @@ const t = useTranslations(lang);
             src="https://www.openstreetmap.org/export/embed.html?bbox=14.479%2C40.739%2C14.499%2C40.759&layer=mapnik&marker=40.7490%2C14.4890"
           ></iframe>
           <div class="p-4 flex items-start gap-3">
-            <Icon name="mapPin" class="w-5 h-5 text-[#ec2a7a] mt-0.5 flex-shrink-0" />
+            <Icon name="mapPin" class="w-5 h-5 text-[#0f4c81] mt-0.5 flex-shrink-0" />
             <div>
-              <p class="font-bold text-[#1a1064] text-sm">{t.contacts.operationalHQ}</p>
+              <p class="font-bold text-[#0f2540] text-sm">{t.contacts.operationalHQ}</p>
               <p class="text-sm text-gray-600">{company.operationalHQ.street}, {company.operationalHQ.city}</p>
-              <a href="https://www.openstreetmap.org/?mlat=40.7490&mlon=14.4890#map=15/40.7490/14.4890" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[#ec2a7a] text-xs font-semibold mt-1 hover:gap-2 transition-all">OpenStreetMap<Icon name="arrowRight" class="w-3 h-3" /></a>
+              <a href="https://www.openstreetmap.org/?mlat=40.7490&mlon=14.4890#map=15/40.7490/14.4890" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[#0f4c81] text-xs font-semibold mt-1 hover:gap-2 transition-all">OpenStreetMap<Icon name="arrowRight" class="w-3 h-3" /></a>
             </div>
           </div>
         </div>
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#e2e8f0]">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg border border-[#e5e7eb]">
           <iframe
             title={t.contacts.legalHQ}
             class="w-full h-64 md:h-72 border-0"
@@ -120,11 +115,11 @@ const t = useTranslations(lang);
             src="https://www.openstreetmap.org/export/embed.html?bbox=14.500%2C40.680%2C14.520%2C40.700&layer=mapnik&marker=40.6897%2C14.5103"
           ></iframe>
           <div class="p-4 flex items-start gap-3">
-            <Icon name="mapPin" class="w-5 h-5 text-[#1a1064] mt-0.5 flex-shrink-0" />
+            <Icon name="mapPin" class="w-5 h-5 text-[#0f2540] mt-0.5 flex-shrink-0" />
             <div>
-              <p class="font-bold text-[#1a1064] text-sm">{t.contacts.legalHQ}</p>
+              <p class="font-bold text-[#0f2540] text-sm">{t.contacts.legalHQ}</p>
               <p class="text-sm text-gray-600">{company.legalHQ.street}, {company.legalHQ.city}</p>
-              <a href="https://www.openstreetmap.org/?mlat=40.6897&mlon=14.5103#map=15/40.6897/14.5103" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[#ec2a7a] text-xs font-semibold mt-1 hover:gap-2 transition-all">OpenStreetMap<Icon name="arrowRight" class="w-3 h-3" /></a>
+              <a href="https://www.openstreetmap.org/?mlat=40.6897&mlon=14.5103#map=15/40.6897/14.5103" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[#0f4c81] text-xs font-semibold mt-1 hover:gap-2 transition-all">OpenStreetMap<Icon name="arrowRight" class="w-3 h-3" /></a>
             </div>
           </div>
         </div>

@@ -63,7 +63,7 @@ export interface TranslationKeys {
       amalfi: string; amalfiDesc: string;
       pompei: string; pompeiDesc: string;
       sorrento: string; sorrentoDesc: string;
-      capri: string; capriDesc: string;
+      pisa: string; pisaDesc: string;
       parigi: string; parigiDesc: string;
     };
     quoteTitle: string;
@@ -123,7 +123,6 @@ export interface TranslationKeys {
     breadcrumbShuttle: string;
     description: string;
     dailyConnection: string;
-    dailyRuns: string;
     routeTitle: string;
     bookTicket: string;
     routeStops: string[];
@@ -286,7 +285,7 @@ export const translations: Record<Language, TranslationKeys> = {
       years: '20+', yearsLabel: 'Anni di esperienza',
       vehicles: '22', vehiclesLabel: 'Mezzi per ogni esigenza',
       seats: '800+', seatsLabel: 'Posti totali',
-      stops: '6', stopsLabel: 'Fermate giornaliere Amalfi-Capodichino',
+      stops: '15', stopsLabel: 'Fermate giornaliere Amalfi-Capodichino',
     },
     video: { title: 'Scopri la Pintour', subtitle: 'Guarda il nostro video e scopri i nostri servizi', play: 'Riproduci video' },
     tours: {
@@ -308,7 +307,7 @@ export const translations: Record<Language, TranslationKeys> = {
         amalfi: 'Costiera Amalfitana', amalfiDesc: 'Amalfi, Positano e Ravello. Patrimonio UNESCO da sogno.',
         pompei: 'Pompei', pompeiDesc: "Gli scavi più famosi al mondo, un viaggio nell'antica Roma.",
         sorrento: 'Sorrento', sorrentoDesc: 'Limoni, mare e panorami sulla Penisola Sorrentina.',
-        capri: 'Capri', capriDesc: 'Faraglioni, Anacapri e la Piazzetta. L\'isola nel blu.',
+        pisa: 'Pisa', pisaDesc: 'Torre pendente, Piazza dei Miracoli e lungarno. La città della Leaning Tower.',
         parigi: 'Parigi', parigiDesc: 'Tour europeo multi-giorno: Parigi e la Valle della Loira.',
       },
       quoteTitle: 'Organizziamo il tuo tour',
@@ -353,8 +352,7 @@ export const translations: Record<Language, TranslationKeys> = {
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
       description: "Servizio di collegamento giornaliero dall'Aeroporto di Napoli Capodichino alla Costiera Amalfitana. Il modo più comodo e conveniente per raggiungere le meraviglie della Costiera Amalfitana direttamente dall'aeroporto.",
-      dailyConnection: 'Collegamento Giornaliero', dailyRuns: '6 corse giornaliere',
-      routeTitle: 'Percorso e Fermate', bookTicket: 'PRENOTA IL TUO BIGLIETTO',
+      dailyConnection: 'Collegamento Giornaliero', routeTitle: 'Percorso e Fermate', bookTicket: 'PRENOTA IL TUO BIGLIETTO',
       routeStops: ['Napoli (Aeroporto)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Servizi a Bordo', comfort: 'Comfort', comfortDesc: 'Sedili reclinabili e ampi spazi per un viaggio confortevole',
@@ -435,7 +433,7 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     stats: {
       years: '20+', yearsLabel: 'Years of experience', vehicles: '22', vehiclesLabel: 'Vehicles for every need',
-      seats: '800+', seatsLabel: 'Total seats', stops: '6', stopsLabel: 'Daily stops Amalfi-Capodichino',
+      seats: '800+', seatsLabel: 'Total seats', stops: '15', stopsLabel: 'Daily stops Amalfi-Capodichino',
     },
     video: { title: 'Discover Pintour', subtitle: 'Watch our video and discover our services', play: 'Play video' },
     tours: {
@@ -457,7 +455,7 @@ export const translations: Record<Language, TranslationKeys> = {
         amalfi: 'Amalfi Coast', amalfiDesc: 'Amalfi, Positano and Ravello. A dreamy UNESCO heritage.',
         pompei: 'Pompeii', pompeiDesc: 'The most famous excavations in the world, a journey into ancient Rome.',
         sorrento: 'Sorrento', sorrentoDesc: 'Lemons, sea and panoramas on the Sorrento Peninsula.',
-        capri: 'Capri', capriDesc: 'Faraglioni, Anacapri and the Piazzetta. The island in the blue.',
+        pisa: 'Pisa', pisaDesc: 'Leaning Tower, Piazza dei Miracoli and riverfront. The city of the famous tower.',
         parigi: 'Paris', parigiDesc: 'Multi-day European tour: Paris and the Loire Valley.',
       },
       quoteTitle: "We'll organize your tour",
@@ -501,7 +499,7 @@ export const translations: Record<Language, TranslationKeys> = {
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
       description: 'Daily connection service from Naples Capodichino Airport to the Amalfi Coast. The most comfortable and convenient way to reach the wonders of the Amalfi Coast directly from the airport.',
-      dailyConnection: 'Daily Connection', dailyRuns: '6 daily runs', routeTitle: 'Route and Stops', bookTicket: 'BOOK YOUR TICKET',
+      dailyConnection: 'Daily Connection', routeTitle: 'Route and Stops', bookTicket: 'BOOK YOUR TICKET',
       routeStops: ['Naples (Airport)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Onboard Services', comfort: 'Comfort', comfortDesc: 'Reclining seats and ample space for a comfortable journey',
@@ -582,7 +580,7 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     stats: {
       years: '20+', yearsLabel: "Années d'expérience", vehicles: '22', vehiclesLabel: 'Véhicules pour chaque besoin',
-      seats: '800+', seatsLabel: 'Places totales', stops: '6', stopsLabel: 'Arrêts quotidiens Amalfi-Capodichino',
+      seats: '800+', seatsLabel: 'Places totales', stops: '15', stopsLabel: 'Arrêts quotidiens Amalfi-Capodichino',
     },
     video: { title: 'Découvrez Pintour', subtitle: 'Regardez notre vidéo et découvrez nos services', play: 'Lire la vidéo' },
     tours: {
@@ -604,7 +602,7 @@ export const translations: Record<Language, TranslationKeys> = {
         amalfi: 'Côte Amalfitaine', amalfiDesc: 'Amalfi, Positano et Ravello. Un patrimoine UNESCO de rêve.',
         pompei: 'Pompéi', pompeiDesc: 'Les fouilles les plus célèbres du monde, un voyage dans la Rome antique.',
         sorrento: 'Sorrente', sorrentoDesc: 'Citrons, mer et panoramas sur la Péninsule Sorrentine.',
-        capri: 'Capri', capriDesc: 'Faraglioni, Anacapri et la Piazzetta. L\'île dans le bleu.',
+        pisa: 'Pise', pisaDesc: 'Tour penchée, Piazza dei Miracoli et quais. La ville de la tour célèbre.',
         parigi: 'Paris', parigiDesc: 'Circuit européen de plusieurs jours : Paris et la Vallée de la Loire.',
       },
       quoteTitle: 'Nous organisons votre circuit',
@@ -648,7 +646,7 @@ export const translations: Record<Language, TranslationKeys> = {
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
       description: "Service de connexion quotidienne de l'Aéroport de Naples Capodichino à la Côte Amalfitaine. Le moyen le plus confortable et le plus pratique d'atteindre les merveilles de la Côte Amalfitaine directement depuis l'aéroport.",
-      dailyConnection: 'Connexion Quotidienne', dailyRuns: '6 départs par jour', routeTitle: 'Itinéraire et Arrêts', bookTicket: 'RÉSERVEZ VOTRE BILLET',
+      dailyConnection: 'Connexion Quotidienne', routeTitle: 'Itinéraire et Arrêts', bookTicket: 'RÉSERVEZ VOTRE BILLET',
       routeStops: ['Naples (Aéroport)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Services à Bord', comfort: 'Confort', comfortDesc: 'Sièges inclinables et espaces spacieux pour un voyage confortable',
@@ -729,7 +727,7 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     stats: {
       years: '20+', yearsLabel: 'Jahre Erfahrung', vehicles: '22', vehiclesLabel: 'Fahrzeuge für jeden Bedarf',
-      seats: '800+', seatsLabel: 'Gesamtsitzplätze', stops: '6', stopsLabel: 'Tägliche Haltestellen Amalfi-Capodichino',
+      seats: '800+', seatsLabel: 'Gesamtsitzplätze', stops: '15', stopsLabel: 'Tägliche Haltestellen Amalfi-Capodichino',
     },
     video: { title: 'Entdecken Sie Pintour', subtitle: 'Sehen Sie sich unser Video an und entdecken Sie unsere Dienstleistungen', play: 'Video abspielen' },
     tours: {
@@ -751,7 +749,7 @@ export const translations: Record<Language, TranslationKeys> = {
         amalfi: 'Amalfiküste', amalfiDesc: 'Amalfi, Positano und Ravello. Ein traumhaftes UNESCO-Erbe.',
         pompei: 'Pompeji', pompeiDesc: 'Die berühmtesten Ausgrabungen der Welt, eine Reise ins alte Rom.',
         sorrento: 'Sorrent', sorrentoDesc: 'Zitronen, Meer und Panoramen auf der Halbinsel Sorrent.',
-        capri: 'Capri', capriDesc: 'Faraglioni, Anacapri und die Piazzetta. Die Insel im Blauen.',
+        pisa: 'Pisa', pisaDesc: 'Schiefer Turm, Piazza dei Miracoli und Flussufer. Die Stadt des berühmten Turms.',
         parigi: 'Paris', parigiDesc: 'Mehrtägige Europatour: Paris und das Loiretal.',
       },
       quoteTitle: 'Wir organisieren Ihre Tour',
@@ -795,7 +793,7 @@ export const translations: Record<Language, TranslationKeys> = {
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
       description: 'Täglicher Verbindungsservice vom Flughafen Neapel Capodichino zur Amalfiküste. Die bequemste und einfachste Art, die Wunder der Amalfiküste direkt vom Flughafen zu erreichen.',
-      dailyConnection: 'Tägliche Verbindung', dailyRuns: '6 tägliche Fahrten', routeTitle: 'Route und Haltestellen', bookTicket: 'TICKET BUCHEN',
+      dailyConnection: 'Tägliche Verbindung', routeTitle: 'Route und Haltestellen', bookTicket: 'TICKET BUCHEN',
       routeStops: ['Neapel (Flughafen)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Bordservices', comfort: 'Komfort', comfortDesc: 'Verstellbare Sitze und großzügige Räume für eine komfortable Reise',
@@ -876,7 +874,7 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     stats: {
       years: '20+', yearsLabel: 'Años de experiencia', vehicles: '22', vehiclesLabel: 'Vehículos para cada necesidad',
-      seats: '800+', seatsLabel: 'Plazas totales', stops: '6', stopsLabel: 'Paradas diarias Amalfi-Capodichino',
+      seats: '800+', seatsLabel: 'Plazas totales', stops: '15', stopsLabel: 'Paradas diarias Amalfi-Capodichino',
     },
     video: { title: 'Descubre Pintour', subtitle: 'Mira nuestro vídeo y descubre nuestros servicios', play: 'Reproducir vídeo' },
     tours: {
@@ -898,7 +896,7 @@ export const translations: Record<Language, TranslationKeys> = {
         amalfi: 'Costa Amalfitana', amalfiDesc: 'Amalfi, Positano y Ravello. Un patrimonio UNESCO de ensueño.',
         pompei: 'Pompeya', pompeiDesc: 'Las excavaciones más famosas del mundo, un viaje a la Roma antigua.',
         sorrento: 'Sorrento', sorrentoDesc: 'Limones, mar y panoramas en la Península Sorrentina.',
-        capri: 'Capri', capriDesc: 'Farallones, Anacapri y la Piazzetta. La isla en el azul.',
+        pisa: 'Pisa', pisaDesc: 'Torre inclinada, Piazza dei Miracoli y rivera. La ciudad de la famosa torre.',
         parigi: 'París', parigiDesc: 'Circuito europeo de varios días: París y el Valle del Loira.',
       },
       quoteTitle: 'Organizamos tu circuito',
@@ -942,7 +940,7 @@ export const translations: Record<Language, TranslationKeys> = {
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
       description: 'Servicio de conexión diaria del Aeropuerto de Nápoles Capodichino a la Costa Amalfitana. La forma más cómoda y conveniente de llegar a las maravillas de la Costa Amalfitana directamente desde el aeropuerto.',
-      dailyConnection: 'Conexión Diaria', dailyRuns: '6 salidas diarias', routeTitle: 'Ruta y Paradas', bookTicket: 'RESERVA TU BILLETE',
+      dailyConnection: 'Conexión Diaria', routeTitle: 'Ruta y Paradas', bookTicket: 'RESERVA TU BILLETE',
       routeStops: ['Nápoles (Aeropuerto)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Servicios a Bordo', comfort: 'Confort', comfortDesc: 'Asientos reclinables y espacios amplios para un viaje cómodo',

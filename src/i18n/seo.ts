@@ -26,11 +26,11 @@ export const seoData: SeoMap = {
     es: { title: 'Circuitos en Autobús Italia y Europa | Pintour Bus', description: 'Circuitos en autobús para grupos: Roma, Florencia, Nápoles, Costa Amalfitana, Pompeya, Sorrento, Capri y circuitos europeos. Itinerarios organizados y a medida con conductor.' },
   },
   shuttle: {
-    it: { title: 'Shuttle Bus Napoli Amalfi | Aeroporto Capodichino - Costiera Amalfitana', description: "Shuttle bus giornaliero dall'Aeroporto di Napoli Capodichino alla Costiera Amalfitana. 6 corse giornaliere con fermate a Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi." },
-    en: { title: 'Shuttle Bus Naples Amalfi | Capodichino Airport - Amalfi Coast', description: 'Daily shuttle bus from Naples Capodichino Airport to the Amalfi Coast. 6 daily runs with stops at Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
-    fr: { title: 'Shuttle Bus Naples Amalfi | Aéroport Capodichino - Côte Amalfitaine', description: "Navette bus quotidienne de l'Aéroport de Naples Capodichino à la Côte Amalfitaine. 6 départs quotidiens avec arrêts à Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi." },
-    de: { title: 'Shuttle Bus Neapel Amalfi | Flughafen Capodichino - Amalfiküste', description: 'Täglicher Shuttle-Bus vom Flughafen Neapel Capodichino zur Amalfiküste. 6 tägliche Fahrten mit Haltestellen in Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
-    es: { title: 'Shuttle Bus Nápoles Amalfi | Aeropuerto Capodichino - Costa Amalfitana', description: 'Shuttle bus diario del Aeropuerto de Nápoles Capodichino a la Costa Amalfitana. 6 salidas diarias con paradas en Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
+    it: { title: 'Shuttle Bus Napoli Amalfi | Aeroporto Capodichino - Costiera Amalfitana', description: "Shuttle bus giornaliero dall'Aeroporto di Napoli Capodichino alla Costiera Amalfitana. 15 corse giornaliere con fermate a Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi." },
+    en: { title: 'Shuttle Bus Naples Amalfi | Capodichino Airport - Amalfi Coast', description: 'Daily shuttle bus from Naples Capodichino Airport to the Amalfi Coast. 15 daily runs with stops at Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
+    fr: { title: 'Shuttle Bus Naples Amalfi | Aéroport Capodichino - Côte Amalfitaine', description: "Navette bus quotidienne de l'Aéroport de Naples Capodichino à la Côte Amalfitaine. 15 départs quotidiens avec arrêts à Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi." },
+    de: { title: 'Shuttle Bus Neapel Amalfi | Flughafen Capodichino - Amalfiküste', description: 'Täglicher Shuttle-Bus vom Flughafen Neapel Capodichino zur Amalfiküste. 15 tägliche Fahrten mit Haltestellen in Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
+    es: { title: 'Shuttle Bus Nápoles Amalfi | Aeropuerto Capodichino - Costa Amalfitana', description: 'Shuttle bus diario del Aeropuerto de Nápoles Capodichino a la Costa Amalfitana. 15 salidas diarias con paradas en Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
   },
   rental: {
     it: { title: 'Noleggio Bus con Conducente | Costiera Amalfitana - Pintour Bus', description: 'Noleggio bus con conducente per gite, escursioni, tour in Italia ed Europa. Bus da 54, 40, 30 posti, shuttle bus, auto VIP. Richiedi preventivo gratuito.' },

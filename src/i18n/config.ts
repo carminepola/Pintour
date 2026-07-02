@@ -2,10 +2,16 @@ export const SITE_URL = 'https://www.pintourbus.com';
 
 // Immagini in locale (public/images) - self-contained, nessuna dipendenza esterna
 const IMG = (name: string) => `/images/${name}`;
-export const LOGO_URL = IMG('logo_038548095d6085fcbe767225213c3524_1x.png');
+export const LOGO_URL = IMG('logo-largo.png');
+export const LOGO_MARK_URL = IMG('logo.png');
 export const HERO_IMG = IMG('strada-costiera-amalfitana-maxw-1280.jpg');
 export const VIDEO_URL = IMG('pintour-spot.mp4');
-export const FAVICON_URL = IMG('favicon.png');
+
+export const FAVICON_URL = IMG('favicon.ico');
+export const FAVICON_32 = IMG('favicon-32x32.png');
+export const FAVICON_16 = IMG('favicon-16x16.png');
+export const APPLE_TOUCH_ICON = IMG('apple-touch-icon.png');
+export const WEB_MANIFEST = IMG('site.webmanifest');
 export const SHUTTLE_BOOKING_URL = 'https://shuttlebus.pintourbus.com';
 export const MOBILITY_CHARTER_URL = IMG('carta-della-mobilita-.pdf');
 

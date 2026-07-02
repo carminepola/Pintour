@@ -1,7 +1,6 @@
 ---
 import Icon from '../components/Icon.astro';
 import { useTranslations } from '../i18n/translations';
-import { HERO_IMG } from '../i18n/config';
 import { privacyContent } from '../i18n/privacy';
 import type { Language } from '../i18n/config';
 
@@ -11,13 +10,9 @@ const t = useTranslations(lang);
 const blocks = privacyContent[lang];
 ---
 <div>
-  <section class="relative py-20 md:py-28 overflow-hidden">
-    <div class="absolute inset-0">
-      <img src={HERO_IMG} alt="Privacy" class="w-full h-full object-cover" />
-      <div class="hero-gradient-dark absolute inset-0"></div>
-    </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4">
-      <div class="max-w-2xl">
+  <section data-reveal class="corp-hero">
+    <div class="max-w-7xl mx-auto px-4 py-20 md:py-28">
+      <div class="max-w-3xl">
         <div class="flex items-center gap-2 text-white/70 text-sm mb-6">
           <span>{t.nav.home}</span><Icon name="chevronRight" class="w-4 h-4" /><span class="text-white font-medium">{t.footer.privacy}</span>
         </div>
@@ -26,7 +21,7 @@ const blocks = privacyContent[lang];
     </div>
   </section>
 
-  <section class="py-16 md:py-20 bg-white">
+  <section data-reveal class="py-16 md:py-20 bg-white">
     <div class="max-w-3xl mx-auto px-4 privacy-content">
       {blocks.map((b) => (
         <>

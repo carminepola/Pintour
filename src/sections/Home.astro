@@ -1,146 +1,161 @@
 ---
 import Icon from '../components/Icon.astro';
 import { useTranslations } from '../i18n/translations';
-import { pathFor, SHUTTLE_BOOKING_URL, HERO_IMG, VIDEO_URL } from '../i18n/config';
+import { pathFor, SHUTTLE_BOOKING_URL } from '../i18n/config';
 import { serviceCards, destinations, whyItems } from '../i18n/data';
-import type { Language } from '../i18n/config';
+import type { Language, PageKey } from '../i18n/config';
 
 interface Props { lang: Language; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const stats = [
-  { value: t.stats.years, label: t.stats.yearsLabel, color: '#ec2a7a' },
-  { value: t.stats.vehicles, label: t.stats.vehiclesLabel, color: '#ec2a7a' },
-  { value: t.stats.seats, label: t.stats.seatsLabel, color: '#ec2a7a' },
-  { value: t.stats.stops, label: t.stats.stopsLabel, color: '#ec2a7a' },
+  { value: t.stats.years, label: t.stats.yearsLabel },
+  { value: t.stats.vehicles, label: t.stats.vehiclesLabel },
+  { value: t.stats.seats, label: t.stats.seatsLabel },
+  { value: t.stats.stops, label: t.stats.stopsLabel },
 ];
 
 const featuredTours = destinations.slice(0, 4);
+
+const serviceIcon: Record<PageKey, string> = {
+  home: 'mapPin', tours: 'mapPin', shuttle: 'bus', rental: 'users', vehicles: 'car',
+  about: 'award', contacts: 'mail', privacy: 'shield',
+};
 ---
 <div>
-  <section class="relative h-[70vh] min-h-[500px] md:h-[85vh] md:min-h-[600px] overflow-hidden">
-    <div class="absolute inset-0">
-      <img src={HERO_IMG} alt="Amalfi Coast" class="w-full h-full object-cover" />
-      <div class="hero-gradient absolute inset-0"></div>
-    </div>
-    <div class="relative z-10 h-full flex items-center">
-      <div class="max-w-7xl mx-auto px-4 w-full">
-        <div data-hero-slide class="hero-slide is-active max-w-2xl">
-          <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">{t.tours.heroTitle}</h1>
-          <p class="text-base md:text-lg text-[#d9f3ff] uppercase tracking-wider font-bold mb-3">{t.tours.heroSubtitle}</p>
-          <p class="text-base md:text-lg text-white/85 mb-8 max-w-xl leading-relaxed">{t.tours.heroDesc}</p>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <a href={pathFor(lang, 'tours')} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ec2a7a] text-white font-bold rounded-full hover:bg-[#d4236a] transition-all hover:scale-105 text-sm md:text-base">{t.tours.bookCta}<Icon name="arrowRight" class="w-4 h-4" /></a>
-            <a href={pathFor(lang, 'rental')} class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-[#1a1064] transition-all text-sm md:text-base">{t.hero.slide2Cta2}</a>
-          </div>
+  {/* HERO — statico, corporate, niente immagini */}
+  <section data-reveal class="corp-hero">
+    <div class="max-w-7xl mx-auto px-4 py-24 md:py-36">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="h-px w-10 bg-[#0f4c81]"></span>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-white/70">{t.tours.heroSubtitle}</span>
         </div>
-        <div data-hero-slide class="hero-slide is-hidden max-w-2xl">
-          <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">{t.hero.slide1Title}</h1>
-          <p class="text-lg md:text-xl text-white/90 mb-8 font-medium">{t.hero.slide1Subtitle}</p>
-          <a href={SHUTTLE_BOOKING_URL} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ec2a7a] text-white font-bold rounded-full hover:bg-[#d4236a] transition-all hover:scale-105 text-sm md:text-base">
-            {t.hero.slide1Cta}<Icon name="arrowRight" class="w-4 h-4" />
-          </a>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.05]">{t.tours.heroTitle}</h1>
+        <p class="text-base md:text-lg text-white/70 mb-9 max-w-2xl leading-relaxed">{t.tours.heroDesc}</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href={pathFor(lang, 'tours')} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-colors text-sm md:text-base">{t.tours.bookCta}<Icon name="arrowRight" class="w-4 h-4" /></a>
+          <a href={pathFor(lang, 'rental')} class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/25 text-white font-bold rounded-md hover:bg-white/10 transition-colors text-sm md:text-base">{t.hero.slide2Cta2}</a>
         </div>
       </div>
     </div>
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-3">
-      <button data-hero-dot class="w-8 h-3 rounded-full bg-[#ec2a7a] transition-all" aria-label="Slide 1"></button>
-      <button data-hero-dot class="w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all" aria-label="Slide 2"></button>
+  </section>
+
+  {/* NUMBERS STRIP */}
+  <section class="bg-white border-b border-[#e5e7eb]">
+    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
+        {stats.map((s, i) => (
+          <div data-reveal style={`transition-delay:${i * 90}ms`} class="text-center md:text-left">
+            <p class="text-4xl md:text-5xl font-extrabold text-[#0f4c81] mb-1 tracking-tight">{s.value}</p>
+            <p class="text-xs md:text-sm text-gray-500 font-medium uppercase tracking-wide">{s.label}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
+  {/* SERVICES — card icona, niente foto */}
   <section class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-        {serviceCards.map((card) => (
-          <a href={pathFor(lang, card.page)} class="card-hover bg-white rounded-2xl shadow-lg border border-[#e2e8f0] overflow-hidden group block">
-            <div class="relative h-40 overflow-hidden">
-              <img src={card.image} alt={t.services[card.titleKey as keyof typeof t.services]} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div class="absolute top-3 left-3"><img src={card.icon} alt="" class="w-10 h-10" /></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {serviceCards.map((card, i) => (
+          <a href={pathFor(lang, card.page)} data-reveal style={`transition-delay:${i * 80}ms`} class="card-hover bg-white rounded-lg border border-[#e5e7eb] p-6 group block">
+            <div class="w-12 h-12 rounded-md bg-[#0f4c81]/10 flex items-center justify-center mb-5">
+              <Icon name={serviceIcon[card.page]} class="w-6 h-6 text-[#0f4c81]" />
             </div>
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-[#1a1064] mb-2">{t.services[card.titleKey as keyof typeof t.services]}</h3>
-              <p class="text-sm text-gray-600 mb-4 leading-relaxed">{t.services[card.descKey as keyof typeof t.services]}</p>
-              <span class="inline-flex items-center gap-2 text-[#ec2a7a] font-semibold text-sm hover:gap-3 transition-all">{t.services.discoverMore}<Icon name="arrowRight" class="w-4 h-4" /></span>
-            </div>
+            <h3 class="text-lg font-bold text-[#0f2540] mb-2">{t.services[card.titleKey as keyof typeof t.services]}</h3>
+            <p class="text-sm text-gray-600 mb-5 leading-relaxed">{t.services[card.descKey as keyof typeof t.services]}</p>
+            <span class="inline-flex items-center gap-2 text-[#0f4c81] font-semibold text-sm group-hover:gap-3 transition-all">{t.services.discoverMore}<Icon name="arrowRight" class="w-4 h-4" /></span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="py-16 md:py-24 bg-[#24227a] relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-[#ec2a7a]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#25867f]/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-        {stats.map((s) => (
-          <div class="text-center">
-            <p class="text-4xl md:text-5xl font-extrabold mb-2 animate-count-up" style={`color:${s.color}`}>{s.value}</p>
-            <p class="text-sm md:text-base text-white/80 font-medium">{s.label}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16 md:py-24 bg-[#d9f3ff]/30">
+  {/* FEATURED TOURS */}
+  <section class="py-16 md:py-24 bg-[#eef3f8]/40">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1064] mb-3">{t.tours.sectionTitle}</h2>
-        <p class="text-gray-600">{t.tours.sectionSubtitle}</p>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10" data-reveal>
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="h-px w-8 bg-[#0f4c81]"></span>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#0f4c81]">{t.tours.heroTitle}</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-[#0f2540]">{t.tours.sectionTitle}</h2>
+          <p class="mt-3 text-gray-600">{t.tours.sectionSubtitle}</p>
+        </div>
+        <a href={pathFor(lang, 'tours')} class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#0f2540] hover:text-[#0f4c81] transition-colors whitespace-nowrap">{t.tours.viewAll}<Icon name="arrowRight" class="w-4 h-4" /></a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featuredTours.map((d) => (
-          <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#e2e8f0] flex flex-col">
-            <div class="relative h-40 flex items-center justify-center" style={`background: linear-gradient(135deg, ${d.from}, ${d.to})`}>
-              <span class="text-6xl drop-shadow-lg">{d.emoji}</span>
-              <span class="absolute top-3 right-3 bg-white/90 text-[#1a1064] text-xs font-bold px-3 py-1 rounded-full">{t.tours.from} {d.priceFrom}</span>
-            </div>
+        {featuredTours.map((d, i) => (
+          <div data-reveal style={`transition-delay:${i * 80}ms`} class="bg-white rounded-lg overflow-hidden border border-[#e5e7eb] flex flex-col">
+            <div class="relative h-32">
+              <img src={d.image} alt={t.tours.destinations[`${d.key}` as keyof typeof t.tours.destinations]} class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <h3 class="absolute bottom-0 left-0 p-5 text-white text-xl font-bold leading-tight">{t.tours.destinations[`${d.key}` as keyof typeof t.tours.destinations]}</h3>
+                 </div>
             <div class="p-5 flex flex-col flex-1">
-              <h3 class="text-lg font-bold text-[#1a1064] mb-1">{t.tours.destinations[`${d.key}` as keyof typeof t.tours.destinations]}</h3>
               <p class="text-sm text-gray-600 leading-relaxed flex-1">{t.tours.destinations[`${d.key}Desc` as keyof typeof t.tours.destinations]}</p>
-              <a href={`${pathFor(lang, 'tours')}#quote`} class="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#ec2a7a] text-white text-sm font-bold rounded-full hover:bg-[#d4236a] transition-all">{t.tours.requestQuote}<Icon name="arrowRight" class="w-4 h-4" /></a>
+              <a href={`${pathFor(lang, 'tours')}#quote`} class="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#0f4c81] text-white text-sm font-bold rounded-md hover:bg-[#0a3a62] transition-colors">{t.tours.requestQuote}<Icon name="arrowRight" class="w-4 h-4" /></a>
             </div>
           </div>
         ))}
       </div>
-      <div class="text-center mt-10">
-        <a href={pathFor(lang, 'tours')} class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border-2 border-[#1a1064] text-[#1a1064] font-bold rounded-full hover:bg-[#1a1064] hover:text-white transition-all">{t.tours.viewAll}<Icon name="arrowRight" class="w-4 h-4" /></a>
+      <div class="text-center mt-10 md:hidden" data-reveal>
+        <a href={pathFor(lang, 'tours')} class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border-2 border-[#0f2540] text-[#0f2540] font-bold rounded-md hover:bg-[#0f2540] hover:text-white transition-colors">{t.tours.viewAll}<Icon name="arrowRight" class="w-4 h-4" /></a>
       </div>
     </div>
   </section>
 
+  {/* WHY US — layout asimmetrico corporate */}
   <section class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1064] mb-3">{t.whyUs.title}</h2>
-        <p class="text-gray-600">{t.whyUs.subtitle}</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {whyItems.map((item) => (
-          <div class="text-center p-6 rounded-2xl bg-[#d9f3ff]/30 hover:bg-[#d9f3ff]/50 transition-colors">
-            <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style={`background:${item.color}15`}>
-              <Icon name={item.icon} class="w-7 h-7" style={`color:${item.color}`} />
-            </div>
-            <h3 class="text-lg font-bold text-[#1a1064] mb-2">{t.whyUs[item.titleKey]}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{t.whyUs[`${item.titleKey}Desc` as keyof typeof t.whyUs]}</p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+        <div class="lg:col-span-4" data-reveal="left">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="h-px w-8 bg-[#0f4c81]"></span>
           </div>
-        ))}
+          <h2 class="text-3xl md:text-4xl font-bold text-[#0f2540] mb-4">{t.whyUs.title}</h2>
+          <p class="text-gray-600 leading-relaxed">{t.whyUs.subtitle}</p>
+        </div>
+        <div class="lg:col-span-8">
+          <div class="border-t border-[#e5e7eb]">
+            {whyItems.map((item, i) => (
+              <div data-reveal style={`transition-delay:${i * 80}ms`} class="border-b border-[#e5e7eb] py-6 flex items-start gap-5">
+                <div class="w-12 h-12 rounded-md flex items-center justify-center flex-shrink-0" style={`background-color:${item.color}15`}>
+                  <Icon name={item.icon} class="w-6 h-6" style={`color:${item.color}`} />
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-[#0f2540] mb-1">{t.whyUs[item.titleKey]}</h3>
+                  <p class="text-sm text-gray-600 leading-relaxed">{t.whyUs[`${item.titleKey}Desc` as keyof typeof t.whyUs]}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="py-16 md:py-24 bg-[#d9f3ff]/30">
+  {/* REVIEWS */}
+  <section class="py-16 md:py-24 bg-[#eef3f8]/40">
     <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl mb-10" data-reveal>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="h-px w-8 bg-[#0f4c81]"></span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#0f2540]">{t.reviews.title}</h2>
+        <p class="mt-3 text-gray-600">{t.reviews.subtitle}</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {t.reviews.items.map((r) => (
-          <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col">
-            <div class="flex gap-1 mb-3 text-[#ec2a7a]">{'★★★★★'}</div>
+        {t.reviews.items.map((r, i) => (
+          <div data-reveal style={`transition-delay:${i * 80}ms`} class="bg-white rounded-lg p-6 border border-[#e5e7eb] flex flex-col">
+            <div class="flex gap-1 mb-3 text-[#25867f]">{'★★★★★'}</div>
             <p class="text-sm text-gray-700 leading-relaxed flex-1 italic">“{r.text}”</p>
             <div class="mt-4 pt-4 border-t border-gray-100">
-              <p class="font-bold text-[#1a1064] text-sm">{r.name}</p>
+              <p class="font-bold text-[#0f2540] text-sm">{r.name}</p>
               <p class="text-xs text-gray-500">{r.role}</p>
             </div>
           </div>
@@ -149,42 +164,12 @@ const featuredTours = destinations.slice(0, 4);
     </div>
   </section>
 
-  <section class="py-16 md:py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1064] mb-3">{t.video.title}</h2>
-        <p class="text-gray-600">{t.video.subtitle}</p>
-      </div>
-      <div data-video-wrap class="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-[#1a1064] group">
-        <video data-video class="w-full h-full object-cover" poster={HERO_IMG} preload="none" controls playsinline>
-          <source src={VIDEO_URL} type="video/mp4" />
-        </video>
-        <button data-video-play class="absolute inset-0 flex items-center justify-center bg-[#1a1064]/40 transition-opacity" aria-label={t.video.play}>
-          <span class="play-pulse relative w-20 h-20 bg-[#ec2a7a] rounded-full flex items-center justify-center hover:bg-[#d4236a] transition-colors hover:scale-110 transform duration-200">
-            <Icon name="play" class="w-8 h-8 text-white ml-1" />
-          </span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16 md:py-24 bg-gradient-to-br from-[#1a1064] to-[#24227a] relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-80 h-80 bg-[#ec2a7a]/20 rounded-full -translate-y-1/3 translate-x-1/3 blur-2xl"></div>
-    <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+  {/* CTA */}
+  <section class="corp-hero">
+    <div class="max-w-4xl mx-auto px-4 py-20 md:py-28 text-center" data-reveal>
       <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">{t.cta.title}</h2>
-      <p class="text-lg text-white/85 mb-8 max-w-2xl mx-auto">{t.cta.subtitle}</p>
-      <a href={`${pathFor(lang, 'tours')}#quote`} class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#ec2a7a] text-white font-bold rounded-full hover:bg-[#d4236a] transition-all hover:scale-105 text-base shadow-xl">{t.cta.button}<Icon name="arrowRight" class="w-5 h-5" /></a>
+      <p class="text-lg text-white/70 mb-8 max-w-2xl mx-auto">{t.cta.subtitle}</p>
+      <a href={`${pathFor(lang, 'tours')}#quote`} class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-colors text-base">{t.cta.button}<Icon name="arrowRight" class="w-5 h-5" /></a>
     </div>
   </section>
 </div>
-
-<script>
-  document.querySelectorAll('[data-video-wrap]').forEach(function (wrap) {
-    const video = wrap.querySelector('[data-video]') as HTMLVideoElement | null;
-    const playBtn = wrap.querySelector('[data-video-play]') as HTMLElement | null;
-    if (!video || !playBtn) return;
-    playBtn.addEventListener('click', function () { video.play(); });
-    video.addEventListener('play', function () { playBtn.style.opacity = '0'; playBtn.style.pointerEvents = 'none'; });
-    video.addEventListener('pause', function () { playBtn.style.opacity = '1'; playBtn.style.pointerEvents = 'auto'; });
-  });
-</script>

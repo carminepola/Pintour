@@ -26,13 +26,13 @@ export interface Vehicle {
 }
 
 export const vehicles: Vehicle[] = [
-  { key: 'bus54', image: '/images/WhatsApp-Image-2019-06-07-at-11.00.52-1-thegem-portfolio-metro.jpg', color: '#1a1064', count: '6', icon: 'bus' },
-  { key: 'bus40', image: '/images/WhatsApp-Image-2019-06-07-at-11.03.38-2-1-thegem-portfolio-metro.jpeg', color: '#24227a', count: '6', icon: 'bus' },
-  { key: 'bus30', image: '/images/2911-thegem-portfolio-metro.jpeg', color: '#25867f', count: '7', icon: 'bus' },
-  { key: 'shuttle20', image: '/images/WhatsApp-Image-2019-04-11-at-13.50.10-1-thegem-portfolio-metro.jpg', color: '#ec2a7a', count: '', icon: 'bus' },
-  { key: 'shuttle8', image: '/images/vito-thegem-portfolio-metro.jpg', color: '#1a1064', count: '2', icon: 'users' },
-  { key: 'auto4', image: '/images/mercedes_classe_e_vip_1_20161125_1648113092-thegem-portfolio-metro.jpg', color: '#24227a', count: '1', icon: 'car' },
-  { key: 'luggage', image: '/images/1-fiat-ducato-maxi-3.0-mjet-usato-galatina-lecce-salento-www.centrautogroup.it_-thegem-portfolio-metro.jpg', color: '#25867f', count: '2', icon: 'luggage' },
+  { key: 'bus54', image: '/images/WhatsApp-Image-2019-06-07-at-11.00.52-1-thegem-portfolio-metro.jpg', color: '#0f2540', count: '6', icon: 'bus' },
+  { key: 'bus40', image: '/images/WhatsApp-Image-2019-06-07-at-11.03.38-2-1-thegem-portfolio-metro.jpeg', color: '#1c3a55', count: '6', icon: 'bus' },
+  { key: 'bus30', image: '/images/2911-thegem-portfolio-metro.jpeg', color: '#0f4c81', count: '7', icon: 'bus' },
+  { key: 'shuttle20', image: '/images/WhatsApp-Image-2019-04-11-at-13.50.10-1-thegem-portfolio-metro.jpg', color: '#0f4c81', count: '', icon: 'bus' },
+  { key: 'shuttle8', image: '/images/vito-thegem-portfolio-metro.jpg', color: '#0f2540', count: '2', icon: 'users' },
+  { key: 'auto4', image: '/images/mercedes_classe_e_vip_1_20161125_1648113092-thegem-portfolio-metro.jpg', color: '#1c3a55', count: '1', icon: 'car' },
+  { key: 'luggage', image: '/images/1-fiat-ducato-maxi-3.0-mjet-usato-galatina-lecce-salento-www.centrautogroup.it_-thegem-portfolio-metro.jpg', color: '#0f4c81', count: '2', icon: 'luggage' },
 ];
 
 export const serviceCards = [
@@ -43,7 +43,7 @@ export const serviceCards = [
 ];
 
 export type RegionKey = 'lazio' | 'toscana' | 'campania' | 'europa';
-export type DestinationKey = 'roma' | 'firenze' | 'napoli' | 'amalfi' | 'pompei' | 'sorrento' | 'capri' | 'parigi';
+export type DestinationKey = 'roma' | 'firenze' | 'napoli' | 'amalfi' | 'pompei' | 'sorrento' | 'pisa' | 'parigi';
 
 export interface Destination {
   key: DestinationKey;
@@ -54,17 +54,18 @@ export interface Destination {
   color: string;
   priceFrom: string;
   durationKey: 'half' | 'full' | 'multi';
+  image: string;
 }
 
 export const destinations: Destination[] = [
-  { key: 'roma', region: 'lazio', emoji: '🏛️', from: '#1a1064', to: '#24227a', color: '#1a1064', priceFrom: '€39', durationKey: 'full' },
-  { key: 'firenze', region: 'toscana', emoji: '🎨', from: '#ec2a7a', to: '#d4236a', color: '#ec2a7a', priceFrom: '€49', durationKey: 'multi' },
-  { key: 'napoli', region: 'campania', emoji: '🌋', from: '#25867f', to: '#1f6b65', color: '#25867f', priceFrom: '€29', durationKey: 'full' },
-  { key: 'amalfi', region: 'campania', emoji: '🌊', from: '#24227a', to: '#1a1064', color: '#24227a', priceFrom: '€35', durationKey: 'full' },
-  { key: 'pompei', region: 'campania', emoji: '🏺', from: '#ec2a7a', to: '#24227a', color: '#ec2a7a', priceFrom: '€25', durationKey: 'half' },
-  { key: 'sorrento', region: 'campania', emoji: '🍋', from: '#25867f', to: '#24227a', color: '#25867f', priceFrom: '€30', durationKey: 'full' },
-  { key: 'capri', region: 'campania', emoji: '🏝️', from: '#1a1064', to: '#25867f', color: '#1a1064', priceFrom: '€45', durationKey: 'full' },
-  { key: 'parigi', region: 'europa', emoji: '🗼', from: '#24227a', to: '#ec2a7a', color: '#24227a', priceFrom: '€199', durationKey: 'multi' },
+  { key: 'roma', region: 'lazio', emoji: '🏛️', from: '#0f2540', to: '#1c3a55', color: '#0f2540', priceFrom: '€39', durationKey: 'full', image: '/images/roma-colosseum.jpg' },
+  { key: 'firenze', region: 'toscana', emoji: '🎨', from: '#0f4c81', to: '#0a3a62', color: '#0f4c81', priceFrom: '€49', durationKey: 'multi', image: '/images/firenze-duomo.jpg' },
+  { key: 'napoli', region: 'campania', emoji: '🌋', from: '#0f4c81', to: '#0a3a62', color: '#0f4c81', priceFrom: '€29', durationKey: 'full', image: '/images/napoli-vesuvius.jpg' },
+  { key: 'amalfi', region: 'campania', emoji: '🌊', from: '#1c3a55', to: '#0f2540', color: '#1c3a55', priceFrom: '€35', durationKey: 'full', image: '/images/amalfi-coast.jpg' },
+  { key: 'pompei', region: 'campania', emoji: '🏺', from: '#0f4c81', to: '#1c3a55', color: '#0f4c81', priceFrom: '€25', durationKey: 'half', image: '/images/pompei-ruins.jpg' },
+  { key: 'sorrento', region: 'campania', emoji: '🍋', from: '#0f4c81', to: '#1c3a55', color: '#0f4c81', priceFrom: '€30', durationKey: 'full', image: '/images/sorrento-coast.jpg' },
+  { key: 'pisa', region: 'toscana', emoji: '🏛️', from: '#0f4c81', to: '#0a3a62', color: '#0f4c81', priceFrom: '€39', durationKey: 'full', image: '/images/pisa-tower.jpg' },
+  { key: 'parigi', region: 'europa', emoji: '🗼', from: '#1c3a55', to: '#0f4c81', color: '#1c3a55', priceFrom: '€199', durationKey: 'multi', image: '/images/parigi-eiffel.jpg' },
 ];
 
 export const regionOrder: RegionKey[] = ['lazio', 'toscana', 'campania', 'europa'];
@@ -76,8 +77,8 @@ export interface WhyItem {
 }
 
 export const whyItems: WhyItem[] = [
-  { icon: 'award', color: '#ec2a7a', titleKey: 'experience' },
-  { icon: 'bus', color: '#1a1064', titleKey: 'fleet' },
+  { icon: 'award', color: '#0f4c81', titleKey: 'experience' },
+  { icon: 'bus', color: '#0f2540', titleKey: 'fleet' },
   { icon: 'shield', color: '#25867f', titleKey: 'safety' },
-  { icon: 'users', color: '#24227a', titleKey: 'drivers' },
+  { icon: 'users', color: '#1c3a55', titleKey: 'drivers' },
 ];
