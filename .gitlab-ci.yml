@@ -11,9 +11,9 @@ build-web:
   before_script:
     - echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER --password-stdin $DOCKER_REGISTRY
   script:
-    - docker build -t $WEB_IMAGE:$CI_COMMIT_SHA -t $WEB_IMAGE:latest .
-    - docker push $WEB_IMAGE:$CI_COMMIT_SHA
-    - docker push $WEB_IMAGE:latest
+    - docker build -t $DOCKER_REGISTRY/$WEB_IMAGE:$CI_COMMIT_SHA -t $WEB_IMAGE:latest .
+    - docker push $DOCKER_REGISTRY/$WEB_IMAGE:$CI_COMMIT_SHA
+    - docker push $DOCKER_REGISTRY/$WEB_IMAGE:latest
   only:
     - main
 
@@ -25,9 +25,9 @@ build-api:
   before_script:
     - echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER --password-stdin $DOCKER_REGISTRY
   script:
-    - docker build -t $API_IMAGE:$CI_COMMIT_SHA -t $API_IMAGE:latest ./server
-    - docker push $API_IMAGE:$CI_COMMIT_SHA
-    - docker push $API_IMAGE:latest
+    - docker build -t $DOCKER_REGISTRY/$API_IMAGE:$CI_COMMIT_SHA -t $API_IMAGE:latest ./server
+    - docker push $DOCKER_REGISTRY/$API_IMAGE:$CI_COMMIT_SHA
+    - docker push $DOCKER_REGISTRY/$API_IMAGE:latest
   only:
     - main
 
