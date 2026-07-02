@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { useTranslations } from '../i18n/translations';
+import { pathFor } from '../i18n/config';
 import type { Language } from '../i18n/config';
 
 interface Props { lang: Language; }
@@ -13,7 +14,7 @@ const t = useTranslations(lang);
       <div class="flex items-start gap-3 flex-1">
         <Icon name="cookie" class="w-6 h-6 text-[#0f4c81] flex-shrink-0 mt-0.5" />
         <p class="text-sm text-[#0f2540] leading-relaxed">
-          {t.cookie.message} <a href="#privacy" class="text-[#0f4c81] underline hover:no-underline">{t.cookie.learnMore}</a>
+          {t.cookie.message} <a href={pathFor(lang, 'privacy')} class="text-[#0f4c81] underline hover:no-underline">{t.cookie.learnMore}</a>
         </p>
       </div>
       <div class="flex items-center gap-2 flex-shrink-0">
