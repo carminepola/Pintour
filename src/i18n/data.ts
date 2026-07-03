@@ -1,15 +1,16 @@
 import type { PageKey } from './config';
 
 export const company = {
-  name: 'Pintour S.C.A.R.L.',
+  name: 'Pintour SOC. COOP. ARL',
   email: 'ordini@pintourbus.com',
   emailInfo: 'info@pintourbus.com',
   phone1: '+39 081 879 2645',
   phone2: '+39 335 691 0211',
   whatsapp: '393356910211',
   vat: '06565461214',
-  legalHQ: { street: 'Via Castellammare, 18', city: '80050 Pimonte (Na)' },
+  legalHQ: { street: 'Via 1° Maggio, 1', city: '06039 Trevi (PG)' },
   operationalHQ: { street: 'Via Mariconda, 39', city: '80045 Pompei (Na)' },
+  operationalHQ2: { street: 'Roma', city: 'Roma' },
 };
 
 // Ordine di navigazione (orientato alla vendita: Tour in evidenza)

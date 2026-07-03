@@ -3,14 +3,17 @@ import { useTranslations } from '../i18n/translations';
 import Icon from '../components/Icon.astro';
 import { serviceCards, destinations, whyItems } from '../i18n/data';
 import { SHUTTLE_BOOKING_URL } from '../i18n/config';
+import { getExperienceYearsString } from '../utils/experience';
 import type { Language, PageKey } from '../i18n/config';
 
 interface Props { lang: Language; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
+const experienceYears = getExperienceYearsString();
+
 const stats = [
-  { value: t.stats.years, label: t.stats.yearsLabel },
+  { value: experienceYears, label: t.stats.yearsLabel },
   { value: t.stats.vehicles, label: t.stats.vehiclesLabel },
   { value: t.stats.seats, label: t.stats.seatsLabel },
   { value: t.stats.stops, label: t.stats.stopsLabel },
@@ -135,7 +138,7 @@ const getPathFor = (page: PageKey): string => {
             <span class="h-px w-8 bg-[#0f4c81]"></span>
           </div>
           <h2 class="text-3xl md:text-4xl font-bold text-[#0f2540] mb-4">{t.whyUs.title}</h2>
-          <p class="text-gray-600 leading-relaxed">{t.whyUs.subtitle}</p>
+          <p class="text-gray-600 leading-relaxed">{t.whyUs.subtitle.replace('{years}', experienceYears.replace('+', ''))}</p>
         </div>
         <div class="lg:col-span-8">
           <div class="border-t border-[#e5e7eb]">

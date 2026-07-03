@@ -3,17 +3,20 @@ import Icon from '../components/Icon.astro';
 import { useTranslations } from '../i18n/translations';
 import { MOBILITY_CHARTER_URL } from '../i18n/config';
 import { company } from '../i18n/data';
+import { getExperienceYearsString } from '../utils/experience';
 import type { Language } from '../i18n/config';
 
 interface Props { lang: Language; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
+const experienceYears = getExperienceYearsString();
+
 const features = [
   { icon: 'shield', color: '#0f2540', title: t.about.feat1Title, desc: t.about.feat1Desc },
   { icon: 'award', color: '#0f4c81', title: t.about.feat2Title, desc: t.about.feat2Desc },
   { icon: 'users', color: '#0f4c81', title: t.about.feat3Title, desc: t.about.feat3Desc },
-  { icon: 'shield', color: '#1c3a55', title: t.about.feat4Title, desc: t.about.feat4Desc },
+  { icon: 'shield', color: '#1c3a55', title: t.about.feat4Title.replace('{years}', experienceYears.replace('+', '')), desc: t.about.feat4Desc },
 ];
 ---
 <div>

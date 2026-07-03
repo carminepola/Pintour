@@ -17,7 +17,8 @@ const navItems = navKeys.map((id) => ({ id, label: t.nav[navLabelKey[id]] }));
   <div class="max-w-7xl mx-auto px-4 py-12 md:py-16">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 <div>
-        <p class="text-sm text-white/70 leading-relaxed mb-4">{t.footer.companyInfo}</p>
+        <p class="text-sm text-white/70 leading-relaxed mb-2">{t.footer.companyInfo}</p>
+        <p class="text-xs text-white/50 mb-4">{company.legalHQ.street}, {company.legalHQ.city}</p>
         <p class="text-xs text-white/50">{t.contacts.vatNumber}: {company.vat}</p>
       </div>
 
@@ -35,7 +36,7 @@ const navItems = navKeys.map((id) => ({ id, label: t.nav[navLabelKey[id]] }));
             <Icon name="mapPin" class="w-4 h-4 mt-1 text-[#0f4c81] flex-shrink-0" />
             <div>
               <p class="text-sm font-medium">{t.contacts.operationalHQ}</p>
-              <p class="text-xs text-white/70">{company.operationalHQ.street}, {company.operationalHQ.city}</p>
+              <p class="text-xs text-white/70">Roma – {company.operationalHQ.street}, {company.operationalHQ.city}</p>
             </div>
           </div>
         </div>
@@ -72,7 +73,7 @@ const navItems = navKeys.map((id) => ({ id, label: t.nav[navLabelKey[id]] }));
 
   <div class="border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p class="text-xs text-white/50">© 2026 Pintour S.C.A.R.L. P.IVA 06565461214</p>
+      <p class="text-xs text-white/50">© 2026 Pintour SOC. COOP. ARL P.IVA 06565461214</p>
       <p class="text-xs text-white/50">© 2026 Carmine Pola</p>
     </div>
   </div>

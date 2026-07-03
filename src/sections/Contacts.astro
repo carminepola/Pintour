@@ -46,11 +46,11 @@ const t = useTranslations(lang);
           <div class="space-y-4">
             <div class="flex items-start gap-3 p-4 bg-[#eef3f8]/30 rounded-xl">
               <div class="w-10 h-10 bg-[#0f2540] rounded-lg flex items-center justify-center flex-shrink-0"><Icon name="mapPin" class="w-5 h-5 text-white" /></div>
-              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.legalHQ}</p><p class="text-sm text-gray-600">Pimonte (Na) – Italia</p><p class="text-sm text-gray-600">{company.legalHQ.street}</p></div>
+              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.legalHQ}</p><p class="text-sm text-gray-600">Trevi (PG) – Italia</p><p class="text-sm text-gray-600">{company.legalHQ.street}, {company.legalHQ.city}</p></div>
             </div>
             <div class="flex items-start gap-3 p-4 bg-[#eef3f8]/30 rounded-xl">
               <div class="w-10 h-10 bg-[#0f4c81] rounded-lg flex items-center justify-center flex-shrink-0"><Icon name="mapPin" class="w-5 h-5 text-white" /></div>
-              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.operationalHQ}</p><p class="text-sm text-gray-600">Pompei (Na) – Italia</p><p class="text-sm text-gray-600">{company.operationalHQ.street}</p></div>
+              <div><p class="font-bold text-[#0f2540] text-sm">{t.contacts.operationalHQ}</p><p class="text-sm text-gray-600">Roma – Pompei (Na) – Italia</p><p class="text-sm text-gray-600">{company.operationalHQ.street}, {company.operationalHQ.city}</p></div>
             </div>
           </div>
           <div class="p-4 bg-[#0f2540] rounded-xl text-white">
