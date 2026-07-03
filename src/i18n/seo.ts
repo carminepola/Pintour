@@ -5,11 +5,11 @@ type SeoMap = Record<PageKey, Record<Language, SeoEntry>>;
 
 export const seoData: SeoMap = {
   home: {
-    it: { title: 'Pintour Bus - Tour in Autobus Italia ed Europa | Noleggio Bus e Shuttle', description: 'Tour in autobus per gruppi, scuole e aziende in Italia ed Europa: Roma, Firenze, Costiera Amalfitana, Napoli, Capri e tour europei. Noleggio bus con conducente e shuttle bus da Napoli.' },
-    en: { title: 'Pintour Bus - Bus Tours in Italy and Europe | Bus Rental & Shuttle', description: 'Bus tours for groups, schools and companies in Italy and Europe: Rome, Florence, Amalfi Coast, Naples, Capri and European tours. Bus rental with driver and shuttle bus from Naples.' },
-    fr: { title: 'Pintour Bus - Circuits en Autocar Italie et Europe | Location Bus & Navette', description: 'Circuits en autocar pour groupes, écoles et entreprises en Italie et en Europe : Rome, Florence, Côte Amalfitaine, Naples, Capri et circuits européens. Location bus avec chauffeur et navette de Naples.' },
-    de: { title: 'Pintour Bus - Busreisen Italien und Europa | Busvermietung & Shuttle', description: 'Busreisen für Gruppen, Schulen und Unternehmen in Italien und Europa: Rom, Florenz, Amalfiküste, Neapel, Capri und Europatouren. Busvermietung mit Fahrer und Shuttle-Bus von Neapel.' },
-    es: { title: 'Pintour Bus - Circuitos en Autobús Italia y Europa | Alquiler de Bus & Shuttle', description: 'Circuitos en autobús para grupos, colegios y empresas en Italia y Europa: Roma, Florencia, Costa Amalfitana, Nápoles, Capri y circuitos europeos. Alquiler de bus con conductor y shuttle desde Nápoles.' },
+    it: { title: 'Pintour Bus - Tour in Autobus Italia ed Europa | Noleggio Bus e Shuttle', description: 'Pintour Bus: tour in autobus, noleggio bus con conducente e shuttle bus per Costiera Amalfitana, Napoli e destinazioni europee. Servizi per gruppi, scuole e aziende.' },
+    en: { title: 'Pintour Bus - Bus Tours in Italy and Europe | Bus Rental & Shuttle', description: 'Pintour Bus: bus tours, bus rental with driver and shuttle bus for Amalfi Coast, Naples and European destinations. Services for groups, schools and companies.' },
+    fr: { title: 'Pintour Bus - Circuits en Autocar Italie et Europe | Location Bus & Navettes', description: 'Pintour Bus: circuits en autocar, location de bus avec chauffeur et navettes pour la Côte Amalfitaine, Naples et destinations européennes. Services pour groupes, écoles et entreprises.' },
+    de: { title: 'Pintour Bus - Busreisen Italien und Europa | Busvermietung & Shuttle', description: 'Pintour Bus: Busreisen, Busvermietung mit Fahrer und Shuttle-Bus für Amalfiküste, Neapel und europäische Ziele. Dienstleistungen für Gruppen, Schulen und Unternehmen.' },
+    es: { title: 'Pintour Bus - Circuitos en Autobús Italia y Europa | Alquiler de Bus & Shuttle', description: 'Pintour Bus: circuitos en autobús, alquiler de bus con conductor y shuttle para Costa Amalfitana, Nápoles y destinos europeos. Servicios para grupos, colegios y empresas.' },
   },
   about: {
     it: { title: 'Chi Siamo - Pintour Bus | Tour e Noleggio Bus Italia', description: 'Scopri Pintour S.C.A.R.L.: oltre 20 anni di esperienza in tour in autobus e noleggio bus con conducente in Italia ed Europa. Flotta Mercedes Benz e Setra da 8 a 55 posti.' },
@@ -19,18 +19,18 @@ export const seoData: SeoMap = {
     es: { title: 'Quiénes Somos - Pintour Bus | Circuitos y Alquiler de Bus Italia', description: 'Descubre Pintour S.C.A.R.L.: más de 20 años de experiencia en circuitos en autobús y alquiler de bus con conductor en Italia y Europa. Flota Mercedes Benz y Setra de 8 a 55 plazas.' },
   },
   tours: {
-    it: { title: 'Tour in Autobus Italia ed Europa | Pintour Bus', description: 'Tour in autobus per gruppi: Roma, Firenze, Napoli, Costiera Amalfitana, Pompei, Sorrento, Capri e tour europei. Itinerari organizzati e su misura con conducente. Richiedi preventivo.' },
-    en: { title: 'Bus Tours in Italy and Europe | Pintour Bus', description: 'Bus tours for groups: Rome, Florence, Naples, Amalfi Coast, Pompeii, Sorrento, Capri and European tours. Organized and tailor-made itineraries with driver. Request a quote.' },
-    fr: { title: 'Circuits en Autocar Italie et Europe | Pintour Bus', description: 'Circuits en autocar pour groupes : Rome, Florence, Naples, Côte Amalfitaine, Pompéi, Sorrente, Capri et circuits européens. Itinéraires organisés et sur mesure avec chauffeur.' },
-    de: { title: 'Busreisen Italien und Europa | Pintour Bus', description: 'Busreisen für Gruppen: Rom, Florenz, Neapel, Amalfiküste, Pompeji, Sorrent, Capri und Europatouren. Organisierte und maßgeschneiderte Routen mit Fahrer.' },
-    es: { title: 'Circuitos en Autobús Italia y Europa | Pintour Bus', description: 'Circuitos en autobús para grupos: Roma, Florencia, Nápoles, Costa Amalfitana, Pompeya, Sorrento, Capri y circuitos europeos. Itinerarios organizados y a medida con conductor.' },
+    it: { title: 'Tour in Autobus Italia ed Europa | Pintour Bus', description: 'Esperienze di viaggio in autobus: itinerari organizzati in Costiera Amalfitana, Pompei, Sorrento, Capri e tour europei. Servizio guidato con conducente esperto.' },
+    en: { title: 'Bus Tours in Italy and Europe | Pintour Bus', description: 'Bus travel experiences: organized itineraries in Amalfi Coast, Pompeii, Sorrento, Capri and European tours. Guided service with experienced driver.' },
+    fr: { title: 'Circuits en Autocar Italie et Europe | Pintour Bus', description: 'Expériences de voyage en autocar : itinéraires organisés en Côte Amalfitaine, Pompéi, Sorrente, Capri et circuits européens. Service guidé avec chauffeur expérimenté.' },
+    de: { title: 'Busreisen Italien und Europa | Pintour Bus', description: 'Busreise-Erlebnisse: organisierte Routen an der Amalfiküste, Pompeji, Sorrent, Capri und Europatouren. Geführter Service mit erfahrenem Fahrer.' },
+    es: { title: 'Circuitos en Autobús Italia y Europa | Pintour Bus', description: 'Experiencias de viaje en autobús: itinerarios organizados en Costa Amalfitana, Pompeya, Sorrento, Capri y circuitos europeos. Servicio guiado con conductor experimentado.' },
   },
   shuttle: {
-    it: { title: 'Shuttle Bus Napoli Amalfi | Aeroporto Capodichino - Costiera Amalfitana', description: "Shuttle bus giornaliero dall'Aeroporto di Napoli Capodichino alla Costiera Amalfitana. 15 corse giornaliere con fermate a Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi." },
-    en: { title: 'Shuttle Bus Naples Amalfi | Capodichino Airport - Amalfi Coast', description: 'Daily shuttle bus from Naples Capodichino Airport to the Amalfi Coast. 15 daily runs with stops at Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
-    fr: { title: 'Shuttle Bus Naples Amalfi | Aéroport Capodichino - Côte Amalfitaine', description: "Navette bus quotidienne de l'Aéroport de Naples Capodichino à la Côte Amalfitaine. 15 départs quotidiens avec arrêts à Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi." },
-    de: { title: 'Shuttle Bus Neapel Amalfi | Flughafen Capodichino - Amalfiküste', description: 'Täglicher Shuttle-Bus vom Flughafen Neapel Capodichino zur Amalfiküste. 15 tägliche Fahrten mit Haltestellen in Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
-    es: { title: 'Shuttle Bus Nápoles Amalfi | Aeropuerto Capodichino - Costa Amalfitana', description: 'Shuttle bus diario del Aeropuerto de Nápoles Capodichino a la Costa Amalfitana. 15 salidas diarias con paradas en Vietri sul Mare, Cetara, Maiori, Minori, Atrani, Amalfi.' },
+    it: { title: 'Shuttle Bus Napoli Amalfi | Aeroporto Capodichino - Costiera', description: "Servizio shuttle bus aeroporto Napoli Capodichino ↔ Costiera Amalfitana. Collegamenti diretti per Vietri, Cetara, Maiori, Minori, Atrani, Amalfi. Prenota online." },
+    en: { title: 'Shuttle Bus Naples Amalfi | Capodichino Airport - Coast', description: 'Airport shuttle service Naples Capodichino ↔ Amalfi Coast. Direct connections to Vietri, Cetara, Maiori, Minori, Atrani, Amalfi. Book online.' },
+    fr: { title: 'Shuttle Bus Naples Amalfi | Aéroport Capodichino - Côte', description: "Service navette aéroport Naples Capodichino ↔ Côte Amalfitaine. Connexions directes vers Vietri, Cetara, Maiori, Minori, Atrani, Amalfi. Réservez en ligne." },
+    de: { title: 'Shuttle Bus Neapel Amalfi | Flughafen Capodichino - Küste', description: 'Flughafenshuttle-Service Neapel Capodichino ↔ Amalfiküste. Direktverbindungen nach Vietri, Cetara, Maiori, Minori, Atrani, Amalfi. Online buchen.' },
+    es: { title: 'Shuttle Bus Nápoles Amalfi | Aeropuerto Capodichino - Costa', description: 'Servicio shuttle aeropuerto Nápoles Capodichino ↔ Costa Amalfitana. Conexiones directas a Vietri, Cetara, Maiori, Minori, Atrani, Amalfi. Reserva online.' },
   },
   rental: {
     it: { title: 'Noleggio Bus con Conducente | Costiera Amalfitana - Pintour Bus', description: 'Noleggio bus con conducente per gite, escursioni, tour in Italia ed Europa. Bus da 54, 40, 30 posti, shuttle bus, auto VIP. Richiedi preventivo gratuito.' },

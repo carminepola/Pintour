@@ -9,251 +9,9 @@ export interface TranslationKeys {
     busRental: string;
     vehicles: string;
     contacts: string;
-  };
-  hero: {
-    slide1Title: string;
-    slide1Subtitle: string;
-    slide1Cta: string;
-    slide2Title: string;
-    slide2Cta1: string;
-    slide2Cta2: string;
-  };
-  services: {
-    toursTitle: string;
-    toursDesc: string;
-    shuttleTitle: string;
-    shuttleDesc: string;
-    rentalTitle: string;
-    rentalDesc: string;
-    fleetTitle: string;
-    fleetDesc: string;
-    discoverMore: string;
-  };
-  stats: {
-    years: string;
-    yearsLabel: string;
-    vehicles: string;
-    vehiclesLabel: string;
-    seats: string;
-    seatsLabel: string;
-    stops: string;
-    stopsLabel: string;
-  };
-  video: {
-    title: string;
-    subtitle: string;
-    play: string;
-  };
-  tours: {
-    heroTitle: string;
-    heroSubtitle: string;
-    heroDesc: string;
-    bookCta: string;
-    sectionTitle: string;
-    sectionSubtitle: string;
-    viewAll: string;
-    requestQuote: string;
-    from: string;
-    duration: { half: string; full: string; multi: string };
-    filters: { all: string; lazio: string; toscana: string; campania: string; europa: string };
-    destinations: {
-      roma: string; romaDesc: string;
-      firenze: string; firenzeDesc: string;
-      napoli: string; napoliDesc: string;
-      amalfi: string; amalfiDesc: string;
-      pompei: string; pompeiDesc: string;
-      sorrento: string; sorrentoDesc: string;
-      pisa: string; pisaDesc: string;
-      parigi: string; parigiDesc: string;
-    };
-    quoteTitle: string;
-    quoteSubtitle: string;
-    formName: string;
-    formEmail: string;
-    formPhone: string;
-    formDestination: string;
-    formDate: string;
-    formPassengers: string;
-    formMessage: string;
-    formSubmit: string;
-    formPrivacy: string;
-    successTitle: string;
-    successDesc: string;
-  };
-  whyUs: {
-    title: string;
-    subtitle: string;
-    experience: string; experienceDesc: string;
-    fleet: string; fleetDesc: string;
-    safety: string; safetyDesc: string;
-    drivers: string; driversDesc: string;
-  };
-  reviews: {
-    title: string;
-    subtitle: string;
-    items: { name: string; role: string; text: string }[];
-  };
-  cta: {
-    title: string;
-    subtitle: string;
-    button: string;
-  };
-  about: {
-    heroTitle: string;
-    breadcrumbHome: string;
-    breadcrumbAbout: string;
-    paragraph1: string;
-    paragraph2: string;
-    paragraph3: string;
-    mobilityCard: string;
-    mobilityCardDesc: string;
-    download: string;
-    feat1Title: string;
-    feat1Desc: string;
-    feat2Title: string;
-    feat2Desc: string;
-    feat3Title: string;
-    feat3Desc: string;
-    feat4Title: string;
-    feat4Desc: string;
-    sidebarTitle: string;
-  };
-  shuttle: {
-    heroTitle: string;
-    breadcrumbShuttle: string;
-    description: string;
-    dailyConnection: string;
-    routeTitle: string;
-    bookTicket: string;
-    routeStops: string[];
-    features: {
-      title: string;
-      comfort: string;
-      comfortDesc: string;
-      wifi: string;
-      wifiDesc: string;
-      ac: string;
-      acDesc: string;
-      luggage: string;
-      luggageDesc: string;
-    };
-    quickDeparture: string;
-    quickArrival: string;
-    successTitle: string;
-    successDesc: string;
-  };
-  rental: {
-    heroTitle: string;
-    breadcrumbRental: string;
-    description: string;
-    fleetTitle: string;
-    fleetSubtitle: string;
-    vehicles: {
-      bus54: string;
-      bus54Desc: string;
-      bus40: string;
-      bus40Desc: string;
-      bus30: string;
-      bus30Desc: string;
-      shuttle20: string;
-      shuttle20Desc: string;
-      shuttle8: string;
-      shuttle8Desc: string;
-      auto4: string;
-      auto4Desc: string;
-      luggage: string;
-      luggageDesc: string;
-    };
-    quoteTitle: string;
-    quoteSubtitle: string;
-    formName: string;
-    formEmail: string;
-    formPhone: string;
-    formDate: string;
-    formPassengers: string;
-    formMessage: string;
-    formSubmit: string;
-    formPrivacy: string;
-    successTitle: string;
-    successDesc: string;
-  };
-  vehiclesPage: {
-    heroTitle: string;
-    heroSubtitle: string;
-    breadcrumbVehicles: string;
-    description: string;
-    filterAll: string;
-    filterBus54: string;
-    filterBus40: string;
-    filterBus30: string;
-    filterShuttle20: string;
-    filterShuttle8: string;
-    filterAuto4: string;
-    filterLuggage: string;
-    maintenanceTitle: string;
-    maintenanceDesc: string;
-    safetyTitle: string;
-    safetyDesc: string;
-    quoteTitle: string;
-    quoteSubtitle: string;
-    formName: string;
-    formEmail: string;
-    formPhone: string;
-    formVehicle: string;
-    formVehiclePlaceholder: string;
-    formMessage: string;
-    formSubmit: string;
-    formPrivacy: string;
-    successTitle: string;
-    successDesc: string;
-  };
-  contacts: {
-    heroTitle: string;
-    breadcrumbContacts: string;
-    getInTouch: string;
-    getInTouchDesc: string;
-    whatsapp: string;
-    phone: string;
-    email: string;
-    legalHQ: string;
-    operationalHQ: string;
-    formTitle: string;
-    formName: string;
-    formEmail: string;
-    formSubject: string;
-    formMessage: string;
-    formPrivacy: string;
-    formSubmit: string;
-    vatNumber: string;
-    successTitle: string;
-    successDesc: string;
-    mapHint1: string;
-    mapHint2: string;
-  };
-  footer: {
-    companyInfo: string;
-    addresses: string;
-    phone: string;
-    email: string;
-    links: string;
-    language: string;
-    privacy: string;
-    copyright: string;
-  };
-  cookie: {
-    message: string;
-    accept: string;
-    decline: string;
-    learnMore: string;
-  };
-  common: {
-    readMore: string;
-    bookNow: string;
-    requestQuote: string;
-    scrollToTop: string;
-    captchaLabel: string;
-    captchaRefresh: string;
-    captchaError: string;
+    requiredField: string;
+    invalidEmail: string;
+    invalidPhone: string;
     formError: string;
     sending: string;
   };
@@ -351,8 +109,9 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
-      description: "Servizio di collegamento giornaliero dall'Aeroporto di Napoli Capodichino alla Costiera Amalfitana. Il modo più comodo e conveniente per raggiungere le meraviglie della Costiera Amalfitana direttamente dall'aeroporto.",
-      dailyConnection: 'Collegamento Giornaliero', routeTitle: 'Percorso e Fermate', bookTicket: 'PRENOTA IL TUO BIGLIETTO',
+      description: "Collegamento giornaliero dall'Aeroporto di Napoli Capodichino alla Costiera Amalfitana. Raggiungi le meraviglie della Costiera comodamente dal tuo volo.",
+      dailyConnection: 'Collegamento Giornaliero', dailyDesc: 'Il nostro servizio di navetta garantisce 15 corse giornaliere da Napoli Capodichino alla Costiera Amalfitana. Partenze regolari con orari adattati ai voli in arrivo.',
+      routeTitle: 'Percorso e Fermate', bookTicket: 'PRENOTA IL TUO BIGLIETTO', bookDesc: 'Prenota online il tuo biglietto per il transfer aeroporto-costiera. Pagamenti sicuri e conferma immediata.',
       routeStops: ['Napoli (Aeroporto)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Servizi a Bordo', comfort: 'Comfort', comfortDesc: 'Sedili reclinabili e ampi spazi per un viaggio confortevole',
@@ -411,7 +170,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Lingua', privacy: 'Privacy Policy', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
     },
     cookie: { message: 'Utilizziamo i cookie per migliorare la tua esperienza di navigazione. Continuando a navigare sul sito, accetti la nostra politica sui cookie.', accept: 'Accetta', decline: 'Rifiuta', learnMore: 'Scopri di più' },
-    common: { readMore: 'Leggi di più', bookNow: 'Prenota Ora', requestQuote: 'Richiedi Preventivo', scrollToTop: 'Torna su', captchaLabel: 'Verifica anti-spam: quanto fa', captchaRefresh: 'Cambia domanda', captchaError: 'Verifica anti-spam non corretta', formError: 'Si è verificato un errore, riprova', sending: 'Invio in corso…' },
+    common: { readMore: 'Leggi di più', bookNow: 'Prenota Ora', requestQuote: 'Richiedi Preventivo', scrollToTop: 'Torna su', captchaLabel: 'Verifica anti-spam: quanto fa', captchaRefresh: 'Cambia domanda', captchaError: 'Verifica anti-spam non corretta', formError: 'Si è verificato un errore, riprova', sending: 'Invio in corso…', requiredField: 'Campo obbligatorio', invalidEmail: 'Email non valida', invalidPhone: 'Telefono non valido' },
   },
   en: {
     nav: { home: 'Home', tours: 'Tours', about: 'About Us', shuttleBus: 'Shuttle Bus', busRental: 'Bus Rental', vehicles: 'Our Fleet', contacts: 'Contacts' },
@@ -498,8 +257,9 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
-      description: 'Daily connection service from Naples Capodichino Airport to the Amalfi Coast. The most comfortable and convenient way to reach the wonders of the Amalfi Coast directly from the airport.',
-      dailyConnection: 'Daily Connection', routeTitle: 'Route and Stops', bookTicket: 'BOOK YOUR TICKET',
+      description: 'Daily connection from Naples Capodichino Airport to the Amalfi Coast. Reach the wonders of the Coast comfortably from your flight.',
+      dailyConnection: 'Daily Connection', dailyDesc: 'Our shuttle service provides 15 daily runs from Naples Capodichino to the Amalfi Coast. Regular departures with schedules adapted to arriving flights.',
+      routeTitle: 'Route and Stops', bookTicket: 'BOOK YOUR TICKET', bookDesc: 'Book your airport-to-coast transfer ticket online. Secure payments and instant confirmation.',
       routeStops: ['Naples (Airport)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Onboard Services', comfort: 'Comfort', comfortDesc: 'Reclining seats and ample space for a comfortable journey',
@@ -558,7 +318,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Language', privacy: 'Privacy Policy', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
     },
     cookie: { message: 'We use cookies to improve your browsing experience. By continuing to browse the site, you accept our cookie policy.', accept: 'Accept', decline: 'Decline', learnMore: 'Learn more' },
-    common: { readMore: 'Read more', bookNow: 'Book Now', requestQuote: 'Request Quote', scrollToTop: 'Back to top', captchaLabel: 'Anti-spam check: what is', captchaRefresh: 'New question', captchaError: 'Anti-spam check is incorrect', formError: 'An error occurred, please try again', sending: 'Sending…' },
+    common: { readMore: 'Read more', bookNow: 'Book Now', requestQuote: 'Request Quote', scrollToTop: 'Back to top', captchaLabel: 'Anti-spam check: what is', captchaRefresh: 'New question', captchaError: 'Anti-spam check is incorrect', formError: 'An error occurred, please try again', sending: 'Sending…', requiredField: 'Required field', invalidEmail: 'Invalid email', invalidPhone: 'Invalid phone number' },
   },
   fr: {
     nav: { home: 'Accueil', tours: 'Circuits', about: 'À Propos', shuttleBus: 'Shuttle Bus', busRental: 'Location Bus', vehicles: 'Notre Flotte', contacts: 'Contacts' },
@@ -645,8 +405,9 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
-      description: "Service de connexion quotidienne de l'Aéroport de Naples Capodichino à la Côte Amalfitaine. Le moyen le plus confortable et le plus pratique d'atteindre les merveilles de la Côte Amalfitaine directement depuis l'aéroport.",
-      dailyConnection: 'Connexion Quotidienne', routeTitle: 'Itinéraire et Arrêts', bookTicket: 'RÉSERVEZ VOTRE BILLET',
+      description: "Connexion quotidienne de l'Aéroport de Naples Capodichino à la Côte Amalfitaine. Atteignez les merveilles de la Côte confortablement depuis votre vol.",
+      dailyConnection: 'Connexion Quotidienne', dailyDesc: "Notre service de navette assure 15 trajets quotidiens de Naples Capodichino à la Côte Amalfitaine. Départs réguliers avec horaires adaptés aux vols en arrivée.",
+      routeTitle: 'Itinéraire et Arrêts', bookTicket: 'RÉSERVEZ VOTRE BILLET', bookDesc: "Réservez votre billet de transfert aéroport-côte en ligne. Paiements sécurisés et confirmation immédiate.",
       routeStops: ['Naples (Aéroport)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Services à Bord', comfort: 'Confort', comfortDesc: 'Sièges inclinables et espaces spacieux pour un voyage confortable',
@@ -705,7 +466,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Langue', privacy: 'Politique de Confidentialité', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
     },
     cookie: { message: 'Nous utilisons des cookies pour améliorer votre expérience de navigation. En continuant à naviguer sur le site, vous acceptez notre politique en matière de cookies.', accept: 'Accepter', decline: 'Refuser', learnMore: 'En savoir plus' },
-    common: { readMore: 'Lire la suite', bookNow: 'Réserver', requestQuote: 'Demander un Devis', scrollToTop: 'Retour en haut', captchaLabel: 'Vérification anti-spam : combien font', captchaRefresh: 'Nouvelle question', captchaError: 'Vérification anti-spam incorrecte', formError: "Une erreur s'est produite, réessayez", sending: 'Envoi en cours…' },
+    common: { readMore: 'Lire la suite', bookNow: 'Réserver', requestQuote: 'Demander un Devis', scrollToTop: 'Retour en haut', captchaLabel: 'Vérification anti-spam : combien font', captchaRefresh: 'Nouvelle question', captchaError: 'Vérification anti-spam incorrecte', formError: "Une erreur s'est produite, réessayez", sending: 'Envoi en cours…', requiredField: 'Champ obligatoire', invalidEmail: 'Email invalide', invalidPhone: 'Numéro de téléphone invalide' },
   },
   de: {
     nav: { home: 'Startseite', tours: 'Touren', about: 'Über Uns', shuttleBus: 'Shuttle Bus', busRental: 'Busvermietung', vehicles: 'Unsere Flotte', contacts: 'Kontakte' },
@@ -792,8 +553,9 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
-      description: 'Täglicher Verbindungsservice vom Flughafen Neapel Capodichino zur Amalfiküste. Die bequemste und einfachste Art, die Wunder der Amalfiküste direkt vom Flughafen zu erreichen.',
-      dailyConnection: 'Tägliche Verbindung', routeTitle: 'Route und Haltestellen', bookTicket: 'TICKET BUCHEN',
+      description: 'Täglicher Verbindungsservice vom Flughafen Neapel Capodichino zur Amalfiküste. Erreichen Sie die Wunder der Küste bequem von Ihrem Flug.',
+      dailyConnection: 'Tägliche Verbindung', dailyDesc: 'Unser Shuttle-Service bietet 15 tägliche Fahrten von Neapel Capodichino zur Amalfiküste. Regelmäßige Abfahrten mit an ankommende Flügen angepassten Zeitplänen.',
+      routeTitle: 'Route und Haltestellen', bookTicket: 'TICKET BUCHEN', bookDesc: 'Buchen Sie Ihr Flughafen-Küsten-Transfer-Ticket online. Sichere Zahlungen und sofortige Bestätigung.',
       routeStops: ['Neapel (Flughafen)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Bordservices', comfort: 'Komfort', comfortDesc: 'Verstellbare Sitze und großzügige Räume für eine komfortable Reise',
@@ -852,7 +614,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Sprache', privacy: 'Datenschutz', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
     },
     cookie: { message: 'Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern. Durch die weitere Nutzung der Website akzeptieren Sie unsere Cookie-Richtlinie.', accept: 'Akzeptieren', decline: 'Ablehnen', learnMore: 'Mehr erfahren' },
-    common: { readMore: 'Weiterlesen', bookNow: 'Jetzt Buchen', requestQuote: 'Angebot Anfragen', scrollToTop: 'Nach oben', captchaLabel: 'Anti-Spam-Prüfung: Wie viel ist', captchaRefresh: 'Neue Frage', captchaError: 'Anti-Spam-Prüfung ist falsch', formError: 'Ein Fehler ist aufgetreten, bitte erneut versuchen', sending: 'Wird gesendet…' },
+    common: { readMore: 'Weiterlesen', bookNow: 'Jetzt Buchen', requestQuote: 'Angebot Anfragen', scrollToTop: 'Nach oben', captchaLabel: 'Anti-Spam-Prüfung: Wie viel ist', captchaRefresh: 'Neue Frage', captchaError: 'Anti-Spam-Prüfung ist falsch', formError: 'Ein Fehler ist aufgetreten, bitte erneut versuchen', sending: 'Wird gesendet…', requiredField: 'Pflichtfeld', invalidEmail: 'Ungültige E-Mail', invalidPhone: 'Ungültige Telefonnummer' },
   },
   es: {
     nav: { home: 'Inicio', tours: 'Circuitos', about: 'Quiénes Somos', shuttleBus: 'Shuttle Bus', busRental: 'Alquiler de Bus', vehicles: 'Nuestra Flota', contacts: 'Contactos' },
@@ -939,8 +701,9 @@ export const translations: Record<Language, TranslationKeys> = {
     },
     shuttle: {
       heroTitle: 'SHUTTLE BUS', breadcrumbShuttle: 'Shuttle Bus',
-      description: 'Servicio de conexión diaria del Aeropuerto de Nápoles Capodichino a la Costa Amalfitana. La forma más cómoda y conveniente de llegar a las maravillas de la Costa Amalfitana directamente desde el aeropuerto.',
-      dailyConnection: 'Conexión Diaria', routeTitle: 'Ruta y Paradas', bookTicket: 'RESERVA TU BILLETE',
+      description: 'Servicio de conexión diaria del Aeropuerto de Nápoles Capodichino a la Costa Amalfitana. Llega a las maravillas de la Costa cómodamente desde tu vuelo.',
+      dailyConnection: 'Conexión Diaria', dailyDesc: 'Nuestro servicio de shuttle ofrece 15 viajes diarios desde Nápoles Capodichino a la Costa Amalfitana. Salidas regulares con horarios adaptados a los vuelos de llegada.',
+      routeTitle: 'Ruta y Paradas', bookTicket: 'RESERVA TU BILLETE', bookDesc: 'Reserva tu billete de traslado aeropuerto-costa en línea. Pagos seguros y confirmación inmediata.',
       routeStops: ['Nápoles (Aeropuerto)', 'Vietri sul Mare', 'Cetara', 'Maiori', 'Minori', 'Atrani', 'Amalfi', 'Pogerola'],
       features: {
         title: 'Servicios a Bordo', comfort: 'Confort', comfortDesc: 'Asientos reclinables y espacios amplios para un viaje cómodo',
@@ -999,7 +762,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Idioma', privacy: 'Política de Privacidad', copyright: '© 2026 Carmine Pola — Pintour S.C.A.R.L. P.IVA 06565461214',
     },
     cookie: { message: 'Utilizamos cookies para mejorar su experiencia de navegación. Al continuar navegando por el sitio, acepta nuestra política de cookies.', accept: 'Aceptar', decline: 'Rechazar', learnMore: 'Saber más' },
-    common: { readMore: 'Leer más', bookNow: 'Reservar Ahora', requestQuote: 'Solicitar Presupuesto', scrollToTop: 'Volver arriba', captchaLabel: 'Comprobación anti-spam: ¿cuánto es', captchaRefresh: 'Nueva pregunta', captchaError: 'Comprobación anti-spam incorrecta', formError: 'Se ha producido un error, inténtalo de nuevo', sending: 'Enviando…' },
+    common: { readMore: 'Leer más', bookNow: 'Reservar Ahora', requestQuote: 'Solicitar Presupuesto', scrollToTop: 'Volver arriba', captchaLabel: 'Comprobación anti-spam: ¿cuánto es', captchaRefresh: 'Nueva pregunta', captchaError: 'Comprobación anti-spam incorrecta', formError: 'Se ha producido un error, inténtalo de nuevo', sending: 'Enviando…', requiredField: 'Campo obligatorio', invalidEmail: 'Email no válido', invalidPhone: 'Teléfono no válido' },
   },
 };
 

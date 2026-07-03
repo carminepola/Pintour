@@ -220,10 +220,79 @@ const jsonLd = {
         });
 
         // ----- Invio form reale (POST -> /api/<endpoint>) -----
-        $all('form[data-form]').forEach(function (form) {
-          var endpoint = form.getAttribute('data-form');
+        $all('form[data-form], form[data-demo-form]').forEach(function (form) {
           form.addEventListener('submit', function (e) {
             e.preventDefault();
+            
+            // Validazione campi
+            var isValid = true;
+            var firstErrorField = null;
+            
+            // Reset errori precedenti
+            $all('[data-field-error]', form).forEach(function (err) {
+              err.classList.add('hidden');
+            });
+            $all('input, select, textarea', form).forEach(function (field) {
+              field.classList.remove('border-red-500', 'bg-red-50');
+            });
+            
+            // Validazione campi required
+            $all('input[required], textarea[required], select[required]', form).forEach(function (field) {
+              if (!field.value.trim()) {
+                isValid = false;
+                var errorEl = form.querySelector('[data-field-error="' + field.name + '"]');
+                if (errorEl) {
+                  errorEl.classList.remove('hidden');
+                }
+                field.classList.add('border-red-500', 'bg-red-50');
+                if (!firstErrorField) firstErrorField = field;
+              }
+            });
+            
+            // Validazione email
+            $all('input[type="email"]', form).forEach(function (field) {
+              if (field.value.trim()) {
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(field.value.trim())) {
+                  isValid = false;
+                  var errorEl = form.querySelector('[data-field-error="' + field.name + '"]');
+                  if (errorEl) {
+                    errorEl.textContent = I.invalidEmail || '';
+                    errorEl.classList.remove('hidden');
+                  }
+                  field.classList.add('border-red-500', 'bg-red-50');
+                  if (!firstErrorField) firstErrorField = field;
+                }
+              }
+            });
+            
+            // Validazione telefono
+            $all('input[type="tel"]', form).forEach(function (field) {
+              if (field.value.trim()) {
+                var phonePattern = /^[\d\s+().-]+$/;
+                if (!phonePattern.test(field.value.trim()) || field.value.trim().length < 8) {
+                  isValid = false;
+                  var errorEl = form.querySelector('[data-field-error="' + field.name + '"]');
+                  if (errorEl) {
+                    errorEl.textContent = I.invalidPhone || '';
+                    errorEl.classList.remove('hidden');
+                  }
+                  field.classList.add('border-red-500', 'bg-red-50');
+                  if (!firstErrorField) firstErrorField = field;
+                }
+              }
+            });
+            
+            // Se non valido, scrolla al primo errore
+            if (!isValid) {
+              if (firstErrorField) {
+                firstErrorField.focus();
+                firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+              return;
+            }
+            
+            var endpoint = form.getAttribute('data-form');
             var data = {};
             $all('input, select, textarea', form).forEach(function (el) {
               if (!el.name) return;
@@ -236,7 +305,8 @@ const jsonLd = {
             var formErr = form.querySelector('[data-form-error]');
             if (captchaErr) captchaErr.classList.add('hidden');
             if (formErr) formErr.classList.add('hidden');
-            fetch('/api/' + endpoint, {
+            var apiUrl = endpoint ? '/api/' + endpoint : '/api/demo';
+            fetch(apiUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(data),

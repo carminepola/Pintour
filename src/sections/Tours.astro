@@ -73,17 +73,45 @@ const filters = [
           <h3 class="text-xl font-bold text-[#0f2540] mb-2">{t.tours.successTitle}</h3>
           <p class="text-gray-600">{t.tours.successDesc}</p>
         </div>
-        <form data-form="quote" class="space-y-5">
+        <form data-form="quote" class="space-y-5" novalidate>
           <div class="hidden" aria-hidden="true"><label>Lascia vuoto questo campo<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formName}</label><input name="name" type="text" required class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
-            <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formEmail}</label><input name="email" type="email" required class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
-            <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formPhone}</label><input name="phone" type="tel" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
-            <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formDestination}</label><input id="tour-dest" name="destination" type="text" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
-            <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formDate}</label><input name="date" type="date" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
-            <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formPassengers}</label><input name="passengers" type="number" min="1" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" /></div>
+            <div>
+              <label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formName}</label>
+              <input name="name" type="text" required class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" />
+              <span class="hidden text-sm text-red-600 mt-1" data-field-error="name">{t.common.requiredField}</span>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formEmail}</label>
+              <input name="email" type="email" required class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" />
+              <span class="hidden text-sm text-red-600 mt-1" data-field-error="email">{t.common.invalidEmail}</span>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formPhone}</label>
+              <input name="phone" type="tel" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" />
+              <span class="hidden text-sm text-red-600 mt-1" data-field-error="phone">{t.common.invalidPhone}</span>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formDestination}</label>
+              <input id="tour-dest" name="destination" type="text" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" />
+              <span class="hidden text-sm text-red-600 mt-1" data-field-error="destination">{t.common.requiredField}</span>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formDate}</label>
+              <input name="date" type="date" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" />
+              <span class="hidden text-sm text-red-600 mt-1" data-field-error="date">{t.common.requiredField}</span>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formPassengers}</label>
+              <input name="passengers" type="number" min="1" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm" />
+              <span class="hidden text-sm text-red-600 mt-1" data-field-error="passengers">{t.common.requiredField}</span>
+            </div>
           </div>
-          <div><label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formMessage}</label><textarea name="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm resize-none"></textarea></div>
+          <div>
+            <label class="block text-sm font-medium text-[#0f2540] mb-1.5">{t.tours.formMessage}</label>
+            <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm resize-none"></textarea>
+            <span class="hidden text-sm text-red-600 mt-1" data-field-error="message">{t.common.requiredField}</span>
+          </div>
           <Captcha />
           <p data-form-error class="hidden text-sm text-red-600"></p>
           <div class="flex items-start gap-3">
