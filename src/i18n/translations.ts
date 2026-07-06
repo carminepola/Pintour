@@ -170,7 +170,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Lingua', privacy: 'Privacy Policy', copyright: '© 2026 Carmine Pola — Pintour SOC. COOP. ARL P.IVA 06565461214',
     },
     cookie: { message: 'Utilizziamo i cookie per migliorare la tua esperienza di navigazione. Continuando a navigare sul sito, accetti la nostra politica sui cookie.', accept: 'Accetta', decline: 'Rifiuta', learnMore: 'Scopri di più' },
-    common: { readMore: 'Leggi di più', bookNow: 'Prenota Ora', requestQuote: 'Richiedi Preventivo', scrollToTop: 'Torna su', captchaLabel: 'Verifica anti-spam: quanto fa', captchaRefresh: 'Cambia domanda', captchaError: 'Verifica anti-spam non corretta', formError: 'Si è verificato un errore, riprova', sending: 'Invio in corso…', requiredField: 'Campo obbligatorio', invalidEmail: 'Email non valida', invalidPhone: 'Telefono non valido' },
+    common: { readMore: 'Leggi di più', bookNow: 'Prenota Ora', requestQuote: 'Richiedi Preventivo', scrollToTop: 'Torna su', captchaLabel: 'Verifica anti-spam: quanto fa', captchaRefresh: 'Cambia domanda', captchaError: 'Verifica anti-spam non corretta', formError: 'Si è verificato un errore, riprova', sending: 'Invio in corso…', requiredField: 'Campo obbligatorio', invalidEmail: 'Email non valida', invalidPhone: 'Telefono non valido', shuttleRoutesNote: 'Cerchi la tratta Amalfi → Napoli o Napoli → Amalfi?', shuttleRoutesLink: 'Prenota lo Shuttle Bus' },
   },
   en: {
     nav: { home: 'Home', tours: 'Tours', about: 'About Us', shuttleBus: 'Shuttle Bus', busRental: 'Bus Rental', vehicles: 'Our Fleet', contacts: 'Contacts' },
@@ -318,7 +318,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Language', privacy: 'Privacy Policy', copyright: '© 2026 Carmine Pola — Pintour SOC. COOP. ARL P.IVA 06565461214',
     },
     cookie: { message: 'We use cookies to improve your browsing experience. By continuing to browse the site, you accept our cookie policy.', accept: 'Accept', decline: 'Decline', learnMore: 'Learn more' },
-    common: { readMore: 'Read more', bookNow: 'Book Now', requestQuote: 'Request Quote', scrollToTop: 'Back to top', captchaLabel: 'Anti-spam check: what is', captchaRefresh: 'New question', captchaError: 'Anti-spam check is incorrect', formError: 'An error occurred, please try again', sending: 'Sending…', requiredField: 'Required field', invalidEmail: 'Invalid email', invalidPhone: 'Invalid phone number' },
+    common: { readMore: 'Read more', bookNow: 'Book Now', requestQuote: 'Request Quote', scrollToTop: 'Back to top', captchaLabel: 'Anti-spam check: what is', captchaRefresh: 'New question', captchaError: 'Anti-spam check is incorrect', formError: 'An error occurred, please try again', sending: 'Sending…', requiredField: 'Required field', invalidEmail: 'Invalid email', invalidPhone: 'Invalid phone number', shuttleRoutesNote: 'Looking for the Amalfi → Naples or Naples → Amalfi route?', shuttleRoutesLink: 'Book the Shuttle Bus' },
   },
   fr: {
     nav: { home: 'Accueil', tours: 'Circuits', about: 'À Propos', shuttleBus: 'Shuttle Bus', busRental: 'Location Bus', vehicles: 'Notre Flotte', contacts: 'Contacts' },
@@ -466,7 +466,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Langue', privacy: 'Politique de Confidentialité', copyright: '© 2026 Carmine Pola — Pintour SOC. COOP. ARL P.IVA 06565461214',
     },
     cookie: { message: 'Nous utilisons des cookies pour améliorer votre expérience de navigation. En continuant à naviguer sur le site, vous acceptez notre politique en matière de cookies.', accept: 'Accepter', decline: 'Refuser', learnMore: 'En savoir plus' },
-    common: { readMore: 'Lire la suite', bookNow: 'Réserver', requestQuote: 'Demander un Devis', scrollToTop: 'Retour en haut', captchaLabel: 'Vérification anti-spam : combien font', captchaRefresh: 'Nouvelle question', captchaError: 'Vérification anti-spam incorrecte', formError: "Une erreur s'est produite, réessayez", sending: 'Envoi en cours…', requiredField: 'Champ obligatoire', invalidEmail: 'Email invalide', invalidPhone: 'Numéro de téléphone invalide' },
+    common: { readMore: 'Lire la suite', bookNow: 'Réserver', requestQuote: 'Demander un Devis', scrollToTop: 'Retour en haut', captchaLabel: 'Vérification anti-spam : combien font', captchaRefresh: 'Nouvelle question', captchaError: 'Vérification anti-spam incorrecte', formError: "Une erreur s'est produite, réessayez", sending: 'Envoi en cours…', requiredField: 'Champ obligatoire', invalidEmail: 'Email invalide', invalidPhone: 'Numéro de téléphone invalide', shuttleRoutesNote: 'Vous cherchez la liaison Amalfi → Naples ou Naples → Amalfi ?', shuttleRoutesLink: 'Réservez le Shuttle Bus' },
   },
   de: {
     nav: { home: 'Startseite', tours: 'Touren', about: 'Über Uns', shuttleBus: 'Shuttle Bus', busRental: 'Busvermietung', vehicles: 'Unsere Flotte', contacts: 'Kontakte' },
@@ -614,7 +614,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Sprache', privacy: 'Datenschutz', copyright: '© 2026 Carmine Pola — Pintour SOC. COOP. ARL P.IVA 06565461214',
     },
     cookie: { message: 'Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern. Durch die weitere Nutzung der Website akzeptieren Sie unsere Cookie-Richtlinie.', accept: 'Akzeptieren', decline: 'Ablehnen', learnMore: 'Mehr erfahren' },
-    common: { readMore: 'Weiterlesen', bookNow: 'Jetzt Buchen', requestQuote: 'Angebot Anfragen', scrollToTop: 'Nach oben', captchaLabel: 'Anti-Spam-Prüfung: Wie viel ist', captchaRefresh: 'Neue Frage', captchaError: 'Anti-Spam-Prüfung ist falsch', formError: 'Ein Fehler ist aufgetreten, bitte erneut versuchen', sending: 'Wird gesendet…', requiredField: 'Pflichtfeld', invalidEmail: 'Ungültige E-Mail', invalidPhone: 'Ungültige Telefonnummer' },
+    common: { readMore: 'Weiterlesen', bookNow: 'Jetzt Buchen', requestQuote: 'Angebot Anfragen', scrollToTop: 'Nach oben', captchaLabel: 'Anti-Spam-Prüfung: Wie viel ist', captchaRefresh: 'Neue Frage', captchaError: 'Anti-Spam-Prüfung ist falsch', formError: 'Ein Fehler ist aufgetreten, bitte erneut versuchen', sending: 'Wird gesendet…', requiredField: 'Pflichtfeld', invalidEmail: 'Ungültige E-Mail', invalidPhone: 'Ungültige Telefonnummer', shuttleRoutesNote: 'Sie suchen die Verbindung Amalfi → Neapel oder Neapel → Amalfi?', shuttleRoutesLink: 'Buchen Sie den Shuttle Bus' },
   },
   es: {
     nav: { home: 'Inicio', tours: 'Circuitos', about: 'Quiénes Somos', shuttleBus: 'Shuttle Bus', busRental: 'Alquiler de Bus', vehicles: 'Nuestra Flota', contacts: 'Contactos' },
@@ -762,7 +762,7 @@ export const translations: Record<Language, TranslationKeys> = {
       language: 'Idioma', privacy: 'Política de Privacidad', copyright: '© 2026 Carmine Pola — Pintour SOC. COOP. ARL P.IVA 06565461214',
     },
     cookie: { message: 'Utilizamos cookies para mejorar su experiencia de navegación. Al continuar navegando por el sitio, acepta nuestra política de cookies.', accept: 'Aceptar', decline: 'Rechazar', learnMore: 'Saber más' },
-    common: { readMore: 'Leer más', bookNow: 'Reservar Ahora', requestQuote: 'Solicitar Presupuesto', scrollToTop: 'Volver arriba', captchaLabel: 'Comprobación anti-spam: ¿cuánto es', captchaRefresh: 'Nueva pregunta', captchaError: 'Comprobación anti-spam incorrecta', formError: 'Se ha producido un error, inténtalo de nuevo', sending: 'Enviando…', requiredField: 'Campo obligatorio', invalidEmail: 'Email no válido', invalidPhone: 'Teléfono no válido' },
+    common: { readMore: 'Leer más', bookNow: 'Reservar Ahora', requestQuote: 'Solicitar Presupuesto', scrollToTop: 'Volver arriba', captchaLabel: 'Comprobación anti-spam: ¿cuánto es', captchaRefresh: 'Nueva pregunta', captchaError: 'Comprobación anti-spam incorrecta', formError: 'Se ha producido un error, inténtalo de nuevo', sending: 'Enviando…', requiredField: 'Campo obligatorio', invalidEmail: 'Email no válido', invalidPhone: 'Teléfono no válido', shuttleRoutesNote: '¿Buscas la ruta Amalfi → Nápoles o Nápoles → Amalfi?', shuttleRoutesLink: 'Reserva el Shuttle Bus' },
   },
 };
 
