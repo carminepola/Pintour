@@ -40,7 +40,7 @@ const navItems = navKeys.map((id) => ({ id, label: t.nav[navLabelKey[id]] }));
             </div>
           </div>
         </div>
-        <div class="mt-4 space-y-2">
+        <div data-nosnippet class="mt-4 space-y-2">
           <a href={`tel:${company.phone1.replace(/\s/g, '')}`} class="flex items-center gap-2 text-sm hover:text-[#0f4c81] transition-colors"><Icon name="phone" class="w-4 h-4 text-[#0f4c81]" /> {company.phone1}</a>
           <a href={`tel:${company.phone2.replace(/\s/g, '')}`} class="flex items-center gap-2 text-sm hover:text-[#0f4c81] transition-colors"><Icon name="phone" class="w-4 h-4 text-[#0f4c81]" /> {company.phone2}</a>
           <a href={`mailto:${company.email}`} class="flex items-center gap-2 text-sm hover:text-[#0f4c81] transition-colors"><Icon name="mail" class="w-4 h-4 text-[#0f4c81]" /> {company.email}</a>
