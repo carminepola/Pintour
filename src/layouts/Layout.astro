@@ -119,6 +119,12 @@ const jsonLd = {
       captchaError: t.common.captchaError,
       formError: t.common.formError,
       sending: t.common.sending,
+      requiredField: t.common.requiredField,
+      invalidEmail: t.common.invalidEmail,
+      invalidPhone: t.common.invalidPhone,
+      fileRequired: t.common.fileRequired,
+      fileTooLarge: t.common.fileTooLarge,
+      fileInvalidType: t.common.fileInvalidType,
     })} is:inline></script>
 
     <script is:inline>
@@ -236,6 +242,8 @@ const jsonLd = {
             $all('input, select, textarea', form).forEach(function (field) {
               field.classList.remove('border-red-500', 'bg-red-50');
             });
+            var cvDropReset = form.querySelector('[data-cv-drop]');
+            if (cvDropReset) cvDropReset.classList.remove('border-red-500');
             
             // Validazione campi required
             $all('input[required], textarea[required], select[required]', form).forEach(function (field) {
@@ -283,6 +291,24 @@ const jsonLd = {
                 }
               }
             });
+
+            // Validazione file CV (form multipart)
+            var cvInput = form.querySelector('input[type="file"][data-cv-file]');
+            if (cvInput) {
+              var cvFile = cvInput.files && cvInput.files[0];
+              var cvMsg = '';
+              if (!cvFile) cvMsg = I.fileRequired || '';
+              else if (cvFile.size > 5 * 1024 * 1024) cvMsg = I.fileTooLarge || '';
+              else if (!/\.(pdf|doc|docx)$/i.test(cvFile.name)) cvMsg = I.fileInvalidType || '';
+              if (cvMsg) {
+                isValid = false;
+                var cvErrEl = form.querySelector('[data-field-error="' + (cvInput.name || 'cv') + '"]');
+                if (cvErrEl) { cvErrEl.textContent = cvMsg; cvErrEl.classList.remove('hidden'); }
+                var cvDrop = form.querySelector('[data-cv-drop]');
+                if (cvDrop) cvDrop.classList.add('border-red-500');
+                if (!firstErrorField) firstErrorField = cvInput;
+              }
+            }
             
             // Se non valido, scrolla al primo errore
             if (!isValid) {
@@ -294,11 +320,17 @@ const jsonLd = {
             }
             
             var endpoint = form.getAttribute('data-form');
-            var data = {};
-            $all('input, select, textarea', form).forEach(function (el) {
-              if (!el.name) return;
-              data[el.name] = el.value;
-            });
+            var multipart = form.hasAttribute('data-multipart');
+            var data;
+            if (multipart) {
+              data = new FormData(form);
+            } else {
+              data = {};
+              $all('input, select, textarea', form).forEach(function (el) {
+                if (!el.name) return;
+                data[el.name] = el.value;
+              });
+            }
             var submitBtn = form.querySelector('[type="submit"]');
             var originalText = submitBtn ? submitBtn.innerHTML : '';
             if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = I.sending || '…'; }
@@ -309,8 +341,8 @@ const jsonLd = {
             var apiUrl = endpoint ? '/api/' + endpoint : '/api/demo';
             fetch(apiUrl, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(data),
+              headers: multipart ? undefined : { 'Content-Type': 'application/json' },
+              body: multipart ? data : JSON.stringify(data),
             }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.ok, code: j && j.error }; }); })
               .then(function (res) {
                 if (res.ok) {
@@ -318,6 +350,12 @@ const jsonLd = {
                   if (success) { success.classList.remove('hidden'); form.classList.add('hidden'); }
                 } else if (res.code === 'captcha') {
                   if (captchaErr) { captchaErr.textContent = I.captchaError || ''; captchaErr.classList.remove('hidden'); }
+                } else if (res.code === 'file_size') {
+                  if (formErr) { formErr.textContent = I.fileTooLarge || ''; formErr.classList.remove('hidden'); }
+                } else if (res.code === 'file_type') {
+                  if (formErr) { formErr.textContent = I.fileInvalidType || ''; formErr.classList.remove('hidden'); }
+                } else if (res.code === 'missing') {
+                  if (formErr) { formErr.textContent = I.requiredField || I.formError || ''; formErr.classList.remove('hidden'); }
                 } else {
                   if (formErr) { formErr.textContent = I.formError || ''; formErr.classList.remove('hidden'); }
                 }

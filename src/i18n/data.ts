@@ -4,6 +4,7 @@ export const company = {
   name: 'Pintour SOC. COOP. ARL',
   email: 'ordini@pintourbus.com',
   emailInfo: 'info@pintourbus.com',
+  emailCareers: 'lavora-con-noi@pintourbus.com',
   phone1: '+39 081 879 2645',
   phone2: '+39 335 691 0211',
   whatsapp: '393356910211',
@@ -14,7 +15,7 @@ export const company = {
 };
 
 // Ordine di navigazione (orientato alla vendita: Tour in evidenza)
-export const navKeys: PageKey[] = ['home', 'tours', 'shuttle', 'rental', 'vehicles', 'about', 'contacts'];
+export const navKeys: PageKey[] = ['home', 'tours', 'shuttle', 'rental', 'vehicles', 'about', 'contacts', 'careers'];
 
 export type VehicleKey = 'bus54' | 'bus40' | 'bus30' | 'shuttle20' | 'shuttle8' | 'auto4' | 'luggage';
 
@@ -82,4 +83,20 @@ export const whyItems: WhyItem[] = [
   { icon: 'bus', color: '#0f2540', titleKey: 'fleet' },
   { icon: 'shield', color: '#25867f', titleKey: 'safety' },
   { icon: 'users', color: '#1c3a55', titleKey: 'drivers' },
+];
+
+export type JobKey = 'driverGt' | 'bookingSecretary';
+export type JobContract = 'fullTime' | 'partTime' | 'seasonal' | 'temporary';
+
+export interface JobOpening {
+  key: JobKey;
+  icon: 'bus' | 'mail';
+  color: string;
+  location: string;
+  contract: JobContract;
+}
+
+export const jobOpenings: JobOpening[] = [
+  { key: 'driverGt', icon: 'bus', color: '#0f2540', location: 'Pompei (Na)', contract: 'fullTime' },
+  { key: 'bookingSecretary', icon: 'mail', color: '#0f4c81', location: 'Pompei (Na)', contract: 'fullTime' },
 ];

@@ -1,0 +1,260 @@
+---
+import Icon from '../components/Icon.astro';
+import Captcha from '../components/Captcha.astro';
+import { useTranslations } from '../i18n/translations';
+import { company, jobOpenings } from '../i18n/data';
+import type { Language } from '../i18n/config';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const perks = [
+  { icon: 'award', color: '#0f4c81', title: t.careers.perk1, desc: t.careers.perk1Desc },
+  { icon: 'bus', color: '#0f2540', title: t.careers.perk2, desc: t.careers.perk2Desc },
+  { icon: 'shield', color: '#25867f', title: t.careers.perk3, desc: t.careers.perk3Desc },
+  { icon: 'users', color: '#1c3a55', title: t.careers.perk4, desc: t.careers.perk4Desc },
+];
+const inputCls = 'w-full px-4 py-3 rounded-xl border border-[#e5e7eb] bg-white focus:border-[#0f2540] focus:ring-2 focus:ring-[#0f2540]/20 outline-none transition-all text-sm';
+const labelCls = 'block text-sm font-medium text-[#0f2540] mb-1.5';
+---
+<div>
+  <section data-reveal class="corp-hero">
+    <div class="max-w-7xl mx-auto px-4 py-20 md:py-28">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-2 text-white/70 text-sm mb-6">
+          <span>{t.nav.home}</span><Icon name="chevronRight" class="w-4 h-4" /><span class="text-white font-medium">{t.careers.breadcrumbCareers}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">{t.careers.heroTitle}</h1>
+        <p class="text-lg md:text-xl font-semibold text-[#7fb2e5] tracking-wide mb-6">{t.careers.heroSubtitle}</p>
+        <p class="text-white/70 leading-relaxed max-w-2xl">{t.careers.heroDesc}</p>
+        <a href="#posizioni" class="inline-flex items-center gap-2 mt-8 px-8 py-3.5 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-all text-sm">
+          {t.careers.openTitle}<Icon name="arrowRight" class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#0f2540] mb-3">{t.careers.perksTitle}</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">{t.careers.perksSubtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {perks.map((perk) => (
+          <div class="card-hover bg-white border border-[#e5e7eb] rounded-xl p-6 text-center">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center" style={`background: ${perk.color}1a`}>
+              <Icon name={perk.icon} class="w-7 h-7" style={`color: ${perk.color}`} />
+            </div>
+            <h3 class="font-bold text-[#0f2540] text-sm mb-2">{perk.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{perk.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal id="posizioni" class="py-16 md:py-20 bg-[#eef3f8]/20 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl mb-10">
+   
+        <h2 class="text-2xl md:text-3xl font-bold text-[#0f2540] mb-3 accent-underline inline-block">{t.careers.openTitle}</h2>
+        <p class="text-gray-600 mt-4 leading-relaxed">{t.careers.openSubtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        {jobOpenings.map((job) => {
+          const pos = t.careers.positions[job.key];
+          return (
+            <article class="card-hover flex flex-col bg-white border border-[#e5e7eb] rounded-xl overflow-hidden">
+              <div class="h-1.5" style={`background: linear-gradient(to right, ${job.color}, ${job.color}99)`}></div>
+              <div class="p-6 flex flex-col flex-1">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                  <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={`background: ${job.color}1a`}>
+                    <Icon name={job.icon} class="w-6 h-6" style={`color: ${job.color}`} />
+                  </div>
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#25867f]/10 text-[#25867f] text-xs font-bold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#25867f] animate-pulse"></span>{t.careers.openBadge}
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-[#0f2540] mb-2">{pos.title}</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-5 flex-1">{pos.desc}</p>
+                <div class="flex flex-wrap items-center gap-2 mb-5">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#eef3f8] text-[#0f2540] text-xs font-semibold"><Icon name="mapPin" class="w-3.5 h-3.5" />{job.location}</span>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#eef3f8] text-[#0f2540] text-xs font-semibold"><Icon name="clock" class="w-3.5 h-3.5" />{t.careers.contract[job.contract]}</span>
+                </div>
+                <button type="button" data-apply={pos.title} class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0f2540] text-white font-bold rounded-lg hover:bg-[#1c3a55] transition-all text-sm">
+                  {t.careers.apply}<Icon name="arrowRight" class="w-4 h-4" />
+                </button>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal id="candidatura" class="py-16 md:py-24 bg-white scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <div class="lg:col-span-2 space-y-6">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-[#0f2540] mb-3 accent-underline inline-block">{t.careers.formTitle}</h2>
+            <p class="text-gray-600 mt-4 leading-relaxed">{t.careers.formSubtitle}</p>
+          </div>
+          <div class="space-y-4">
+            <a href={`mailto:${company.emailCareers}`} class="flex items-center gap-4 p-4 bg-[#0f2540]/5 rounded-xl hover:bg-[#0f2540]/10 transition-colors group">
+              <div class="w-12 h-12 bg-[#0f2540] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform"><Icon name="mail" class="w-6 h-6 text-white" /></div>
+              <div class="min-w-0">
+                <p class="font-bold text-[#0f2540] text-sm">{t.careers.directEmail}</p>
+                <p class="text-[#0f4c81] font-semibold text-sm break-all">{company.emailCareers}</p>
+              </div>
+            </a>
+            <a href={`tel:${company.phone1.replace(/\s/g, '')}`} class="flex items-center gap-4 p-4 bg-[#0f4c81]/5 rounded-xl hover:bg-[#0f4c81]/10 transition-colors group">
+              <div class="w-12 h-12 bg-[#0f4c81] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform"><Icon name="phone" class="w-6 h-6 text-white" /></div>
+              <div>
+                <p class="font-bold text-[#0f2540] text-sm">{t.contacts.phone}</p>
+                <p class="text-[#0f4c81] font-semibold text-sm">{company.phone1}</p>
+              </div>
+            </a>
+            <div class="flex items-start gap-3 p-4 bg-[#eef3f8]/30 rounded-xl">
+              <div class="w-10 h-10 bg-[#25867f] rounded-lg flex items-center justify-center flex-shrink-0"><Icon name="mapPin" class="w-5 h-5 text-white" /></div>
+              <div>
+                <p class="font-bold text-[#0f2540] text-sm">{t.contacts.operationalHQ}</p>
+                <p class="text-sm text-gray-600">{company.operationalHQ.street}, {company.operationalHQ.city}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3">
+          <div class="bg-[#eef3f8]/20 rounded-lg p-6 md:p-8 border border-[#eef3f8]">
+            <div data-form-success class="hidden text-center py-12">
+              <Icon name="checkCircle" class="w-16 h-16 text-[#25867f] mx-auto mb-4" />
+              <h3 class="text-xl font-bold text-[#0f2540] mb-2">{t.careers.successTitle}</h3>
+              <p class="text-gray-600">{t.careers.successDesc}</p>
+            </div>
+            <form data-form="careers" data-multipart enctype="multipart/form-data" class="space-y-5" novalidate>
+              <div class="hidden" aria-hidden="true"><label>Lascia vuoto questo campo<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label class={labelCls} for="cv-first-name">{t.careers.firstName} <span class="text-red-600">*</span></label>
+                  <input id="cv-first-name" name="firstName" type="text" required class={inputCls} />
+                  <span class="hidden text-sm text-red-600 mt-1" data-field-error="firstName">{t.common.requiredField}</span>
+                </div>
+                <div>
+                  <label class={labelCls} for="cv-last-name">{t.careers.lastName} <span class="text-red-600">*</span></label>
+                  <input id="cv-last-name" name="lastName" type="text" required class={inputCls} />
+                  <span class="hidden text-sm text-red-600 mt-1" data-field-error="lastName">{t.common.requiredField}</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label class={labelCls} for="cv-phone">{t.careers.phone} <span class="text-red-600">*</span></label>
+                  <input id="cv-phone" name="phone" type="tel" required class={inputCls} />
+                  <span class="hidden text-sm text-red-600 mt-1" data-field-error="phone">{t.common.requiredField}</span>
+                </div>
+                <div>
+                  <label class={labelCls} for="cv-email">{t.careers.email}</label>
+                  <input id="cv-email" name="email" type="email" class={inputCls} />
+                  <span class="hidden text-sm text-red-600 mt-1" data-field-error="email">{t.common.invalidEmail}</span>
+                </div>
+              </div>
+              <div>
+                <label class={labelCls} for="cv-position">{t.careers.position}</label>
+                <select id="cv-position" name="position" class={inputCls}>
+                  <option value="">{t.careers.positionPlaceholder}</option>
+                  {jobOpenings.map((job) => <option value={t.careers.positions[job.key].title}>{t.careers.positions[job.key].title}</option>)}
+                  <option value={t.careers.spontaneous}>{t.careers.spontaneous}</option>
+                </select>
+              </div>
+              <div>
+                <label class={labelCls} for="cv-letter">{t.careers.coverLetter} <span class="text-red-600">*</span></label>
+                <textarea id="cv-letter" name="coverLetter" rows="5" required class={`${inputCls} resize-none`}></textarea>
+                <span class="hidden text-sm text-red-600 mt-1" data-field-error="coverLetter">{t.common.requiredField}</span>
+              </div>
+              <div>
+                <span class={labelCls}>{t.careers.cvLabel} <span class="text-red-600">*</span></span>
+                <div data-cv-drop class="relative cursor-pointer rounded-xl border-2 border-dashed border-[#cbd5e1] bg-[#f8fafc] hover:border-[#0f4c81] transition-colors p-6 text-center" role="button" tabindex="0" aria-label={t.careers.cvLabel}>
+                  <input data-cv-file type="file" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                  <div data-cv-empty class="pointer-events-none">
+                    <Icon name="download" class="w-8 h-8 text-[#0f4c81] mx-auto mb-2" />
+                    <p class="text-sm text-[#0f2540]">{t.careers.cvDrop} <span class="text-[#0f4c81] font-semibold underline">{t.careers.cvBrowse}</span></p>
+                    <p class="text-xs text-gray-500 mt-1">{t.careers.cvHint}</p>
+                  </div>
+                  <div data-cv-selected class="hidden relative z-10 flex items-center justify-center gap-3 text-left">
+                    <Icon name="checkCircle" class="w-6 h-6 text-[#25867f] flex-shrink-0" />
+                    <div class="min-w-0">
+                      <p data-cv-name class="text-sm font-semibold text-[#0f2540] truncate"></p>
+                      <p data-cv-size class="text-xs text-gray-500"></p>
+                    </div>
+                    <button type="button" data-cv-remove class="ml-2 flex-shrink-0 w-7 h-7 rounded-full bg-[#0f2540]/10 hover:bg-[#0f2540]/20 text-[#0f2540] flex items-center justify-center transition-colors" aria-label="×"><Icon name="x" class="w-3.5 h-3.5" /></button>
+                  </div>
+                </div>
+                <span class="hidden text-sm text-red-600 mt-1" data-field-error="cv">{t.common.fileRequired}</span>
+              </div>
+              <Captcha />
+              <p data-form-error class="hidden text-sm text-red-600"></p>
+              <div class="flex items-start gap-3">
+                <input type="checkbox" required class="mt-1 w-4 h-4 rounded border-[#e5e7eb] text-[#0f2540] focus:ring-[#0f2540]" />
+                <label class="text-xs text-gray-600 leading-relaxed">{t.careers.formPrivacy}</label>
+              </div>
+              <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f4c81] text-white font-bold rounded-md hover:bg-[#0a3a62] transition-all text-sm"><Icon name="send" class="w-4 h-4" />{t.careers.formSubmit}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script is:inline>
+  (function () {
+    // Dropzone CV: selezione file, drag & drop, rimozione
+    document.querySelectorAll('[data-cv-drop]').forEach(function (drop) {
+      var input = drop.querySelector('input[type="file"]');
+      var emptyEl = drop.querySelector('[data-cv-empty]');
+      var selEl = drop.querySelector('[data-cv-selected]');
+      var nameEl = drop.querySelector('[data-cv-name]');
+      var sizeEl = drop.querySelector('[data-cv-size]');
+      var removeBtn = drop.querySelector('[data-cv-remove]');
+      if (!input || !emptyEl || !selEl) return;
+      function fmtSize(b) { return b > 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
+      function render() {
+        var f = input.files && input.files[0];
+        emptyEl.classList.toggle('hidden', !!f);
+        selEl.classList.toggle('hidden', !f);
+        input.classList.toggle('hidden', !!f);
+        if (f) { if (nameEl) nameEl.textContent = f.name; if (sizeEl) sizeEl.textContent = fmtSize(f.size); }
+        var err = drop.parentElement && drop.parentElement.querySelector('[data-field-error="cv"]');
+        if (err) err.classList.add('hidden');
+      }
+      input.addEventListener('change', render);
+      if (removeBtn) removeBtn.addEventListener('click', function (e) { e.stopPropagation(); input.value = ''; render(); });
+      selEl.addEventListener('click', function () { input.classList.remove('hidden'); input.click(); });
+      ['dragenter', 'dragover'].forEach(function (ev) {
+        drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('border-[#0f4c81]', 'bg-[#eef3f8]/60'); });
+      });
+      ['dragleave', 'drop'].forEach(function (ev) {
+        drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('border-[#0f4c81]', 'bg-[#eef3f8]/60'); });
+      });
+      drop.addEventListener('drop', function (e) {
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+          e.stopPropagation();
+          try { input.files = e.dataTransfer.files; } catch (err) { /* fallback: apertura manuale */ }
+          render();
+        }
+      });
+    });
+
+    // "Candidati ora": preseleziona la posizione e scrolla al modulo
+    document.querySelectorAll('[data-apply]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var sel = document.querySelector('select[name="position"]');
+        if (sel) sel.value = btn.getAttribute('data-apply') || '';
+        var target = document.getElementById('candidatura');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  })();
+</script>

@@ -53,6 +53,13 @@ export const seoData: SeoMap = {
     de: { title: 'Kontakte - Pintour Bus | Busvermietung Amalfiküste', description: 'Kontaktieren Sie Pintour S.C.A.R.L. für Busvermietung und Shuttle-Bus. Firmensitz Pimonte (Na), Betriebssitz Pompei (Na). Tel: +39 081 879 2645.' },
     es: { title: 'Contactos - Pintour Bus | Alquiler de Bus Costa Amalfitana', description: 'Contacte con Pintour S.C.A.R.L. para alquiler de bus y shuttle. Sede legal Pimonte (Na), sede operativa Pompei (Na). Tel: +39 081 879 2645.' },
   },
+  careers: {
+    it: { title: 'Lavora con Noi - Pintour Bus | Posizioni Aperte e Candidature', description: 'Unisciti al team Pintour: cerchiamo autista autobus GT con CQC abilitato e segretario/a prenotazioni con ottimo inglese parlato. Invia CV e lettera a lavora-con-noi@pintourbus.com.' },
+    en: { title: 'Work with Us - Pintour Bus | Open Positions and Applications', description: 'Join the Pintour team: we are hiring a GT bus driver with qualified CPC and a bookings secretary with excellent spoken English. Send your CV to lavora-con-noi@pintourbus.com.' },
+    fr: { title: 'Travaillez avec Nous - Pintour Bus | Postes Ouverts et Candidatures', description: "Rejoignez l'équipe Pintour : chauffeur autocar GT avec FIMO et secrétaire réservations avec excellent anglais parlé. Envoyez CV et lettre de motivation à lavora-con-noi@pintourbus.com." },
+    de: { title: 'Karriere - Pintour Bus | Offene Stellen und Bewerbungen', description: 'Werden Sie Teil des Pintour-Teams: Reisebusfahrer mit Qualifikation und Buchungsmitarbeiter/in (m/w/d) mit ausgezeichnetem Englisch. Lebenslauf an lavora-con-noi@pintourbus.com.' },
+    es: { title: 'Trabaja con Nosotros - Pintour Bus | Posiciones Abiertas y Candidaturas', description: 'Únete al equipo Pintour: conductor de autocar GT con CAP habilitado y secretario/a de reservas con excelente inglés hablado. Envía tu CV a lavora-con-noi@pintourbus.com.' },
+  },
   privacy: {
     it: { title: 'Privacy Policy - Pintour Bus', description: 'Informativa sul trattamento dei dati personali e cookie policy di Pintour S.C.A.R.L. in conformità al Regolamento GDPR 2016/679.' },
     en: { title: 'Privacy Policy - Pintour Bus', description: 'Information on the processing of personal data and cookie policy of Pintour S.C.A.R.L. in compliance with the GDPR Regulation 2016/679.' },

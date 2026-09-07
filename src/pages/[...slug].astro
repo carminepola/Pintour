@@ -7,6 +7,7 @@ import Shuttle from '../sections/Shuttle.astro';
 import Rental from '../sections/Rental.astro';
 import Vehicles from '../sections/Vehicles.astro';
 import Contacts from '../sections/Contacts.astro';
+import Careers from '../sections/Careers.astro';
 import Privacy from '../sections/Privacy.astro';
 import { LANGUAGES, PAGES, slugs, resolveRoute } from '../i18n/config';
 import type { PageKey } from '../i18n/config';
@@ -39,6 +40,7 @@ const sections: Record<PageKey, any> = {
   rental: Rental,
   vehicles: Vehicles,
   contacts: Contacts,
+  careers: Careers,
   privacy: Privacy,
 };
 const Section = sections[page];

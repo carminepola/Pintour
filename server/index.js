@@ -1,10 +1,12 @@
 // Microservizio form-to-mail self-hostato per Pintour Bus.
 // - Captcha math firmato lato server (HMAC) + honeypot
-// - Invio email via SMTP (Nodemailer)
+// - Invio email via SMTP (Nodemailer), anche con allegati (candidature CV)
 // Config tramite variabili d'ambiente (mai commitare i segreti).
 const express = require('express');
 const nodemailer = require('nodemailer');
+const multer = require('multer');
 const crypto = require('crypto');
+const path = require('path');
 
 const app = express();
 app.use(express.json());
@@ -17,6 +19,7 @@ const SMTP_USER = process.env.SMTP_USER || '';
 const SMTP_PASS = process.env.SMTP_PASS || '';
 const MAIL_TO = process.env.MAIL_TO || SMTP_USER;
 const MAIL_FROM = process.env.MAIL_FROM || SMTP_USER;
+const CAREERS_MAIL_TO = process.env.CAREERS_MAIL_TO || 'lavora-con-noi@pintourbus.com';
 const PORT = parseInt(process.env.PORT || '3000', 10);
 
 // Honeypot + campi da escludere dal corpo della mail
@@ -119,5 +122,92 @@ function handle(kind) {
 
 app.post('/api/contact', handle('contatti'));
 app.post('/api/quote', handle('tour'));
+
+// --- Candidature "Lavora con noi" (multipart con CV allegato) ---
+
+const CV_MAX_BYTES = 5 * 1024 * 1024;
+const CV_OK_EXT = new Set(['.pdf', '.doc', '.docx']);
+
+const cvUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: CV_MAX_BYTES, files: 1 },
+  fileFilter: (req, file, cb) => {
+    const ext = path.extname(file.originalname || '').toLowerCase();
+    if (CV_OK_EXT.has(ext)) return cb(null, true);
+    cb(Object.assign(new Error('Tipo di file non consentito'), { code: 'file_type' }));
+  },
+});
+
+app.post('/api/careers', (req, res, next) => {
+  cvUpload.single('cv')(req, res, (err) => {
+    if (err) {
+      const code = err.code === 'LIMIT_FILE_SIZE' ? 'file_size' : err.code === 'file_type' ? 'file_type' : 'server';
+      return res.status(400).json({ ok: false, error: code });
+    }
+    next();
+  });
+}, async (req, res) => {
+  const fields = (req.body && typeof req.body === 'object') ? req.body : {};
+  const cv = req.file || null;
+  const meta = { ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress || '' };
+  // Honeypot: bot che compilano il campo nascosto vengono silenziosamente accettati senza mail
+  if (fields.website && String(fields.website).trim() !== '') return res.json({ ok: true });
+  if (!verifyCaptcha(fields.captchaId, fields.captchaAnswer)) {
+    return res.status(400).json({ ok: false, error: 'captcha' });
+  }
+  const required = ['firstName', 'lastName', 'phone', 'coverLetter'];
+  for (const k of required) {
+    if (!fields[k] || !String(fields[k]).trim()) return res.status(400).json({ ok: false, error: 'missing' });
+  }
+  if (!cv) return res.status(400).json({ ok: false, error: 'missing' });
+
+  const name = `${String(fields.firstName).trim()} ${String(fields.lastName).trim()}`.trim();
+  const position = String(fields.position || '').trim();
+  const lines = [];
+  lines.push(`Nuova candidatura (${position || 'posizione non specificata'}) - pintourbus.com`);
+  lines.push('----------------------------------------');
+  lines.push(`Data: ${new Date().toISOString()}`);
+  lines.push(`IP: ${meta.ip}`);
+  lines.push('----------------------------------------');
+  lines.push(`Nome: ${String(fields.firstName).trim()}`);
+  lines.push(`Cognome: ${String(fields.lastName).trim()}`);
+  lines.push(`Telefono: ${String(fields.phone).trim()}`);
+  if (fields.email) lines.push(`Email: ${String(fields.email).trim()}`);
+  if (position) lines.push(`Posizione: ${position}`);
+  lines.push('----------------------------------------');
+  lines.push('Lettera di presentazione:');
+  lines.push(String(fields.coverLetter).trim());
+  lines.push('----------------------------------------');
+  lines.push(`CV allegato: ${cv.originalname} (${(cv.size / 1024).toFixed(0)} KB)`);
+
+  if (!SMTP_HOST) {
+    console.error('SMTP_HOST non configurato');
+    return res.status(500).json({ ok: false, error: 'config' });
+  }
+  try {
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465,
+      auth: SMTP_USER ? { user: SMTP_USER, pass: SMTP_PASS } : undefined,
+    });
+    await transporter.sendMail({
+      from: MAIL_FROM,
+      to: CAREERS_MAIL_TO,
+      subject: `[Pintour] Nuova candidatura${position ? ': ' + position : ''} - ${name}`,
+      text: lines.join('\n'),
+      replyTo: fields.email || MAIL_FROM,
+      attachments: [{
+        filename: cv.originalname || 'cv',
+        content: cv.buffer,
+        contentType: cv.mimetype || 'application/octet-stream',
+      }],
+    });
+    res.json({ ok: true });
+  } catch (e) {
+    console.error('Mail error (careers):', e.message);
+    res.status(500).json({ ok: false, error: 'server' });
+  }
+});
 
 app.listen(PORT, () => console.log(`pintourbus-api in ascolto su :${PORT}`));

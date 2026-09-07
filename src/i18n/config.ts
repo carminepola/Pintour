@@ -45,12 +45,12 @@ export const htmlLang: Record<Language, string> = {
   es: 'es',
 };
 
-export type PageKey = 'home' | 'tours' | 'about' | 'shuttle' | 'rental' | 'vehicles' | 'contacts' | 'privacy';
+export type PageKey = 'home' | 'tours' | 'about' | 'shuttle' | 'rental' | 'vehicles' | 'contacts' | 'careers' | 'privacy';
 
-export const PAGES: PageKey[] = ['home', 'tours', 'about', 'shuttle', 'rental', 'vehicles', 'contacts', 'privacy'];
+export const PAGES: PageKey[] = ['home', 'tours', 'about', 'shuttle', 'rental', 'vehicles', 'contacts', 'careers', 'privacy'];
 
 // Mappa page-key -> chiave etichetta di navigazione (i nomi nav differiscono per shuttle/rental)
-export const navLabelKey: Record<PageKey, 'home' | 'tours' | 'about' | 'shuttleBus' | 'busRental' | 'vehicles' | 'contacts' | 'privacy'> = {
+export const navLabelKey: Record<PageKey, 'home' | 'tours' | 'about' | 'shuttleBus' | 'busRental' | 'vehicles' | 'contacts' | 'careers' | 'privacy'> = {
   home: 'home',
   tours: 'tours',
   about: 'about',
@@ -58,6 +58,7 @@ export const navLabelKey: Record<PageKey, 'home' | 'tours' | 'about' | 'shuttleB
   rental: 'busRental',
   vehicles: 'vehicles',
   contacts: 'contacts',
+  careers: 'careers',
   privacy: 'privacy',
 };
 
@@ -111,6 +112,13 @@ export const slugs: Record<PageKey, Record<Language, string>> = {
     fr: 'contacts',
     de: 'kontakte',
     es: 'contactos',
+  },
+  careers: {
+    it: 'lavora-con-noi',
+    en: 'work-with-us',
+    fr: 'travailler-avec-nous',
+    de: 'karriere',
+    es: 'trabaja-con-nosotros',
   },
   privacy: {
     it: 'privacy',
