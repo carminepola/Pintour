@@ -7,9 +7,13 @@ on:
 
 jobs:
   build-web:
-    runs-on: docker
- 
-    container: node:24.15
+    runs-on: ubuntu-latest
+
+    services:
+      dind:
+        image: docker:27-dind
+        options: --privileged
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,10 +39,12 @@ jobs:
           docker push "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.WEB_IMAGE }}:latest"
 
   build-api:
-    runs-on: docker
+    runs-on: ubuntu-latest
 
- 
-    container: node:24.15
+    services:
+      dind:
+        image: docker:27-dind
+        options: --privileged
 
     steps:
       - name: Checkout
