@@ -20,11 +20,7 @@ jobs:
 
       - name: Docker login
         run: |
-          echo "${{ secrets.DOCKER_PASSWORD_PRIVATE }}" | \
-            docker login \
-            -u "${{ secrets.DOCKER_PASSWORD_PRIVATE }}" \
-            --password-stdin \
-            "${{ secrets.REGISTRY_PRIVATE }}"
+           docker login $REGISTRY_PRIVATE -u $DOCKER_USERNAME_PRIVATE -p $DOCKER_PASSWORD_PRIVATE
 
       - name: Build Web
         run: |
@@ -52,11 +48,7 @@ jobs:
 
       - name: Docker login
         run: |
-          echo "${{ secrets.DOCKER_PASSWORD_PRIVATE }}" | \
-            docker login \
-            -u "${{ secrets.DOCKER_PASSWORD_PRIVATE }}" \
-            --password-stdin \
-            "${{ secrets.REGISTRY_PRIVATE }}"
+           docker login $REGISTRY_PRIVATE -u $DOCKER_USERNAME_PRIVATE -p $DOCKER_PASSWORD_PRIVATE
 
       - name: Build API
         run: |
