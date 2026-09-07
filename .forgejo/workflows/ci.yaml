@@ -19,8 +19,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Docker login
+        env:
+          REGISTRY_PRIVATE: ${{ secrets.REGISTRY_PRIVATE }}
+          DOCKER_USERNAME_PRIVATE: ${{ secrets.DOCKER_USERNAME_PRIVATE }}
+          DOCKER_PASSWORD_PRIVATE: ${{ secrets.DOCKER_PASSWORD_PRIVATE }}
         run: |
-           docker login $REGISTRY_PRIVATE -u $DOCKER_USERNAME_PRIVATE -p $DOCKER_PASSWORD_PRIVATE
+          echo "$DOCKER_PASSWORD_PRIVATE" | docker login "$REGISTRY_PRIVATE" -u "$DOCKER_USERNAME_PRIVATE" --password-stdin
 
       - name: Build Web
         run: |
@@ -47,8 +51,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Docker login
+        env:
+          REGISTRY_PRIVATE: ${{ secrets.REGISTRY_PRIVATE }}
+          DOCKER_USERNAME_PRIVATE: ${{ secrets.DOCKER_USERNAME_PRIVATE }}
+          DOCKER_PASSWORD_PRIVATE: ${{ secrets.DOCKER_PASSWORD_PRIVATE }}
         run: |
-           docker login $REGISTRY_PRIVATE -u $DOCKER_USERNAME_PRIVATE -p $DOCKER_PASSWORD_PRIVATE
+          echo "$DOCKER_PASSWORD_PRIVATE" | docker login "$REGISTRY_PRIVATE" -u "$DOCKER_USERNAME_PRIVATE" --password-stdin
 
       - name: Build API
         run: |
