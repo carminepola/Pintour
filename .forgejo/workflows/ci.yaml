@@ -1,0 +1,94 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-web:
+    runs-on: docker
+
+    container:
+      image: docker:27-cli
+
+    services:
+      docker:
+        image: docker:27-dind
+        options: --privileged
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker login
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD_PRIVATE }}" | \
+            docker login \
+            -u "${{ secrets.DOCKER_PASSWORD_PRIVATE }}" \
+            --password-stdin \
+            "${{ secrets.REGISTRY_PRIVATE }}"
+
+      - name: Build Web
+        run: |
+          docker build \
+            -t "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.WEB_IMAGE }}:${{ github.sha }}" \
+            -t "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.WEB_IMAGE }}:latest" \
+            .
+
+      - name: Push Web
+        run: |
+          docker push "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.WEB_IMAGE }}:${{ github.sha }}"
+          docker push "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.WEB_IMAGE }}:latest"
+
+  build-api:
+    runs-on: docker
+
+    container:
+      image: docker:27-cli
+
+    services:
+      docker:
+        image: docker:27-dind
+        options: --privileged
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker login
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD_PRIVATE }}" | \
+            docker login \
+            -u "${{ secrets.DOCKER_PASSWORD_PRIVATE }}" \
+            --password-stdin \
+            "${{ secrets.REGISTRY_PRIVATE }}"
+
+      - name: Build API
+        run: |
+          docker build \
+            -t "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.API_IMAGE }}:${{ github.sha }}" \
+            -t "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.API_IMAGE }}:latest" \
+            ./server
+
+      - name: Push API
+        run: |
+          docker push "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.API_IMAGE }}:${{ github.sha }}"
+          docker push "${{ secrets.REGISTRY_PRIVATE }}/${{ secrets.API_IMAGE }}:latest"
+
+  deploy:
+    runs-on: docker
+
+    needs:
+      - build-web
+      - build-api
+
+    container:
+      image: curlimages/curl:latest
+
+    steps:
+      - name: Deploy to Portainer
+        run: |
+          curl --location \
+            --request POST \
+            "${{ secrets.PORTAINER_URL }}"
